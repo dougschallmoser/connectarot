@@ -7,23 +7,29 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Roboto&display=swap" rel="stylesheet">
   </head>
 
-  <header>
-    <nav>
-    <%= link_to_unless_current "Home", root_path %>  |
-    <% if logged_in? %>
-      <%= link_to_unless_current "Request Reading", "/request" %>  |
-      <%= link_to_unless_current "My Tarot", user_path(current_user) %>  |
-      <%= link_to_unless_current "Logout", logout_path, method: "delete" %>
-    <% else %>
-      <%= link_to_unless_current "Sign Up", new_user_path %>  |
-      <%= link_to_unless_current "Login", login_path %>
-    <% end %>
-    </nav>
-  </header>
+  <div class="navigation">
+    <header>
+      <nav>
+      <span class="nav-logo"><%= link_to_unless_current "connecTarot", root_path %></span>
+      <% if logged_in? %>
+        <span class="nav-text"><%= link_to_unless_current "Request Reading", "/request" %></span>
+        <span class="nav-text"><%= link_to_unless_current "My Tarot", user_path(current_user) %></span> 
+        <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
+      <% else %>
+        <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
+        <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
+      <% end %>
+      </nav>
+    </header>
+  </div>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
+  
 </html>

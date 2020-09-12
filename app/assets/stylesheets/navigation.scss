@@ -1,0 +1,29 @@
+.navigation {
+    background-image: linear-gradient(to right, #f2d7fc , #ae85f7);
+    border: 1px solid #ae85f7;
+    font-family: 'Lexend Mega', sans-serif;
+    word-spacing: 30px;
+    padding: 5px 5px 5px 5px;
+    margin: auto;
+    text-align: center;
+    width: 80%;
+
+    a {
+        color: #aa00ff;
+        text-decoration: none;
+
+        &:hover {
+            color: #d787ff;
+        }
+    }
+}
+
+.nav-text {
+    word-spacing: 1px;
+    font-size: 16px;
+}
+
+.nav-logo {
+    font-size: 16px;
+    font-weight: 950;
+}
