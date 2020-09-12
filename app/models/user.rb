@@ -11,6 +11,7 @@ class User < ApplicationRecord
         self.find_or_create_by(email: auth_hash['info']['email']) do |u| 
             u.name = auth_hash['info']['name']
             u.email = auth_hash['info']['email']
+            u.image = auth_hash['info']['image']
             u.password = SecureRandom.hex
         end
     end
