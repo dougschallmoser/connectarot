@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :entries
   end
 
-  match '/login/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
 end
