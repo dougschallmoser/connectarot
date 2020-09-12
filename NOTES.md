@@ -1,7 +1,7 @@
 Models:
 User => :name, :username, :email
-Entry => :content, :reaction, :thoughts
-Card => name:string, type:integer (major-1, or minor-0), court:boolean, number:string, suit:string
+Entry => :thoughts, :card_ids
+Card => name:string, type:integer (major-1, or minor-0), court:boolean, number:string, suit:string, interpretation:string
     if court? == true, then :number == nil
     if :type == major, then :suit == nil
 
@@ -9,7 +9,7 @@ Relationships:
 -User has many entries
 -Entry belongs to a user
 
--Entry belongs to card
+-Entry has many cards
 -Card has many entries
 
 -User has many cards through entries
