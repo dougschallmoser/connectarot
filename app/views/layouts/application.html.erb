@@ -9,6 +9,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <nav>
+      <%= link_to_unless_current "Home", root_path %>  |
+      <%= link_to_unless_current "Request Reading" %>  |
+      <%= link_to_unless_current "My Tarot", users_path %>  |
+      <%= link_to_unless_current "Sign Up", users_path %>  |
+      <%= link_to_unless_current "Logout", logout_path, method: "delete" %>
+    </nav>
+  </header>
+
   <body>
     <%= yield %>
   </body>
