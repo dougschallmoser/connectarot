@@ -1,1 +1,8 @@
 <h1><%= @user.name %>'s Tarot Page</h1>
+
+You are logged in as: <%= @user.email %><br>
+<br>
+
+<% if @user.image %>
+    <%= image_tag @user.image, width: "100" %>
+<% end %>
