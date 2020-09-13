@@ -1,4 +1,12 @@
 <h2>New Reading</h2>
 
-<h4>Pull three cards to create a new reading</h4>
-<%= button_to "Pull Card", user_entries_path(@user), method: :post, class: "pull-card" %>
+<h4>Select a spread for your reading:</h4>
+<%= form_for([@user, @entry]) do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    <h4>Pull three cards to create a new reading</h4>
+    <%= f.submit "Pull Card", class: "pull-card" %>
+<% end %>
+
+
+
