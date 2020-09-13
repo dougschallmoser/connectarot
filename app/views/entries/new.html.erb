@@ -1,7 +1,4 @@
 <h2>New Reading</h2>
 
-<%= form_for([@user, @entry]) do |f| %>
-    <%= f.fields_for :cards do |t| %>
-    <% end %>
-    <%= f.submit "Pull Card" %>
-<% end %>
+<h5>Please pull three cards to create a new reading.</h5>
+<%= button_to "Pull Card", user_entries_path(@user), method: :post %>
