@@ -1,10 +1,10 @@
 <h2>New Reading</h2>
 
 <% if @entry.cards.size == 1 %>
-    <h5>Please pull two more cards...</h5>
+    <h5>Pull two more cards...</h5>
     <%= button_to "Pull Card", user_entries_path(@user), method: :post, params: {"entry_id" => @entry.id} %>
 <% elsif @entry.cards.size == 2 %>
-    <h5>Please pull one more card...</h5>
+    <h5>Pull one more card...</h5>
     <%= button_to "Pull Card", user_entries_path(@user), method: :post, params: {"entry_id" => @entry.id} %>
 <% elsif @entry.cards.size == 3 %>
     You pulled:

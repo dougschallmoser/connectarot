@@ -37,6 +37,15 @@ main {
     width: 80%;
     padding: 0px 15px 20px 15px;
     font-family: 'Lexend Deca', sans-serif;
+
+    a {
+        color: #aa00ff;
+        text-decoration: none;
+
+        &:hover {
+            color: #d787ff;
+        }
+    }
 }
 
 .logo-font {
