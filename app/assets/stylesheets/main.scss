@@ -9,7 +9,7 @@ body {
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
     -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    padding: 7px 7px 7px 7px;
+    padding: 5px 10px 20px 10px;
     margin: auto;
     margin-top: 20px;
     width: 80%;
@@ -19,4 +19,20 @@ body {
 .logo-font {
     font-family: 'Lexend Giga', sans-serif;
     color: #aa00ff;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Lexend Deca', sans-serif;
+    color: #fbf0ff;
+
+    a {
+        color: #d787ff;
+        text-decoration: none;
+
+        &:hover {
+            color: #fbf0ff;
+        }
+    }
 }
