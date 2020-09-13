@@ -7,7 +7,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Lexend+Giga&display=swap" rel="stylesheet">
   </head>
 
   <div class="navigation">
@@ -15,9 +15,27 @@
       <nav>
       <span class="nav-logo"><%= link_to_unless_current "connecTarot", root_path %></span>
       <% if logged_in? %>
-        <span class="nav-text"><%= link_to_unless_current "Request Reading", "/request" %></span>
-        <span class="nav-text"><%= link_to_unless_current "My Tarot", user_path(current_user) %></span> 
-        <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
+        <div class="dropdown">
+          <span class="nav-text"><%= link_to_unless_current "Readings", "/request" %></span>
+          <div class="dropdown-content">
+            <%= link_to "View Requests", user_path(current_user) %><br>
+            <%= link_to "Make Request", user_path(current_user) %><br>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span class="nav-text"><%= link_to_unless_current "My Tarot", user_path(current_user) %></span> 
+          <div class="dropdown-content">
+            <%= link_to "My Page", user_path(current_user) %><br>
+            <%= link_to "Account", edit_user_path(current_user) %><br>
+            <%= link_to "New Reading", new_user_entry_path(current_user.id) %>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
+          <div class="dropdown-content-logout">
+            You are logged in as:<br><%= current_user.name %>
+          </div>
+        </div>
       <% else %>
         <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
         <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>

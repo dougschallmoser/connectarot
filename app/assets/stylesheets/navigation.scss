@@ -1,12 +1,16 @@
 .navigation {
     background-image: linear-gradient(to right, #f2d7fc , #ae85f7);
-    border: 1px solid #ae85f7;
-    font-family: 'Lexend Mega', sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    font-family: 'Lexend Giga', sans-serif;
     word-spacing: 30px;
     padding: 5px 5px 5px 5px;
     margin: auto;
     text-align: center;
     width: 80%;
+    color: #d787ff;
 
     a {
         color: #aa00ff;
@@ -25,5 +29,46 @@
 
 .nav-logo {
     font-size: 16px;
-    font-weight: 950;
+    font-weight: 900;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-content {
+display: none;
+font-size: 12px;
+word-spacing: 1px;
+position: absolute;
+background-color: #fbf0ff;
+width: 140%;
+overflow: auto;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+padding: 6px 8px;
+z-index: 1;
+color: #aa00ff;
+}
+
+.dropdown-content-logout {
+    display: none;
+    font-size: 10px;
+    word-spacing: 1px;
+    position: absolute;
+    background-color: #fbf0ff;
+    width: 200%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 6px 8px;
+    z-index: 1;
+    color: #aa00ff;
+    }
+  
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+.dropdown:hover .dropdown-content-logout {
+    display: block;
+    }

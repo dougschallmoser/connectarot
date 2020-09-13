@@ -1,12 +1,15 @@
 body {
     background-color: #7e5c88;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 .container {
-    background-color: #fff8e0;
-    border: 1px solid black;
-    padding: 5px 5px 5px 5px;
+    background-color: #fbf0ff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    padding: 7px 7px 7px 7px;
     margin: auto;
     margin-top: 20px;
     width: 80%;
