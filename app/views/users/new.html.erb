@@ -1,12 +1,19 @@
 <h1>Sign Up</h1>
 
+<h5>All fields required.</h5>
 <%= form_for @user do |f| %>
     <%= f.label :name, "Name: " %>
-    <%= f.text_field :name %><br>
+    <%= f.text_field :name, size: "25" %><br>
     <%= f.label :email, "Email: " %>
-    <%= f.text_field :email %><br>
+    <%= f.text_field :email, size: "25" %><br>
     <%= f.label :password, "Password: " %>
-    <%= f.password_field :password %><br>
+    <%= f.password_field :password, size: "25" %><br>
     <br>
     <%= f.submit %>
 <% end %>
+
+<br>
+
+or sign up with <%= link_to "Github", "/auth/github" %>
+<br>
+or sign up with <%= link_to "Facebook", "/auth/facebook" %>
