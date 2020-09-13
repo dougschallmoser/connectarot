@@ -1,5 +1,6 @@
 class Entry < ApplicationRecord
 
+    belongs_to :category
     belongs_to :user
     has_many :thoughts
     has_many :entries_cards
