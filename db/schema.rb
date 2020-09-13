@@ -14,11 +14,11 @@ ActiveRecord::Schema.define(version: 2020_09_13_164121) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "designation"
     t.boolean "court"
     t.integer "number"
     t.string "suit"
-    t.string "interpretation"
+    t.string "meaning"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
