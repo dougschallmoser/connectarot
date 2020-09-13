@@ -3,6 +3,7 @@ Models:
 User => :name, :email, :password
 Entry => :thoughts, :cards
 Thought => :content
+Category => :name
 Card => :name, :type, :court, :number, :suit, :interpretation
     if court? == true, then :number == nil
     if :type == major, then :suit == nil
@@ -30,6 +31,9 @@ Associations:
 
 -Entry has many thoughts
 -Thought belongs to an entry
+
+-Category has many entries
+-Entry belongs to a category
 
 -Entry has many entries_cards
 -Entry has many cards through entries_cards
