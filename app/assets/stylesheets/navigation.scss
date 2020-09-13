@@ -9,7 +9,11 @@
     padding: 5px 10px 5px 10px;
     margin: auto;
     text-align: center;
-    width: 80%;
+    // width: 80%;
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    left: 50%;
     color: #d787ff;
 
     a {

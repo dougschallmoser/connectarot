@@ -10,57 +10,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Lexend+Giga&display=swap" rel="stylesheet">
   </head>
 
-  <div class="navigation">
-    <header>
-      <nav>
-      <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
-      <% if logged_in? %>
-        <div class="dropdown">
-          <span class="nav-text"><%= link_to_unless_current "Readings", "/request" %></span>
-          <div class="dropdown-content">
-            <%= link_to "View Requests", "/requests" %><br>
-            <%= link_to "Make Request", "/requests/new" %><br>
-          </div>
-        </div>
-        <div class="dropdown">
-          <span class="nav-text"><%= link_to_unless_current "My Tarot", user_path(current_user) %></span> 
-          <div class="dropdown-content">
-            <%= link_to "My Page", user_path(current_user) %><br>
-            <%= link_to "Account", edit_user_path(current_user) %><br>
-            <%= link_to "New Reading", new_user_entry_path(current_user.id) %>
-          </div>
-        </div>
-        <div class="dropdown">
-          <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
-          <div class="dropdown-content-logout">
-            You are logged in as:<br><%= current_user.name %>
-          </div>
-        </div>
-      <% else %>
-        <div class="dropdown">
-          <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
-          <div class="dropdown-content-login">
-            <%= link_to "Signup form", new_user_path %><br>
-            <%= link_to "use Facebook", "/auth/facebook" %><br>
-            <%= link_to "use Github", "/auth/github" %>
-          </div>
-        </div>
-        <div class="dropdown">
-          <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
-          <div class="dropdown-content-login">
-            <%= link_to "Login form", login_path %><br>
-            <%= link_to "use Facebook", "/auth/facebook" %><br>
-            <%= link_to "use Github", "/auth/github" %>
-          </div>
-        </div>
-      <% end %>
-      </nav>
-    </header>
-  </div>
 
   <body>
     <div class="container">
+        <div class="navigation">
+        <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
+        <% if logged_in? %>
+          <div class="dropdown">
+            <span class="nav-text"><%= link_to_unless_current "Readings", "/request" %></span>
+            <div class="dropdown-content">
+              <%= link_to "View Requests", "/requests" %><br>
+              <%= link_to "Make Request", "/requests/new" %><br>
+            </div>
+          </div>
+          <div class="dropdown">
+            <span class="nav-text"><%= link_to_unless_current "My Tarot", user_path(current_user) %></span> 
+            <div class="dropdown-content">
+              <%= link_to "My Page", user_path(current_user) %><br>
+              <%= link_to "Account", edit_user_path(current_user) %><br>
+              <%= link_to "New Reading", new_user_entry_path(current_user.id) %>
+            </div>
+          </div>
+          <div class="dropdown">
+            <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
+            <div class="dropdown-content-logout">
+              You are logged in as:<br><%= current_user.name %>
+            </div>
+          </div>
+        <% else %>
+          <div class="dropdown">
+            <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
+            <div class="dropdown-content-login">
+              <%= link_to "Signup form", new_user_path %><br>
+              <%= link_to "use Facebook", "/auth/facebook" %><br>
+              <%= link_to "use Github", "/auth/github" %>
+            </div>
+          </div>
+          <div class="dropdown">
+            <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
+            <div class="dropdown-content-login">
+              <%= link_to "Login form", login_path %><br>
+              <%= link_to "use Facebook", "/auth/facebook" %><br>
+              <%= link_to "use Github", "/auth/github" %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
       <%= yield %>
+
     </div>
   </body>
 
