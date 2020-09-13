@@ -16,11 +16,7 @@ class EntriesController < ApplicationController
         else
             @entry = Entry.create(user_id: params[:user_id])
         end
-        @random_card = Card.randomize
-        until !@entry.cards.include?(@random_card) do
-            @random_card = Card.randomize
-        end
-        @entry.cards << @random_card
+        @entry.add_randomized_card
         redirect_to user_entry_path(@entry.user, @entry)
     end
 
