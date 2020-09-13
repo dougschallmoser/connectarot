@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     end
 
     def update
+        if @user && @user.id == session[:user_id]
+            self.authenticate_and_update_info(@user)
+        else
+            redirect_to user_path(@user)
+        end
     end
 
     def destroy
