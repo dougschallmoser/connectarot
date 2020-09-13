@@ -18,8 +18,8 @@
         <div class="dropdown">
           <span class="nav-text"><%= link_to_unless_current "Readings", "/request" %></span>
           <div class="dropdown-content">
-            <%= link_to "View Requests", user_path(current_user) %><br>
-            <%= link_to "Make Request", user_path(current_user) %><br>
+            <%= link_to "View Requests", "/requests" %><br>
+            <%= link_to "Make Request", "/requests/new" %><br>
           </div>
         </div>
         <div class="dropdown">
