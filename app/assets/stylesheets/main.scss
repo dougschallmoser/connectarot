@@ -31,7 +31,7 @@ main {
     display: flex;
     flex-flow: column wrap;
     margin: auto;
-    margin-top: 5px;
+    margin-top: 50px;
     height: 100%;
     width: 80%;
     padding: 0px 15px 20px 15px;
@@ -49,6 +49,7 @@ footer {
     font-size: 12px;
     font-family: 'Lexend Deca', sans-serif;
     color: #fbf0ff;
+    margin-top: 20px;
 
     a {
         color: #d787ff;
