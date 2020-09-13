@@ -22,19 +22,21 @@
 <p>
     To edit your account information, submit the form below:
 
-    <h5>All fields required.</h5>
+    <h5>*required fields</h5>
     <%= form_for @user do |f| %>
-    <%= f.label :name, "Name: " %>
+    <%= f.label :name, "*Name: " %>
     <%= f.text_field :name, size: "25" %><br>
-    <%= f.label :email, "Email: " %>
+    <%= f.label :email, "*Email: " %>
     <%= f.text_field :email, size: "33" %><br>
-    <%= f.label :password, "Current Password: " %>
+    <%= f.label :password, "*Current Password: " %>
     <%= f.password_field :password, size: "25" %><br>
     <%= f.label :new_password, "New Password: " %>
     <%= f.password_field :new_password, size: "25" %><br>
     <br>
     <%= f.submit %>
     <% end %>
+    <br>
+    <%= button_to "Delete Account", user_path(current_user),  method: :delete, onclick: "return confirm('Are you sure you want to delete your account?')" %>
 </p>
 
 <br>
