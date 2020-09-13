@@ -8,13 +8,28 @@
   <%= button_to "Pull Card", user_entries_path(@user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %>
 <% elsif @entry.cards.size == 3 %>
   <h2>Reading</h2>
-  <%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %>
-    <p>
-      <% @entry.cards.each do |card| %>
+
+  <div class="justified">
+    <div class="centered">
+      <%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %>
         <p>
-          <%= card.name %><br>
-          <%= card.meaning %><br>
-        </p>
-      <% end %>
+          <span class="italic"><%= @entry.category.name %> Spread</span>
+    </div>
+      <p>
+        <span class="question-title"><%= @entry.category.question_1 %></span><br>
+        You pulled <span class="card-name"><%= @entry.cards[0].name %></span><br>
+        <%= @entry.cards[0].meaning %><br>
+      </p>
+      <p>
+        <span class="question-title"><%= @entry.category.question_2 %></span><br>
+        You pulled <span class="card-name"><%= @entry.cards[1].name %></span></br>
+        <%= @entry.cards[1].meaning %><br>
+      </p>
+      <p>
+        <span class="question-title"><%= @entry.category.question_3 %></span><br>
+        You pulled <span class="card-name"><%= @entry.cards[2].name %></span><br>
+        <%= @entry.cards[2].meaning %><br>
+      </p>
     </p>
+  </div>
 <% end %>
