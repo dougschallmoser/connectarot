@@ -1,0 +1,40 @@
+<h1>Account</h1>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        Name: <span class="account-values"><%= @user.name %></span><br>
+        Email: <span class="account-values"><%= @user.email %></span><br>
+      </td>
+      <td>
+        <% if @user.image %>
+          <%= image_tag @user.image, width: "100", id: "profile-pic" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+<br>
+
+<p>
+    To edit your account information, submit the form below:
+
+    <h5>All fields required.</h5>
+    <%= form_for @user do |f| %>
+    <%= f.label :name, "Name: " %>
+    <%= f.text_field :name, size: "25" %><br>
+    <%= f.label :email, "Email: " %>
+    <%= f.text_field :email, size: "33" %><br>
+    <%= f.label :password, "Current Password: " %>
+    <%= f.password_field :password, size: "25" %><br>
+    <%= f.label :new_password, "New Password: " %>
+    <%= f.password_field :new_password, size: "25" %><br>
+    <br>
+    <%= f.submit %>
+    <% end %>
+</p>
+
+<br>
