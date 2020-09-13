@@ -13,7 +13,7 @@
   <div class="navigation">
     <header>
       <nav>
-      <span class="nav-logo"><%= link_to_unless_current "connecTarot", root_path %></span>
+      <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
       <% if logged_in? %>
         <div class="dropdown">
           <span class="nav-text"><%= link_to_unless_current "Readings", "/request" %></span>
@@ -37,8 +37,22 @@
           </div>
         </div>
       <% else %>
-        <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
-        <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
+        <div class="dropdown">
+          <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
+          <div class="dropdown-content-login">
+            <%= link_to "Signup form", new_user_path %><br>
+            <%= link_to "use Facebook", "/auth/facebook" %><br>
+            <%= link_to "use Github", "/auth/github" %>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
+          <div class="dropdown-content-login">
+            <%= link_to "Login form", login_path %><br>
+            <%= link_to "use Facebook", "/auth/facebook" %><br>
+            <%= link_to "use Github", "/auth/github" %>
+          </div>
+        </div>
       <% end %>
       </nav>
     </header>
