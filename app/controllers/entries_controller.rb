@@ -21,14 +21,6 @@ class EntriesController < ApplicationController
         redirect_to user_entry_path(@entry.user, @entry)
     end
 
-    def update
-        if @entry.update(entry_params)
-            redirect_to user_entry_path(@entry.user, @entry)
-        else
-            raise "didn't work".inspect
-        end
-    end
-
     def destroy
         @entry.destroy
         redirect_to user_path(current_user)
