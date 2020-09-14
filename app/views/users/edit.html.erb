@@ -9,7 +9,7 @@
       </td>
       <td>
         <% if @user.image %>
-          <%= image_tag @user.image, width: "100", id: "profile-pic" %>
+          <%= image_tag @user.image, width: "200", id: "profile-pic" %>
         <% end %>
       </td>
     </tr>
@@ -33,7 +33,7 @@
     <%= f.label :new_password, "New Password: " %>
     <%= f.password_field :new_password, size: "25" %><br>
     <br>
-    <%= f.submit %>
+    <%= f.submit "Update Account" %>
     <% end %>
     <br>
     <p>
