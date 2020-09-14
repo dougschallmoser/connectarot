@@ -14,5 +14,8 @@ class Entry < ApplicationRecord
         end
         self.cards << random_card
     end
+
+    def thoughts_attributes=(thoughts_attributes)
+    end
     
 end
