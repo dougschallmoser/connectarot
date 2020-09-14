@@ -21,4 +21,4 @@ Card.create(name: "The Magician", designation: "Major", court: false, number: 1,
 
 Card.create(name: "The High Priestess", designation: "Major", court: false, number: 2, suit: nil, meaning: "High Priestess is a card of mystery, stillness and passivity. This card suggests that it is time to retreat and reflect upon the situation and trust your inner instincts to guide you through it. Things around you are not what they appear to be right now.")
 
-Card.create(name: "The Empress", designation: "Major", court: false, number: 3, suit: nil, meaning: "The Empress is traditionally associated with maternal influence, it is the card if you are hoping to start a family. She can represent the creation of life, romance, art, or new business.")
+Card.create(name: "The Empress", designation: "Major", court: false, number: 3, suit: nil, meaning: "The Empress is associated with the divine Feminine and fertility of all kinds. This card encourages being receptive to the universe. It is an invitation to revel in the lushness of your being and to receive any inspiration and kindness being offered.")
