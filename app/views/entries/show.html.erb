@@ -13,7 +13,7 @@
     <div class="centered">
       <%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %>
       <p>
-          <span class="italic"><%= @entry.category.name.upcase %></span>
+          <span class="category-name"><%= @entry.category.name.upcase %></span>
           <p>
             You pulled
               <% @entry.cards.each do |card| %>

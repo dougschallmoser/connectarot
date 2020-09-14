@@ -1,5 +1,5 @@
 .navigation {
-    background-color: #e0cfff;
+    background-color: #d7c2ff;
     box-shadow: 0 0 10px rgba(0,0,0,0.6);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
@@ -20,7 +20,8 @@
         text-decoration: none;
 
         &:hover {
-            color: #d787ff;
+            color: #ee00ff;
+            border: 2px dashed #aa00ff;
         }
     }
 }
@@ -33,13 +34,18 @@
 }
 
 .nav-logo {
-    border: 2px dashed #ee00ff;
     font-size: 16px;
     font-weight: 900;
     text-shadow: 2px 2px rgba(0,0,0,0.07);
 
     a {
         color: #ee00ff;
+        border: 2px dashed #ee00ff;
+
+        &:hover {
+            color: #d787ff;
+            border: 2px dashed #ee00ff;
+        }
     }
 }
 
@@ -53,7 +59,7 @@ display: none;
 font-size: 12px;
 word-spacing: 1px;
 position: absolute;
-background-color: #fbf0ff;
+background-color: #d7c2ff;
 width: 140%;
 overflow: auto;
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -67,7 +73,7 @@ color: #aa00ff;
     font-size: 10px;
     word-spacing: 1px;
     position: absolute;
-    background-color: #fbf0ff;
+    background-color: #d7c2ff;
     width: 200%;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -81,7 +87,7 @@ color: #aa00ff;
     font-size: 12px;
     word-spacing: 1px;
     position: absolute;
-    background-color: #fbf0ff;
+    background-color: #d7c2ff;
     width: 200%;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
