@@ -1,0 +1,12 @@
+<h2><%= @card.name %><%= " (#{@card.number})" if @card.designation == "Major" %></h2>
+
+  <div class="card-body">
+    <div class="centered">
+        <span id="card-values"><%= @card.designation %> Arcana</span>
+      <p>
+      </p>
+    </div>
+      <p>
+        <%= @card.meaning %>
+      </p>
+  </div>
