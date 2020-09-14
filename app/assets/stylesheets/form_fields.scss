@@ -41,3 +41,18 @@ select {
         background-color: #ee00ff;
     }
 }
+
+textarea {
+    resize: none;
+    background-color: #d7c2ff;
+    border: none;
+    font-family: 'Lexend Giga', sans-serif;
+    color: black;
+    width: 36em;
+    height: 10em;
+    border-radius: 15px;
+
+    &:hover {
+        border: 2px dashed #ee00ff;
+    }
+}
