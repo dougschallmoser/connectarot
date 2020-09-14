@@ -39,15 +39,19 @@
       </p>
   </div>
 
-  <div class="centered">
+  <p></p>
+
+  <div class="flex-container">
     <p>
-        <% if @entry.thoughts.any? %>
+        <% if @thoughts.any? %>
         <div class="thoughts-display">
           <div class="thoughts-keyword">Thoughts</div>
           <p>
-            <% @entry.thoughts.each do |thought| %>
-              <%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %>
-              <%= thought.content %><br>
+            <% @thoughts.each do |thought| %>
+              <p>
+                <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
+                <%= thought.content %>
+              </p>
             <% end %>
           <p>
         </div>
@@ -56,7 +60,7 @@
     <p>
       <%= form_for(Thought.new, url: user_entry_thoughts_path(@user, @entry), method: "post") do |f| %>
         <%= f.hidden_field :entry_id, value: @entry.id %>
-        <%= f.label :content, "Add a thought: " %>
+        <span class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></span>
         <p>
           <%= f.text_area :content %>
         </p>
