@@ -1,6 +1,5 @@
 class EntriesController < ApplicationController
 
-    before_action :set_user, only: [:show, :new]
     before_action :set_entry, only: [:show, :update, :destroy]
 
     def show
@@ -8,6 +7,7 @@ class EntriesController < ApplicationController
     end
 
     def new
+        @user = User.find_by(id: params[:user_id])
         @entry = @user.entries.build
     end
 
@@ -28,10 +28,6 @@ class EntriesController < ApplicationController
     end
 
     private
-
-    def set_user
-        @user = User.find_by(id: params[:user_id])
-    end
 
     def set_entry
         @entry = Entry.find_by(id: params[:id])
