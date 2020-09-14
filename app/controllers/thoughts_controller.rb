@@ -10,6 +10,12 @@ class ThoughtsController < ApplicationController
         redirect_to user_entry_path(params[:user_id], params[:entry_id])
     end
 
+    def destroy
+        thought = Thought.find_by(id: params[:id])
+        thought.destroy
+        redirect_to user_entry_path(params[:user_id], params[:entry_id])
+    end
+
     private
 
     def thought_params
