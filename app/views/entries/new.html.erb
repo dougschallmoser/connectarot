@@ -2,7 +2,6 @@
 
 <h4>Select a spread for your reading:</h4>
 <%= form_for([@user, @entry]) do |f| %>
-    <%= f.hidden_field :user_id %>
     <%= f.collection_select :category_id, Category.all, :id, :name %><br>
     <br>
     <h4>Then, pull three cards to create a new reading:</h4>

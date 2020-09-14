@@ -15,7 +15,8 @@ class EntriesController < ApplicationController
         if params[:entry_id].present?
             @entry = Entry.find_by(id: params[:entry_id])
         else
-            @entry = Entry.create(entry_params)
+            @user = User.find_by(id: params[:user_id])
+            @entry = @user.entries.create(entry_params)
         end
         @entry.add_randomized_card
         redirect_to user_entry_path(@entry.user, @entry)
@@ -37,7 +38,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:user_id, :category_id, thoughts_attributes: [:content])
+        params.require(:entry).permit(:category_id)
     end
 
 end
