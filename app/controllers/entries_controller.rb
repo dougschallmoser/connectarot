@@ -21,6 +21,14 @@ class EntriesController < ApplicationController
         redirect_to user_entry_path(@entry.user, @entry)
     end
 
+    def update
+        if @entry.update(entry_params)
+            redirect_to user_entry_path(@entry.user, @entry)
+        else
+            raise "didn't work".inspect
+        end
+    end
+
     def destroy
         @entry.destroy
         redirect_to user_path(current_user)
@@ -37,7 +45,17 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:user_id, :category_id)
+        params.require(:entry).permit(:user_id, :category_id, thoughts_attributes: [:content])
     end
 
 end
+
+# <%= form_for([@user, @entry]) do |f| %>
+#     <%= f.fields_for :thoughts do |t| %>
+#         <%= t.label :content, "Add a thought: " %>
+#       <p>
+#         <%= t.text_area :content, value: "", size: "50%" %>
+#       </p>
+#     <% end %>
+#     <%= f.submit "Add" %>
+#   <% end %>
