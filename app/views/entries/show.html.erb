@@ -38,4 +38,21 @@
         <%= @entry.cards[2].meaning %><br>
       </p>
   </div>
+
+  <div class="centered">
+    <p>
+      Thoughts:
+    </p>
+    <p>
+      <%= form_for([@user, @entry]) do |f| %>
+        <%= f.fields_for :thoughts do |t| %>
+            <%= t.label :content, "Add a thought: " %>
+          <p>
+            <%= t.text_area :content, size: "50%" %>
+          </p>
+        <% end %>
+        <%= f.submit "Add" %>
+      <% end %>
+    </p>
+  </div>
 <% end %>
