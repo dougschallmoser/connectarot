@@ -1,13 +1,14 @@
 class ThoughtsController < ApplicationController
 
     def create
-        thought = Thought.new(thought_params)
+        entry = Entry.find_by(id: params[:entry_id])
+        thought = entry.thoughts.build(thought_params)
         if thought.save
             #message
         else
             #message
         end
-        redirect_to user_entry_path(params[:user_id], params[:entry_id])
+        redirect_to user_entry_path(params[:user_id], entry.id)
     end
 
     def destroy
@@ -19,7 +20,7 @@ class ThoughtsController < ApplicationController
     private
 
     def thought_params
-        params.require(:thought).permit(:content, :entry_id)
+        params.require(:thought).permit(:content)
     end
 
 end
