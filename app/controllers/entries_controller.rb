@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
     before_action :set_entry, only: [:show, :update, :destroy]
 
     def show
+        @thought = @entry.thoughts.build
     end
 
     def new
