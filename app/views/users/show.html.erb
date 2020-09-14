@@ -1,16 +1,21 @@
 <h2><%= @user.name %>'s Readings</h2>
 
-<table>
-  <% @entries.each do |entry| %>
-    <tr>
-      <td>
-        <%= link_to entry.created_at.strftime("%B %e, %Y at %l:%M%p"), user_entry_path(entry.user, entry) %>
-      </td>
-      <td>
-        <% entry.cards.each do |card| %>
-          <%= card.name %><%= ',' unless card == entry.cards.last %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<% if @entries.blank? %>
+  You do not have any readings.
+<% else %>
+  <table>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td>
+          <%= link_to entry.created_at.strftime("%B %e, %Y at %l:%M%p"), user_entry_path(entry.user, entry) %>
+        </td>
+        <td>
+          <%= entry.category.name %>
+        </td>
+        <td>
+          <%= button_to "Delete Reading", user_entries_path(@user), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
