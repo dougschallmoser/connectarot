@@ -59,7 +59,7 @@
     <% end %>
   </p>
   <p>
-    <%= form_for(Thought.new, url: user_entry_thoughts_path(@entry.user, @entry), method: "post") do |f| %>
+    <%= form_for([@entry.user, @entry, @entry.thoughts.build]) do |f| %>
       <span class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></span>
       <p>
         <%= f.text_area :content %>
