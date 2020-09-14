@@ -12,24 +12,29 @@
   <div class="justified">
     <div class="centered">
       <%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %>
-        <p>
-          <span class="italic"><%= @entry.category.name %> Spread</span>
-    </div>
       <p>
+          <span class="italic"><%= @entry.category.name %> Spread</span>
+          <p>
+            You pulled
+              <% @entry.cards.each do |card| %>
+                <span class="card-name"><%= card.name %></span><%= ',' unless card == @entry.cards.last %>
+              <% end %>
+          </p>
+    </div>
+      </p>
         <span class="question-title"><%= @entry.category.question_1 %></span><br>
-        You pulled <span class="card-name"><%= @entry.cards[0].name %></span><br>
+        <span class="card-name"><%= @entry.cards[0].name %></span><br>
         <%= @entry.cards[0].meaning %><br>
       </p>
       <p>
         <span class="question-title"><%= @entry.category.question_2 %></span><br>
-        You pulled <span class="card-name"><%= @entry.cards[1].name %></span></br>
+        <span class="card-name"><%= @entry.cards[1].name %></span></br>
         <%= @entry.cards[1].meaning %><br>
       </p>
       <p>
         <span class="question-title"><%= @entry.category.question_3 %></span><br>
-        You pulled <span class="card-name"><%= @entry.cards[2].name %></span><br>
+        <span class="card-name"><%= @entry.cards[2].name %></span><br>
         <%= @entry.cards[2].meaning %><br>
       </p>
-    </p>
   </div>
 <% end %>
