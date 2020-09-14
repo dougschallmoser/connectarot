@@ -1,7 +1,7 @@
 input {
     background-color: #d7c2ff;
     border: none;
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
     color: black;
     border-radius: 15px;
 
@@ -46,13 +46,15 @@ textarea {
     resize: none;
     background-color: #d7c2ff;
     border: none;
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;
     color: black;
     width: 36em;
     height: 10em;
+    padding: 10px 10px 10px 10px;
     border-radius: 15px;
 
     &:hover {
         border: 2px dashed #ee00ff;
     }
 }
+

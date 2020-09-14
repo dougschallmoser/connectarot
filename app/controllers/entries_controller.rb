@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
     before_action :set_entry, only: [:show, :update, :destroy]
 
     def show
-        @thought = @entry.thoughts.build
+        # @thought = @entry.thoughts.build
     end
 
     def new
@@ -41,13 +41,3 @@ class EntriesController < ApplicationController
     end
 
 end
-
-# <%= form_for([@user, @entry]) do |f| %>
-#     <%= f.fields_for :thoughts do |t| %>
-#         <%= t.label :content, "Add a thought: " %>
-#       <p>
-#         <%= t.text_area :content, value: "", size: "50%" %>
-#       </p>
-#     <% end %>
-#     <%= f.submit "Add" %>
-#   <% end %>

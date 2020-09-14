@@ -41,14 +41,21 @@
 
   <div class="centered">
     <p>
-      Thoughts:
-      <% @entry.thoughts.each do |thought| %>
-        <%= thought.content %><br>
+        <% if @entry.thoughts.any? %>
+        <div class="thoughts-display">
+          <div class="thoughts-keyword">Thoughts</div>
+          <p>
+            <% @entry.thoughts.each do |thought| %>
+              <%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %>
+              <%= thought.content %><br>
+            <% end %>
+          <p>
+        </div>
       <% end %>
     </p>
     <p>
-      <%= form_for(@thought, url: user_entry_thoughts_path(@user, @entry), method: "post") do |f| %>
-        <%= f.hidden_field :entry_id %>
+      <%= form_for(Thought.new, url: user_entry_thoughts_path(@user, @entry), method: "post") do |f| %>
+        <%= f.hidden_field :entry_id, value: @entry.id %>
         <%= f.label :content, "Add a thought: " %>
         <p>
           <%= f.text_area :content %>

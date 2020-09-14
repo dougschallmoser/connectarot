@@ -26,3 +26,22 @@
 #entry-date {
     font-family: 'Lexend Giga', sans-serif;
 }
+
+.thoughts-display {
+    background-color: #d7c2ff;
+    border: none;
+    color: black;
+    font-size: 12px;
+    width: 36em;
+    height: 10em;
+    border-radius: 15px;
+    text-align: justify;
+    padding: 10px 10px 10px 10px;
+}
+
+.thoughts-keyword {
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Lexend Giga', sans-serif;
+    color: #ee00ff;
+}
