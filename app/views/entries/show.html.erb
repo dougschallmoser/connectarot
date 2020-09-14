@@ -42,16 +42,18 @@
   <div class="centered">
     <p>
       Thoughts:
+      <% @entry.thoughts.each do |thought| %>
+        <%= thought.content %><br>
+      <% end %>
     </p>
     <p>
-      <%= form_for([@user, @entry]) do |f| %>
-        <%= f.fields_for :thoughts do |t| %>
-            <%= t.label :content, "Add a thought: " %>
-          <p>
-            <%= t.text_area :content, size: "50%" %>
-          </p>
-        <% end %>
-        <%= f.submit "Add" %>
+      <%= form_for(@thought, url: user_entry_thoughts_path(@user, @entry), method: "post") do |f| %>
+        <%= f.hidden_field :entry_id %>
+        <%= f.label :content, "Add a thought: " %>
+        <p>
+          <%= f.text_area :content %>
+        </p>
+        <%= f.submit "Create" %>
       <% end %>
     </p>
   </div>
