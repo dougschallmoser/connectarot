@@ -1,13 +1,17 @@
 <h2>Log In</h2>
 
 <%= form_for :user, method: :post do |f| %>
-    <%= f.label :email, "Email: " %>
-    <%= f.text_field :email, size: "25" %><br>
-    <br>
-    <%= f.label :password, "Password: " %>
-    <%= f.password_field :password, size: "25" %><br>
-    <br>
-    <%= f.submit "Login" %>
+    <p>
+      <%= f.label :email, "Email: " %>
+      <%= f.text_field :email, size: "25" %>
+    </p>
+    <p>
+      <%= f.label :password, "Password: " %>
+      <%= f.password_field :password, size: "20" %>
+    </p>
+    <p>
+      <%= f.submit "Login" %>
+    </p>
 <% end %>
 
 <br>

@@ -2,14 +2,19 @@
 
 <h5>All fields required.</h5>
 <%= form_for @user do |f| %>
-    <%= f.label :name, "Name: " %>
-    <%= f.text_field :name, size: "25" %><br>
-    <%= f.label :email, "Email: " %>
-    <%= f.text_field :email, size: "25" %><br>
+    <p>
+      <%= f.label :name, "Name: " %>
+      <%= f.text_field :name, size: "25" %>
+    </p>
+    <p>
+      <%= f.label :email, "Email: " %>
+     <%= f.text_field :email, size: "25" %><br>
+    </p>
     <%= f.label :password, "Password: " %>
     <%= f.password_field :password, size: "25" %><br>
-    <br>
-    <%= f.submit %>
+    <p>
+      <%= f.submit %>
+    </p>
 <% end %>
 
 <br>
