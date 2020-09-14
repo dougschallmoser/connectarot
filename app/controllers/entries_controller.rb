@@ -1,12 +1,12 @@
 class EntriesController < ApplicationController
 
+    before_action :set_user, only: [:show, :new]
+    before_action :set_entry, only: [:show, :update, :destroy]
+
     def show
-        @user = User.find_by(id: params[:user_id])
-        @entry = Entry.find_by(id: params[:id])
     end
 
     def new
-        @user = User.find_by(id: params[:user_id])
         @entry = @user.entries.build
     end
 
@@ -20,7 +20,20 @@ class EntriesController < ApplicationController
         redirect_to user_entry_path(@entry.user, @entry)
     end
 
+    def destroy
+        @entry.destroy
+        redirect_to user_path(current_user)
+    end
+
     private
+
+    def set_user
+        @user = User.find_by(id: params[:user_id])
+    end
+
+    def set_entry
+        @entry = Entry.find_by(id: params[:id])
+    end
 
     def entry_params
         params.require(:entry).permit(:user_id, :category_id)

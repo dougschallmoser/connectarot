@@ -13,7 +13,7 @@
           <%= entry.category.name %>
         </td>
         <td>
-          <%= button_to "Delete Reading", user_entries_path(@user), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
+          <%= button_to "Delete Reading", user_entry_path(@user, entry), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
         </td>
       </tr>
     <% end %>
