@@ -1,20 +1,8 @@
 <h2>Account</h2>
 
-<table>
-  <tbody>
-    <tr>
-      <td>
-        Name: <span class="account-values"><%= @user.name %></span><br>
-        Email: <span class="account-values"><%= @user.email %></span><br>
-      </td>
-      <td>
-        <% if @user.image %>
-          <%= image_tag @user.image, width: "200", id: "profile-pic" %>
-        <% end %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<% if @user.image %>
+  <%= image_tag @user.image, width: "200", id: "profile-pic" %>
+<% end %>
 
 <br>
 <br>
