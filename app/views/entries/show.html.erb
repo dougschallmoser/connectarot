@@ -11,7 +11,7 @@
 
   <div class="justified">
     <div class="centered">
-      <%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %>
+      <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
       <p>
           <span class="category-name"><%= @entry.category.name.upcase %></span>
           <p>
