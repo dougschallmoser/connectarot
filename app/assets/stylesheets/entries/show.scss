@@ -31,10 +31,8 @@
     background-color: #d7c2ff;
     border: none;
     color: black;
-    flex: 1;
-    margin-right: 40px;
     font-size: 11px;
-    width: 100%;
+    width: 80%;
     height: 100%;
     border-radius: 15px;
     text-align: justify;
@@ -48,15 +46,7 @@
     color: #ee00ff;
 }
 
-.flex-container {
-    display: flex;
-    width: 90%;
-}
-
-.new-thought {
-    flex: 1;
-}
-
 .delete-thought {
-    font-size: 10px;
+    font-size: 9px;
+    display: inline-block;
 }

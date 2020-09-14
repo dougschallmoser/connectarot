@@ -41,33 +41,31 @@
 
   <p></p>
 
-  <div class="flex-container">
     <p>
-        <% if @thoughts.any? %>
-        <div class="thoughts-display">
-          <div class="thoughts-keyword">Thoughts</div>
-          <p>
-            <% @thoughts.each do |thought| %>
-              <p>
-                <%= button_to "Delete Thought", user_entry_thought_path(@user, @entry, thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
-                <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
-                <%= thought.content %>
-              </p>
-              <br>
-            <% end %>
-          <p>
-        </div>
-      <% end %>
-    </p>
-    <p>
-      <%= form_for(Thought.new, url: user_entry_thoughts_path(@user, @entry), method: "post") do |f| %>
-        <%= f.hidden_field :entry_id, value: @entry.id %>
-        <span class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></span>
+      <% if @thoughts.any? %>
+      <div class="thoughts-display">
+        <div class="thoughts-keyword">Thoughts</div>
         <p>
-          <%= f.text_area :content %>
-        </p>
-        <%= f.submit "Create" %>
-      <% end %>
-    </p>
-  </div>
+          <% @thoughts.each do |thought| %>
+            <p>
+              <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
+              <%= thought.content %>
+              <%= button_to "Delete", user_entry_thought_path(@user, @entry, thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
+            </p>
+            <br>
+          <% end %>
+        <p>
+      </div>
+    <% end %>
+  </p>
+  <p>
+    <%= form_for(Thought.new, url: user_entry_thoughts_path(@user, @entry), method: "post") do |f| %>
+      <%= f.hidden_field :entry_id, value: @entry.id %>
+      <span class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></span>
+      <p>
+        <%= f.text_area :content %>
+      </p>
+      <%= f.submit "Create" %>
+    <% end %>
+  </p>
 <% end %>
