@@ -21,3 +21,4 @@
 @import '/entries/show'
 @import '/users/show'
 @import '/cards/show'
+@import 'errors'

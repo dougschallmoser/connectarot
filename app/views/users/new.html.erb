@@ -1,6 +1,10 @@
 <h2>Sign Up</h2>
 
 <h5>All fields required.</h5>
+<% @user.errors.full_messages.each do |msg| %>
+    <li><span class="error-font"><%= msg %></span></li>
+<% end %>
+
 <%= form_for @user do |f| %>
     <p>
       <%= f.label :name, "Name: " %>
@@ -8,10 +12,12 @@
     </p>
     <p>
       <%= f.label :email, "Email: " %>
-     <%= f.text_field :email, size: "25" %><br>
+     <%= f.text_field :email, size: "25" %>
     </p>
+    <p>
     <%= f.label :password, "Password: " %>
     <%= f.password_field :password, size: "25" %><br>
+    </p>
     <p>
       <%= f.submit %>
     </p>
