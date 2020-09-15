@@ -22,6 +22,9 @@
     <% @user_entries.each do |entry| %>
       <tr>
         <td>
+          <%= entry.title unless entry.title.nil? %>
+        </td>
+        <td>
           <%= entry.category.name %>
         </td>
         <td>

@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_233337) do
   create_table "entries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "category_id"
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

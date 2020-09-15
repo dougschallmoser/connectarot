@@ -42,7 +42,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:category_id)
+        params.require(:entry).permit(:category_id, :title)
     end
 
 end
