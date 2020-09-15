@@ -4,6 +4,7 @@ class EntriesController < ApplicationController
 
     def index
         @entries = Entry.all.order(created_at: :desc)
+        @monthly_entries = Entry.this_month
     end
 
     def show
