@@ -1,19 +1,20 @@
 <h2><%= current_user.name %>'s Readings</h2>
 
-<% if @entries.blank? %>
+<% if @user_entries.blank? %>
   You do not have any readings.
 <% else %>
 
   This Month:<br>
-    Total cards pulled: <%= @monthly_entries.size %><br>
-    Major cards: <%= @major_entries.size %> - Minor cards: <%= @minor_entries.size %><br>
-    Court cards: <%= @court_cards.size %> out of <%= @monthly_entries.size %><br>
+    Total readings: <%= @monthly_entries.size %><br>
+    Total cards pulled: <%= @monthly_entries.size * 3 %><br>
+    Major cards: <%= @monthly_entries.designation("Major").size %> - Minor cards: <%= @monthly_entries.designation("Minor").size %><br>
+    <%= @monthly_entries.court_cards.size %>/<%= @monthly_entries.size * 3 %> court cards<br>
     # of cards with numbers for each number if pulled more than 3 times:<br>
-    # of cards for each suit:<br>
-    # of cards pulled more than 3 times? (You pulled Star card 4 times)<br>
+    Cups: <%= @monthly_entries.suit_cards("Cups").size %>, Pentacles: <%= @monthly_entries.suit_cards("Pentacles").size %>, Swords: <%= @monthly_entries.suit_cards("Swords").size %>, Wands: <%= @monthly_entries.suit_cards("Wands").size %><br>
+
 
   <table>
-    <% @entries.each do |entry| %>
+    <% @user_entries.each do |entry| %>
       <tr>
         <td>
           <%= entry.category.name %>

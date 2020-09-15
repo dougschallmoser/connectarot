@@ -3,11 +3,10 @@ class EntriesController < ApplicationController
     before_action :set_entry, only: [:show, :update, :destroy]
 
     def index
-        @entries = Entry.all.order(created_at: :desc)
-        @monthly_entries = Entry.this_month
-        @major_entries = @monthly_entries.designation("Major")
-        @minor_entries = @monthly_entries.designation("Minor")
-        @court_cards = @monthly_entries.court_cards
+        @user = User.find_by(id: params[:user_id])
+        @user_entries = @user.entries.order(created_at: :desc)
+        @monthly_entries = @user_entries.this_month
+        # @often_entries = @monthly_entries.select
     end
 
     def show
