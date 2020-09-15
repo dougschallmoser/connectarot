@@ -10,10 +10,10 @@
           <%= entry.category.name %>
         </td>
         <td>
-          <%= link_to entry.created_at.strftime("%B %e, %Y"), user_entry_path(entry.user, entry) %>
+          <%= link_to entry.created_at.strftime("%B %e, %Y"), entry_path(entry) %>
         </td>
         <td>
-          <%= button_to "Delete Reading", user_entry_path(@user, entry), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
+          <%= button_to "Delete Reading", entry_path(entry), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
         </td>
       </tr>
     <% end %>

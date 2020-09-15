@@ -59,7 +59,7 @@
             <p>
               <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
               <%= thought.content %>
-              <%= button_to "Delete", user_entry_thought_path(@entry.user, @entry, thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
+              <%= button_to "Delete", thought_path(thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
             </p>
             <br>
           <% end %>
@@ -68,7 +68,7 @@
     <% end %>
   </p>
   <p>
-    <%= form_for([@entry.user, @entry, @entry.thoughts.build]) do |f| %>
+    <%= form_for([@entry, @entry.thoughts.build]) do |f| %>
       <span class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></span>
       <p>
         <%= f.text_area :content %>

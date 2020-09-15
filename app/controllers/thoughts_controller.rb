@@ -8,13 +8,14 @@ class ThoughtsController < ApplicationController
         else
             #message
         end
-        redirect_to user_entry_path(params[:user_id], entry.id)
+        redirect_to entry_path(entry.id)
     end
 
     def destroy
         thought = Thought.find_by(id: params[:id])
+        entry = thought.entry
         thought.destroy
-        redirect_to user_entry_path(params[:user_id], params[:entry_id])
+        redirect_to entry_path(entry.id)
     end
 
     private

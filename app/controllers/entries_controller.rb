@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
             @entry = @user.entries.create(entry_params)
         end
         @entry.add_randomized_card
-        redirect_to user_entry_path(@entry.user, @entry)
+        redirect_to entry_path(@entry)
     end
 
     def destroy
