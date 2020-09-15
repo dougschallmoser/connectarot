@@ -20,5 +20,9 @@ class Entry < ApplicationRecord
     def self.designation(designation)
         self.joins(:cards).where("cards.designation = ?", "#{designation}")
     end
+
+    def self.court_cards
+        self.joins(:cards).where("cards.court = ?", "true")
+    end
     
 end
