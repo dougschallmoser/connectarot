@@ -28,7 +28,7 @@ class EntriesController < ApplicationController
 
     def destroy
         @entry.destroy
-        redirect_to user_path(current_user)
+        redirect_to user_entries_path(current_user)
     end
 
     private
