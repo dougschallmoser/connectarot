@@ -3,6 +3,15 @@
 <% if @entries.blank? %>
   You do not have any readings.
 <% else %>
+
+  This Month:<br>
+    Total cards pulled: <%= @monthly_entries.size %><br>
+    # of major vs minor cards:<br>
+    # of court cards pulled out of total:<br>
+    # of cards with numbers for each number if pulled more than 3 times:<br>
+    # of cards for each suit:<br>
+    # of cards pulled more than 3 times? (You pulled Star card 4 times)<br>
+
   <table>
     <% @entries.each do |entry| %>
       <tr>
