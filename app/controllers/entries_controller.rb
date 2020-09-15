@@ -2,6 +2,10 @@ class EntriesController < ApplicationController
 
     before_action :set_entry, only: [:show, :update, :destroy]
 
+    def index
+        @entries = Entry.all.order(created_at: :desc)
+    end
+
     def show
         @thoughts = @entry.thoughts.order(created_at: :desc)
     end

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             user = User.find_or_create_by_omniauth(auth_hash)
             if user.email
                 session[:user_id] = user.id
-                redirect_to user_path(user)
+                redirect_to user_entries_path(user)
             else # email is nil
                 redirect_to login_path 
             end
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
             user = User.find_by(email: params[:user][:email])
             if user && user.authenticate(params[:user][:password])
                 session[:user_id] = user.id
-                redirect_to user_path(user)
+                redirect_to user_entries_path(user)
             else
                 redirect_to login_path
             end

@@ -27,7 +27,7 @@
             <div class="dropdown">
               <span class="nav-text"><%= link_to_unless_current "My Tarot", user_path(current_user) %></span> 
               <div class="dropdown-content">
-                <%= link_to "My Page", user_path(current_user) %><br>
+                <%= link_to "My Page", user_entries_path(current_user) %><br>
                 <%= link_to "Account", edit_user_path(current_user) %><br>
                 <%= link_to "New Reading", new_user_entry_path(current_user.id) %>
               </div>

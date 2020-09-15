@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-    def show
-        @entries = @user.entries.order(created_at: :desc)
-    end
+    before_action :set_user, only: [:edit, :update, :destroy]
 
     def new
         @user = User.new
@@ -14,7 +10,7 @@ class UsersController < ApplicationController
         user = User.new(user_params)
         if user.save
             session[:user_id] = user.id 
-            redirect_to user_path(user)
+            redirect_to user_entries_path(user)
         else
             redirect_to new_user_path
         end
@@ -27,7 +23,7 @@ class UsersController < ApplicationController
         if @user && @user.id == session[:user_id]
             self.authenticate_and_update_info(@user)
         else
-            redirect_to user_path(@user)
+            redirect_to user_entries_path(@user)
         end
     end
 
