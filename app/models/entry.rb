@@ -12,7 +12,6 @@ class Entry < ApplicationRecord
     scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", "#{designation}") }
     scope :court_cards, -> { joins(:cards).where("cards.court = ?", "true") }
     scope :suit_cards, -> (suit) { joins(:cards).where("cards.suit = ?", "#{suit}") }
-    scope :all_cards, -> { joins(:cards)}
 
     def add_randomized_card
         until !self.cards.include?(random_card = Card.randomize) do

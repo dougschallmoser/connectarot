@@ -6,7 +6,8 @@ class EntriesController < ApplicationController
         @user = User.find_by(id: params[:user_id])
         @user_entries = @user.entries.order(created_at: :desc)
         @monthly_entries = @user_entries.this_month
-        # @often_entries = @monthly_entries.select
+        # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
+        @duplicate_cards_hash = @user.cards.select_duplicates
     end
 
     def show

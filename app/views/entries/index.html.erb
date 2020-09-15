@@ -9,8 +9,13 @@
     Total cards pulled: <%= @monthly_entries.size * 3 %><br>
     Major cards: <%= @monthly_entries.designation("Major").size %> - Minor cards: <%= @monthly_entries.designation("Minor").size %><br>
     <%= @monthly_entries.court_cards.size %>/<%= @monthly_entries.size * 3 %> court cards<br>
-    # of cards with numbers for each number if pulled more than 3 times:<br>
     Cups: <%= @monthly_entries.suit_cards("Cups").size %>, Pentacles: <%= @monthly_entries.suit_cards("Pentacles").size %>, Swords: <%= @monthly_entries.suit_cards("Swords").size %>, Wands: <%= @monthly_entries.suit_cards("Wands").size %><br>
+    # of cards with numbers for each number if pulled more than 3 times:<br>
+    <p>Notable Pulls:<br>
+      <% @duplicate_cards_hash.each do |name, count| %>
+        You pulled <%= name %> <%= count %> times.<br>
+      <% end %>
+    </p>
 
 
   <table>
