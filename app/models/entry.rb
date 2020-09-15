@@ -16,5 +16,9 @@ class Entry < ApplicationRecord
         end
         self.cards << random_card
     end
+
+    def self.designation(designation)
+        self.joins(:cards).where("cards.designation = ?", "#{designation}")
+    end
     
 end

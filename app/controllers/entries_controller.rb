@@ -5,6 +5,8 @@ class EntriesController < ApplicationController
     def index
         @entries = Entry.all.order(created_at: :desc)
         @monthly_entries = Entry.this_month
+        @major_entries = Entry.designation("Major")
+        @minor_entries = Entry.designation("Minor")
     end
 
     def show
