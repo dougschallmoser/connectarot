@@ -19,6 +19,15 @@
               <% @entry.cards.each do |card| %>
                 <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
               <% end %>
+
+              <table class="three-cards">
+                <tr>
+                  <% @entry.cards.each do |card| %>
+                    <td><%= image_tag card.image, width: "150px", height: "261px" %></td>
+                  <% end %>
+                </tr>
+              </table>
+
           </p>
     </div>
       </p>
