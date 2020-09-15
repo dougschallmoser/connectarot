@@ -1,8 +1,10 @@
 <% if @entry.cards.size == 1 %>
+  <p></p>
   <h2>New Reading</h2>
   <p><h4>Pull two more cards...</h4></p>
   <p><%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %></p>
 <% elsif @entry.cards.size == 2 %>
+  <p></p>
   <h2>New Reading</h2>
   <p><h4>Pull one more card...</h4></p>
   <p><%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %></p>

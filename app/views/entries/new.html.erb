@@ -1,10 +1,13 @@
 <h2>New Reading</h2>
 
 <%= form_for([@user, @entry]) do |f| %>
-    <%= f.label :title, "Enter a title: (optional)" %>
-    <%= f.text_field :title %>
-    <h4>Select a spread for your reading:</h4>
-    <%= f.collection_select :category_id, Category.all, :id, :name %><br>
+    <h4>Enter a title: (optional)</h4>
+    <%= f.text_field :title, size: "35" %><br>
+    <br>
+    <p>
+      <h4>Select a spread for your reading:</h4>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+    </p>
     <br>
     <h4>Then, pull three cards to create a new reading:</h4>
     <%= f.submit "Pull Card", class: "pull-card" %>
