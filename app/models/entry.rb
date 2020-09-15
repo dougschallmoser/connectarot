@@ -8,6 +8,8 @@ class Entry < ApplicationRecord
 
     validates_length_of :cards, maximum: 3
 
+    scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
+
     def add_randomized_card
         until !self.cards.include?(random_card = Card.randomize) do
             random_card = Card.randomize
