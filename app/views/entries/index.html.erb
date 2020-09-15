@@ -31,6 +31,9 @@
           <%= link_to entry.created_at.strftime("%B %e, %Y"), entry_path(entry) %>
         </td>
         <td>
+          <%= entry.thoughts.size %> thoughts
+        </td>
+        <td>
           <%= button_to "Delete Reading", entry_path(entry), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
         </td>
       </tr>
