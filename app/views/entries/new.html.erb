@@ -9,11 +9,12 @@
     <%= f.text_field :title, size: "35" %><br>
     <br><hr>
     <p>
-      <h4>Select a spread for your reading:</h4>
+      <h4>Select an existing spread for your reading:</h4>
       <%= f.collection_select :category_id, Category.all.limit(5), :id, :name, include_blank: true %>
     </p>
+    <p>&nbsp;</p>
     <p>
-      <h4>Or create your own spread:</h4>
+      <h4>Or, create your own spread:</h4>
       <%= f.fields_for :category do |c| %>
         <%= c.label :question_1, "Question 1:" %><br>
         <%= c.text_field :question_1, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
