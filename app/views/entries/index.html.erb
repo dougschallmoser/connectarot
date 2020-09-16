@@ -23,7 +23,7 @@
           <td><%= @monthly_entries.size * 3 %></td>
           <td><%= @monthly_entries.designation("Major").size %></td>
           <td><%= @monthly_entries.designation("Minor").size %></td>
-          <td><%= @monthly_entries.court_cards.size %> <%= "(#{(@monthly_entries.court_cards.size / @monthly_entries.size * 3) *100}%)" %></td>
+          <td><%= @monthly_entries.court_cards.size %> <%= "(#{(@monthly_entries.court_cards.size.to_f / @monthly_entries.size * 3).to_i * 10}%)" %></td>
           <td><%= @monthly_entries.suit_cards("Cups").size %></td>
           <td><%= @monthly_entries.suit_cards("Pentacles").size %></td>
           <td><%= @monthly_entries.suit_cards("Swords").size %></td>

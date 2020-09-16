@@ -11,7 +11,7 @@ class Entry < ApplicationRecord
 
     scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
     scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", "#{designation}") }
-    scope :court_cards, -> { joins(:cards).where("cards.court = ?", "true") }
+    scope :court_cards, -> { joins(:cards).where("cards.court = ?", true) }
     scope :suit_cards, -> (suit) { joins(:cards).where("cards.suit = ?", "#{suit}") }
 
     def add_randomized_card
