@@ -19,6 +19,7 @@ class EntriesController < ApplicationController
         @user = User.find_by(id: params[:user_id])
         @entry = @user.entries.build
         @category = @entry.build_category
+        @categories = Category.all.limit(5)
     end
 
     def create
