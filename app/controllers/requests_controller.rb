@@ -6,6 +6,7 @@ class RequestsController < ApplicationController
     end
     
     def new
+        @request = Request.new
     end
 
 

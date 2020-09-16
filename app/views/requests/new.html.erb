@@ -1,0 +1,7 @@
+<h2>New Request</h2>
+
+<%= form_for @request do |f| %>
+    <%= f.hidden_field :requestor_user_id, value: current_user.id %>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title %>
+<% end %>
