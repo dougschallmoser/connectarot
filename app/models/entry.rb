@@ -22,7 +22,7 @@ class Entry < ApplicationRecord
     end
 
     def category_attributes=(category_attributes)
-        if category_attributes[:name].present? && category_attributes[:question_1].present? && category_attributes[:question_2].present? && category_attributes[:question_3].present?
+        if category_attributes[:question_1].present? && category_attributes[:question_2].present? && category_attributes[:question_3].present?
             self.build_category(category_attributes)
         end
     end

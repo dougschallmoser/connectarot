@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
         @user = User.find_by(id: params[:user_id])
         @entry = @user.entries.build
         @category = @entry.build_category
-        @categories = Category.all.limit(5)
+        # @anything = Category.all.limit(5)
     end
 
     def create
@@ -50,7 +50,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:category_id, :title, category_attributes: [:name, :question_1, :question_2, :question_3])
+        params.require(:entry).permit(:category_id, :title, category_attributes: [:question_1, :question_2, :question_3])
     end
 
 end

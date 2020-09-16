@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_233337) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: "Custom Spread"
     t.string "question_1"
     t.string "question_2"
     t.string "question_3"
