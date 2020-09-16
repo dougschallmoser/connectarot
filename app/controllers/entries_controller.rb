@@ -1,6 +1,7 @@
 class EntriesController < ApplicationController
 
     before_action :set_entry, only: [:show, :update, :destroy]
+    before_action :require_login
 
     def index
         @user = User.find_by(id: params[:user_id])

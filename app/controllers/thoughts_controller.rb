@@ -1,5 +1,7 @@
 class ThoughtsController < ApplicationController
 
+    before_action :require_login, only: [:create, :destroy]
+
     def create
         entry = Entry.find_by(id: params[:entry_id])
         thought = entry.thoughts.build(thought_params)
