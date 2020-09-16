@@ -2,7 +2,7 @@
 
 <h5>All fields required.</h5>
 <% @user.errors.full_messages.each do |msg| %>
-    <li><span class="error-font"><%= msg %></span></li>
+    <span class="error-font"><%= msg %></span>
 <% end %>
 
 <%= form_for @user do |f| %>

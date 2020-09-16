@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
                 session[:user_id] = user.id
                 redirect_to user_entries_path(user)
             else # email is nil
-                redirect_to login_path 
+                redirect_to login_path
             end
         else 
             user = User.find_by(email: params[:user][:email])

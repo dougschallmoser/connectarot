@@ -18,10 +18,10 @@
           <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
           <% if logged_in? %>
             <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Request", "/request" %></span>
+              <span class="nav-text"><%= link_to_unless_current "Request", requests_path %></span>
               <div class="dropdown-content">
-                <%= link_to_unless_current "View Requests", "/requests" %><br>
-                <%= link_to_unless_current "New Request", "/requests/new" %><br>
+                <%= link_to_unless_current "View Requests", requests_path %><br>
+                <%= link_to_unless_current "New Request", new_request_path %><br>
               </div>
             </div>
             <div class="dropdown">
