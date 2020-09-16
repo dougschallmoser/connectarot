@@ -4,11 +4,16 @@ class EntriesController < ApplicationController
 
     def index
         @user = User.find_by(id: params[:user_id])
-        @user_entries = @user.entries.order(created_at: :desc)
-        @monthly_entries = @user_entries.this_month
+        @all_user_entries = @user.entries.order(created_at: :desc)
+        if params[:entry].present?
+            @user_entries = @all_user_entries.filter_by_spread(params[:entry][:category_name])
+        else
+            @user_entries = @all_user_entries 
+        end    
+        @monthly_entries = @all_user_entries.this_month
         @total_cards = @monthly_entries.size * 3
-        # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
         @duplicate_cards_hash = @user.cards.select_duplicates
+        # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
     end
 
     def show
@@ -50,7 +55,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:category_id, :title, category_attributes: [:question_1, :question_2, :question_3])
+        params.require(:entry).permit(:category_id, :category_name, :title, category_attributes: [:question_1, :question_2, :question_3])
     end
 
 end

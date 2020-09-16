@@ -7,7 +7,7 @@ class Entry < ApplicationRecord
     has_many :cards, through: :entries_cards
 
     validates_length_of :cards, maximum: 3
-    validates :category, presence: true
+    validates_presence_of :category, :message => "A spread must be selected from the menu or created with three custom questions."
 
     scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
     scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", "#{designation}") }
@@ -24,6 +24,14 @@ class Entry < ApplicationRecord
     def category_attributes=(category_attributes)
         if category_attributes[:question_1].present? && category_attributes[:question_2].present? && category_attributes[:question_3].present?
             self.build_category(category_attributes)
+        end
+    end
+
+    def self.filter_by_spread(category_name)
+        if category_name.present?
+            self.select { |entry| entry.category.name == category_name }
+        else
+            self.all
         end
     end
     

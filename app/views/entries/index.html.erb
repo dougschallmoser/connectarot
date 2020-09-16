@@ -1,6 +1,6 @@
 <h2><%= current_user.name %>'s Readings</h2>
 
-<% if @user_entries.blank? %>
+<% if @all_user_entries.blank? %>
   You do not have any readings.
 <% else %>
 
@@ -45,6 +45,13 @@
 
 <p></p>
 
+  <%= form_tag user_entries_path(@user), method: 'get' do %>
+      Filter readings by spread:
+      <%= collection_select :entry, :category_name, Category.all.limit(6), :name, :name, include_blank: true %>
+      <%= submit_tag 'Filter' %>
+  <% end %>
+  <br>
+
   <table class="all-entries">
     <% @user_entries.each do |entry| %>
       <tr>
@@ -61,7 +68,7 @@
           <%= entry.thoughts.size %> thoughts
         </td>
         <td>
-          <%= button_to "Delete Reading", entry_path(entry), method: :delete, onclick: "return confirm('Are you sure you want to delete this reading?')" %>
+          <%= button_to "Delete Reading", entry_path(entry), method: :delete, class: "delete-reading", onclick: "return confirm('Are you sure you want to delete this reading?')" %>
         </td>
       </tr>
     <% end %>

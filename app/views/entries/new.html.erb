@@ -1,13 +1,13 @@
 <h2>New Reading</h2>
 
-<% @entry.errors.full_messages.each do |msg| %>
-    <li><span class="error-font"><%= msg %></span></li>
+<% @entry.errors[:category].each do |msg| %>
+    <span class="error-font"><%= msg unless msg == @entry.errors[:category].first %></span>
 <% end %>
 
 <%= form_for([@user, @entry]) do |f| %>
     <h4>Enter a title: (optional)</h4>
     <%= f.text_field :title, size: "35" %><br>
-    <br>
+    <br><hr>
     <p>
       <h4>Select a spread for your reading:</h4>
       <%= f.collection_select :category_id, Category.all.limit(5), :id, :name, include_blank: true %>
@@ -25,7 +25,7 @@
         <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
       <% end %>
     </p>
-    <br>
+    <br><hr>
     <h4>Then, pull three cards to create a new reading:</h4>
     <%= f.submit "Pull Card", class: "pull-card" %>
 <% end %>
