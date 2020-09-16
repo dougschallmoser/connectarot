@@ -7,6 +7,7 @@ class Entry < ApplicationRecord
     has_many :cards, through: :entries_cards
 
     validates_length_of :cards, maximum: 3
+    validates :category, presence: true
 
     scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
     scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", "#{designation}") }
