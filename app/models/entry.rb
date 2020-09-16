@@ -20,5 +20,12 @@ class Entry < ApplicationRecord
         end
         self.cards << random_card
     end
+
+    def self.category_attributes=(category_attributes)
+        if params[:category].present && 
+            params[:category][:question_1].present? &&
+            params[:category][:question_2].present? &&
+            params[:category][:question_3].present? &&
+    end
     
 end

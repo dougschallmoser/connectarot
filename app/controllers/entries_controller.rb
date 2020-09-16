@@ -20,6 +20,7 @@ class EntriesController < ApplicationController
     end
 
     def create
+        binding.pry
         if params[:entry_id].present?
             @entry = Entry.find_by(id: params[:entry_id])
         else
@@ -42,7 +43,15 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:category_id, :title)
+        params.require(:entry).permit(:category_id, :title, category: [:question_1, :question_2, :question_3])
+    end
+
+    def custom_category_present?
+        if params[:category].present && 
+            params[:category][:question_1].present? &&
+            params[:category][:question_2].present? &&
+            params[:category][:question_3].present? &&
+        end
     end
 
 end

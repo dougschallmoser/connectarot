@@ -6,7 +6,23 @@
     <br>
     <p>
       <h4>Select a spread for your reading:</h4>
-      <%= f.collection_select :category_id, Category.all, :id, :name %>
+      <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+    </p>
+    <p>
+      <h4>Or create your own spread:</h4>
+      <%= f.fields_for :category do |c| %>
+        <%= c.label :name, "Name of spread:" %><br>
+        <%= c.text_field :name, size: "35", placeholder: "Ex: Letting Go Spread" %><br>
+        <br>
+        <%= c.label :question_1, "Question 1:" %><br>
+        <%= c.text_field :question_1, size: "65", placeholder: "What are you seeking guidance on?" %><br>
+        <br>
+        <%= c.label :question_2, "Question 2:" %><br>
+        <%= c.text_field :question_2, size: "65", placeholder: "What are you seeking guidance on?" %><br>
+        <br>
+        <%= c.label :question_3, "Question 3:" %><br>
+        <%= c.text_field :question_3, size: "65", placeholder: "What are you seeking guidance on?" %><br>
+      <% end %>
     </p>
     <br>
     <h4>Then, pull three cards to create a new reading:</h4>
