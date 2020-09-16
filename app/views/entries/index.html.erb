@@ -34,7 +34,7 @@
         <p class="centered">
         <% if @duplicate_cards_hash.any? %>
           <% @duplicate_cards_hash.each do |name, count| %>
-            You pulled <span class="pink-color"><%= name %></span> <%= count %> times.<br>
+            You pulled <span class="pink-color"><%= name %></span> <%= count %> times<%= ',' unless name == @duplicate_cards_hash.keys.last %>
           <% end %>
         <% else %>
           You have not pulled the same card more than three times this month.
