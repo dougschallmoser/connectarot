@@ -19,6 +19,6 @@
 @import '/users/edit'
 @import '/entries/new'
 @import '/entries/show'
-@import '/users/show'
+@import '/entries/index'
 @import '/cards/show'
 @import 'errors'

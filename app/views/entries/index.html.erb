@@ -4,21 +4,47 @@
   You do not have any readings.
 <% else %>
 
-  This Month:<br>
-    Total readings: <%= @monthly_entries.size %><br>
-    Total cards pulled: <%= @monthly_entries.size * 3 %><br>
-    Major cards: <%= @monthly_entries.designation("Major").size %> - Minor cards: <%= @monthly_entries.designation("Minor").size %><br>
-    <%= @monthly_entries.court_cards.size %>/<%= @monthly_entries.size * 3 %> court cards<br>
-    Cups: <%= @monthly_entries.suit_cards("Cups").size %>, Pentacles: <%= @monthly_entries.suit_cards("Pentacles").size %>, Swords: <%= @monthly_entries.suit_cards("Swords").size %>, Wands: <%= @monthly_entries.suit_cards("Wands").size %><br>
-    # of cards with numbers for each number if pulled more than 3 times:<br>
-    <p>Notable Pulls:<br>
-      <% @duplicate_cards_hash.each do |name, count| %>
-        You pulled <%= name %> <%= count %> times.<br>
-      <% end %>
-    </p>
+  <div class="summary-display">
+    <div class="thoughts-keyword">Monthly Summary</div>
+      <table class="summary-table">
+        <tr>
+          <th>Total readings</th>
+          <th>Total cards</th>
+          <th>Major cards</th>
+          <th>Minor cards</th>
+          <th>Court cards</th>
+          <th>Cup cards</th>
+          <th>Pentacle cards</th>
+          <th>Sword cards</th>
+          <th>Wand cards</th>
+        </tr>
+        <tr>
+          <td><%= @monthly_entries.size %></td>
+          <td><%= @monthly_entries.size * 3 %></td>
+          <td><%= @monthly_entries.designation("Major").size %></td>
+          <td><%= @monthly_entries.designation("Minor").size %></td>
+          <td><%= @monthly_entries.court_cards.size %> <%= "(#{(@monthly_entries.court_cards.size / @monthly_entries.size * 3) *100}%)" %></td>
+          <td><%= @monthly_entries.suit_cards("Cups").size %></td>
+          <td><%= @monthly_entries.suit_cards("Pentacles").size %></td>
+          <td><%= @monthly_entries.suit_cards("Swords").size %></td>
+          <td><%= @monthly_entries.suit_cards("Wands").size %></td>
+        </tr>
+      </table>
+        
+        <p class="centered">
+        <% if @duplicate_cards_hash.any? %>
+          <% @duplicate_cards_hash.each do |name, count| %>
+            <li>You pulled <%= name %> <%= count %> times.</li><br>
+          <% end %>
+        <% else %>
+          You have not pulled the same card more than three times this month.
+        <% end %>
+        </p>
+  </div>
 
+<p></p>
 
-  <table>
+  <table class="all-entries">
     <% @user_entries.each do |entry| %>
       <tr>
         <td>
