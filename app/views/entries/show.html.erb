@@ -17,39 +17,50 @@
     <div class="centered">
       <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
       <p>
-          <span class="category-name"><%= @entry.category.name.upcase %></span>
-          <p>
-            You pulled
-              <% @entry.cards.each do |card| %>
-                <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
-              <% end %>
-
-              <table class="three-cards">
-                <tr>
-                  <% @entry.cards.each do |card| %>
-                    <td><%= image_tag card.image, width: "150px", height: "261px" %></td>
-                  <% end %>
-                </tr>
-              </table>
-
-          </p>
+        <span class="category-name"><%= @entry.category.name.upcase %></span>
+        <p>
+            <table class="three-cards">
+              <tr>
+                <% @entry.cards.each do |card| %>
+                  <td><%= image_tag card.image, width: "150px", height: "261px" %></td>
+                <% end %>
+              </tr>
+            </table>
+          <br>
+          
+            <% @entry.cards.each do |card| %>
+              <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
+            <% end %>
+        </p>
     </div>
       </p>
       <br>
-        <span class="question-title"><%= @entry.category.question_1 %></span><br>
-        <span class="card-name"><%= @entry.cards[0].name %><%= " (#{@entry.cards[0].number})" if @entry.cards[0].designation == "Major" %></span><br>
+      <hr>
+      <p>
+        <div class="centered">
+          <span class="question-title"><%= @entry.category.question_1 %></span><br>
+          You pulled <span class="card-name-small"><%= @entry.cards[0].name %><%= " (#{@entry.cards[0].number})" if @entry.cards[0].designation == "Major" %></span>
+        </div>
+      </p>
         <%= @entry.cards[0].meaning %><br>
+        <hr>
       </p>
       <p>
-        <span class="question-title"><%= @entry.category.question_2 %></span><br>
-        <span class="card-name"><%= @entry.cards[1].name %><%= " (#{@entry.cards[1].number})" if @entry.cards[1].designation == "Major" %></span></br>
+        <div class="centered">
+          <span class="question-title"><%= @entry.category.question_2 %></span><br>
+          You pulled <span class="card-name-small"><%= @entry.cards[1].name %><%= " (#{@entry.cards[1].number})" if @entry.cards[1].designation == "Major" %></span></br>
+        </div>
+      </p>
         <%= @entry.cards[1].meaning %><br>
-      </p>
+        <hr>
       <p>
-        <span class="question-title"><%= @entry.category.question_3 %></span><br>
-        <span class="card-name"><%= @entry.cards[2].name %><%= " (#{@entry.cards[2].number})" if @entry.cards[2].designation == "Major" %></span><br>
-        <%= @entry.cards[2].meaning %><br>
+        <div class="centered">
+          <span class="question-title"><%= @entry.category.question_3 %></span><br>
+          You pulled <span class="card-name-small"><%= @entry.cards[2].name %><%= " (#{@entry.cards[2].number})" if @entry.cards[2].designation == "Major" %></span><br>
+        </div>
       </p>
+        <%= @entry.cards[2].meaning %><br>
+        <hr>
   </div>
 
   <p></p>

@@ -1,12 +1,19 @@
 .question-title {
     font-size: 16px;
     text-decoration: underline;
+    text-align: center;
 }
 
 .card-name {
     color: #aa00ff;
     font-family: 'Lexend Giga', sans-serif;
     font-size: 16px;
+}
+
+.card-name-small {
+    color: #aa00ff;
+    font-family: 'Lexend Giga', sans-serif;
+    font-size: 14px;
 }
 
 .category-name {
@@ -58,4 +65,8 @@
 .three-cards {
     margin-left: auto;
     margin-right: auto;
+}
+
+hr {
+    border-top: 1px dashed #aa00ff;
 }
