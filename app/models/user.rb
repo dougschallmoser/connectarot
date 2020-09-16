@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
     has_many :entries
     has_many :cards, through: :entries
+    has_many :requests, class_name: "Request", foreign_key: "requestor_user_id"
+    has_many :responses, class_name: "Request", foreign_key: "responder_user_id"
 
     def self.find_or_create_by_omniauth(auth_hash)
         self.find_or_create_by(email: auth_hash['info']['email']) do |u| 

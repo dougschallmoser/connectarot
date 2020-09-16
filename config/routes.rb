@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :cards, only: [:show, :index]
+  resources :requests
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
