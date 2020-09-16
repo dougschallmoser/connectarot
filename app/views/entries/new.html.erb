@@ -1,5 +1,9 @@
 <h2>New Reading</h2>
 
+<% @entry.errors.full_messages.each do |msg| %>
+    <li><span class="error-font"><%= msg %></span></li>
+<% end %>
+
 <%= form_for([@user, @entry]) do |f| %>
     <h4>Enter a title: (optional)</h4>
     <%= f.text_field :title, size: "35" %><br>

@@ -28,8 +28,13 @@ class EntriesController < ApplicationController
             @user = User.find_by(id: params[:user_id])
             @entry = @user.entries.create(entry_params)
         end
-        @entry.add_randomized_card
-        redirect_to entry_path(@entry)
+        if @entry.valid?
+            @entry.add_randomized_card
+            redirect_to entry_path(@entry)
+        else
+            @category = @entry.build_category
+            render :new 
+        end
     end
 
     def destroy
