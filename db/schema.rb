@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
 
   create_table "requests", force: :cascade do |t|
     t.string "title"
-    t.integer "requestor_user_id"
-    t.integer "responder_user_id"
+    t.integer "requestor_id"
+    t.integer "responder_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
