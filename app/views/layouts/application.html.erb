@@ -25,6 +25,12 @@
               </div>
             </div>
             <div class="dropdown">
+              <span class="nav-text"><%= link_to_unless_current "Cards", cards_path %></span>
+              <div class="dropdown-content">
+                <%= link_to "All Cards", cards_path %><br>
+              </div>
+            </div>
+            <div class="dropdown">
               <span class="nav-text"><%= link_to_unless_current "My Tarot", user_entries_path(current_user) %></span> 
               <div class="dropdown-content">
                 <%= link_to "My Page", user_entries_path(current_user) %><br>

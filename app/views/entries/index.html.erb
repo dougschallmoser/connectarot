@@ -33,11 +33,12 @@
         
         <p class="centered">
         <% if @duplicate_cards_hash.any? %>
+          You pulled
           <% @duplicate_cards_hash.each do |name, count| %>
-            You pulled <span class="pink-color"><%= name %></span> <%= count %> times<%= ',' unless name == @duplicate_cards_hash.keys.last %>
+            <span class="pink-color"><%= name %></span> <%= count %> times<%= ',' unless name == @duplicate_cards_hash.keys.last %>
           <% end %>
         <% else %>
-          You have not pulled the same card more than three times this month.
+          You have not pulled the same card more than two times this month.
         <% end %>
         </p>
   </div>
