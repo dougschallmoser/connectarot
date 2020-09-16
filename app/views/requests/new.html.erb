@@ -1,5 +1,9 @@
 <h2>New Request</h2>
 
+<% @request.errors.full_messages.each do |msg| %>
+    <span class="error-font"><%= msg %></span><br>
+<% end %>
+
 <%= form_for @request do |f| %>
   <%= f.hidden_field :requestor_id, value: current_user.id %>
   <p>
