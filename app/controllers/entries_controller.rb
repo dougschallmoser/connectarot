@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
         @user = User.find_by(id: params[:user_id])
         @user_entries = @user.entries.order(created_at: :desc)
         @monthly_entries = @user_entries.this_month
+        @total_cards = @monthly_entries.size * 3
         # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
         @duplicate_cards_hash = @user.cards.select_duplicates
     end

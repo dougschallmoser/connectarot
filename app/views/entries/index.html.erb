@@ -21,13 +21,13 @@
         <tr>
           <td><%= @monthly_entries.size %></td>
           <td><%= @monthly_entries.size * 3 %></td>
-          <td><%= @monthly_entries.designation("Major").size %></td>
-          <td><%= @monthly_entries.designation("Minor").size %></td>
-          <td><%= @monthly_entries.court_cards.size %> <%= "(#{(@monthly_entries.court_cards.size.to_f / @monthly_entries.size * 3).to_i * 10}%)" %></td>
-          <td><%= @monthly_entries.suit_cards("Cups").size %></td>
-          <td><%= @monthly_entries.suit_cards("Pentacles").size %></td>
-          <td><%= @monthly_entries.suit_cards("Swords").size %></td>
-          <td><%= @monthly_entries.suit_cards("Wands").size %></td>
+          <td><%= @monthly_entries.designation("Major").size %> <%= "(#{(@monthly_entries.designation("Major").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @monthly_entries.designation("Minor").size %> <%= "(#{(@monthly_entries.designation("Minor").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @monthly_entries.court_cards.size %> <%= "(#{(@monthly_entries.court_cards.size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @monthly_entries.suit_cards("Cups").size %> <%= "(#{(@monthly_entries.suit_cards("Cups").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @monthly_entries.suit_cards("Pentacles").size %> <%= "(#{(@monthly_entries.suit_cards("Pentacles").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @monthly_entries.suit_cards("Swords").size %> <%= "(#{(@monthly_entries.suit_cards("Swords").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @monthly_entries.suit_cards("Wands").size %> <%= "(#{(@monthly_entries.suit_cards("Wands").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
         </tr>
       </table>
         
