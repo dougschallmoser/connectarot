@@ -7,7 +7,7 @@
 <% if @requests.any? %>
   <% @requests.each do |request| %>
     <% if request.responder.nil? %>
-      <li><%= request.title %> from <%= request.requestor.name %> - <%= button_to "Accept Request", request_path(request), method: "get" %></li>
+      <li><%= request.title %> from <%= request.requestor.name %> - <%= button_to "Accept Request", request_path(request), method: "patch" %></li>
     <% end %>
   <% end %>
 <% end %>

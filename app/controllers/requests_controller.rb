@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
 
+    before_action :set_request, only: [:show, :update, :destroy]
     before_action :require_login
 
     def index
@@ -8,12 +9,6 @@ class RequestsController < ApplicationController
 
     def show
         @request = Request.find_by(id: params[:id])
-        if !@request.nil? && @request.requestor_id != current_user.id
-            @request.responder_id = current_user.id 
-            render :show 
-        else
-            redirect_to requests_path, :notice => "You cannot accept your own request."
-        end
     end
     
     def new
@@ -29,7 +24,22 @@ class RequestsController < ApplicationController
         end
     end
 
+    def update
+        if !@request.nil? && @request.requestor_id != current_user.id
+            @request.responder_id = current_user.id 
+            if @request.save
+                render :show 
+            end
+        else
+            redirect_to requests_path, :notice => "You cannot accept your own request"
+        end
+    end
+
     private
+
+    def set_request 
+        @request = Request.find_by(id: params[:id])
+    end
 
     def request_params
         params.require(:request).permit(:title, :requestor_id)
