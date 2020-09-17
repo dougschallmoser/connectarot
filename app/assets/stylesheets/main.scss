@@ -53,6 +53,7 @@ main {
     font-family: 'Lexend Giga', sans-serif;
     border: 2px dashed #ee00ff;
     color: #ee00ff;
+    font-size: 16px;
     text-shadow: 2px 2px rgba(0,0,0,0.07);
 }
 
@@ -91,7 +92,8 @@ h2 {
 
 .welcome-message {
     text-align: center;
-    width: 50%;
+    width: 60%;
     color: #aa00ff;
     font-family: 'Lexend Giga', sans-serif;
+    line-height: 40px;
 }
