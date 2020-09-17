@@ -1,8 +1,8 @@
 <h2>Reading Requests</h2>
 
-<p>
-  <span class="error-font"><%= flash[:notice] if flash[:notice] %></span>
-</p>
+<% if flash[:error] %>
+<p><span class="error-font"><%= flash[:error] %></span></p>
+<% end %>
 
 <% if @requests.any? %>
     <table class="all-requests">

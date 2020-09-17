@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
 
     def show
         @request = Request.find_by(id: params[:id])
+        @entry = Entry.new
     end
     
     def new
