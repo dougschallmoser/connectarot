@@ -4,6 +4,7 @@ class CreateEntries < ActiveRecord::Migration[6.0]
       t.integer :user_id
       t.integer :category_id
       t.string :title
+      t.string :custom_meaning
 
       t.timestamps
     end

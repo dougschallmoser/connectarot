@@ -2,7 +2,7 @@
 
 <p>
   Request created by: <span class="pink-color"><%= @request.requestor.name %></span><br>
-  Request accepted by: <span class="pink-color"><%= @request.responder.name %></span>
+  Request accepted by: <span class="pink-color"><%= @request.responder.name if @request.responder %></span>
 </p>
 
 
@@ -11,5 +11,11 @@
   <div class="justified"><%= @request.description %></div>
 </p>
 
-<%= form_for @entry do |f| %>
+<%= form_for([@request.responder, @entry]) do |f| %>
+  <%#= f.hidden_field :requestor_id, value: current_user.id %>
+  <%= f.label :card_id, "Select card" %>
+  <%= f.collection_select :card_ids, Card.all, :id, :name %>
+  <%= f.text_area :custom_meaning %>
+  <%= f.submit %>
+
 <% end %>
