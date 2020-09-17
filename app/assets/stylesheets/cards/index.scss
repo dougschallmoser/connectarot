@@ -1,14 +1,8 @@
-td {
-    padding: 5px;
-    text-align: center;
-}
-
-
-.summary-display {
+.cards-display {
     background-color: #ebe0ff;
     color: black;
     font-size: 11px;
-    width: 90%;
+    width: 50%;
     height: auto;
     border-radius: 15px;
     text-align: center;
@@ -17,25 +11,4 @@ td {
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-table.summary-table {
-    width: 100%;
-    
-}
-
-.summary-table th {
-    padding: 5px;
-    color: #aa00ff;
-
-}
-
-.all-entries {
-    width: 90%;
-    font-size: 12px;
-}
-
-.delete-reading {
-    font-size: 10px;
-    display: inline-block;
 }

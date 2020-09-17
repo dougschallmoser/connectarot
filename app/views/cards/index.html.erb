@@ -1,20 +1,38 @@
 <h2>Cards</h2>
 <br>
 
-<span class="thoughts-keyword">Major Cards:</span>
-<p>
-<% @cards.each do |card| %>
-  <% if card.designation == "Major" %>
-    <%= link_to card.name, card_path(card) %><br>
+<table class="cards-display">
+  <tr>
+    <td>
+      <span class="thoughts-keyword">Major Cards:</span>
+    </td>
+  </tr>
+  <% @cards.each do |card| %>
+    <% if card.designation == "Major" %>
+      <tr>
+        <td>
+          <%= link_to card.name, card_path(card) %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
-<% end %>
-</p>
+</table>
 
-<span class="thoughts-keyword">Minor Cards:</span>
-<p>
+<p>&nbsp;</p>
+
+<table class="cards-display">
+  <tr>
+    <td>
+     <span class="thoughts-keyword">Minor Cards:</span>
+    </td>
+  </tr>
 <% @cards.each do |card| %>
   <% if card.designation == "Minor" %>
-    <%= link_to card.name, card_path(card) %><br>
+    <tr>
+      <td>
+        <%= link_to card.name, card_path(card) %>
+      </td>
+    </tr>
   <% end %>
 <% end %>
-</p>
+</table>
