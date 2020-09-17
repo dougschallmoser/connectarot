@@ -1,0 +1,13 @@
+button[type="button"] {
+    background-color: #ecc7ff;
+    color: #fbf0ff;
+    size: 50px;
+    font-family: 'Lexend Giga', sans-serif;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: background-color 1s;
+}

@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
     before_action :require_login
 
     def index
-        @requests = Request.all
+        @requests = Request.all.order(created_at: :desc)
     end
 
     def show

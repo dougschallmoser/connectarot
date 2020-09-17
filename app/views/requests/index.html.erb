@@ -6,8 +6,21 @@
 
 <% if @requests.any? %>
   <% @requests.each do |request| %>
-    <% if request.responder.nil? %>
-      <li><%= request.title %> from <%= request.requestor.name %> - <%= button_to "Accept Request", request_path(request), method: "patch" %></li>
-    <% end %>
+    <table>
+      <tr>
+        <td>
+          <%= request.title %> from <%= request.requestor.name %>
+        </td>
+        <td>
+          <% if request.responder.nil? %>
+            <%= button_to "Accept Request", request_path(request), method: "patch" %>
+          <% else %>
+            <button type="button">Fulfilled</button>
+          <% end %>
+        </td>
+      </tr>
+    </table>
   <% end %>
+<% else %>
+  "There are currently no requests."
 <% end %>
