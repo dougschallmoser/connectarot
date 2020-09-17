@@ -12,7 +12,7 @@
           <span class="pink-color"><%= request.title %></span>
         </td>
         <td>
-          <span class="purple-color"><%= request.requestor.name %></span> requested this on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %>
+          <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span>
         </td>
         <td>
           <% if request.responder.nil? %>
