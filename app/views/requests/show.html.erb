@@ -1,4 +1,12 @@
-<h2><%= @request.title %></h2>
+<h2>Reading Request</h2>
 
-This request was created by: <%= @request.requestor.name %><br>
-This request was accepted by: <%= @request.responder.name %>
+<p>
+  Request created by: <span class="pink-color"><%= @request.requestor.name %></span><br>
+  Request accepted by: <span class="pink-color"><%= @request.responder.name %></span>
+</p>
+
+
+<p>
+  <span class="category-name"><%= @request.title %></span><br>
+  <div class="justified"><%= @request.description %></div>
+</p>

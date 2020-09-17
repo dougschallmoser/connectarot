@@ -26,8 +26,7 @@ class RequestsController < ApplicationController
 
     def update
         if !@request.nil? && @request.requestor_id != current_user.id
-            @request.responder_id = current_user.id 
-            if @request.save
+            if @request.update(responder_id: current_user.id)
                 render :show 
             end
         else
@@ -42,7 +41,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-        params.require(:request).permit(:title, :requestor_id)
+        params.require(:request).permit(:title, :description, :requestor_id)
     end
 
 end

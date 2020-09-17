@@ -16,13 +16,13 @@
     <p>
       <h4>Or, create your own spread:</h4>
       <%= f.fields_for :category do |c| %>
-        <%= c.label :question_1, "Question 1:" %><br>
+        <%= c.label :question_1, "Question 1:" %>
         <%= c.text_field :question_1, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
         <br>
-        <%= c.label :question_2, "Question 2:" %><br>
+        <%= c.label :question_2, "Question 2:" %>
         <%= c.text_field :question_2, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
         <br>
-        <%= c.label :question_3, "Question 3:" %><br>
+        <%= c.label :question_3, "Question 3:" %>
         <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
       <% end %>
     </p>

@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
 
   create_table "requests", force: :cascade do |t|
     t.string "title"
+    t.string "description"
     t.integer "requestor_id"
     t.integer "responder_id"
     t.datetime "created_at", precision: 6, null: false

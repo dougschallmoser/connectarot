@@ -5,22 +5,31 @@
 </p>
 
 <% if @requests.any? %>
+    <table class="all-requests">
   <% @requests.each do |request| %>
-    <table>
       <tr>
+        <td id="request-title">
+          <span class="pink-color"><%= request.title %></span>
+        </td>
         <td>
-          <%= request.title %> from <%= request.requestor.name %>
+          <span class="purple-color"><%= request.requestor.name %></span> requested this on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %>
         </td>
         <td>
           <% if request.responder.nil? %>
-            <%= button_to "Accept Request", request_path(request), method: "patch" %>
+            <%= button_to "Accept Request", request_path(request), method: "patch", class: "accept-button" %>
           <% else %>
             <button type="button">Fulfilled</button>
           <% end %>
         </td>
       </tr>
-    </table>
+      <tr>
+        <td colspan="3" id="request-description">
+          <%= request.description %>
+          <p>&nbsp;</p>
+        </td>
+      </tr>
   <% end %>
+    </table>
 <% else %>
   "There are currently no requests."
 <% end %>

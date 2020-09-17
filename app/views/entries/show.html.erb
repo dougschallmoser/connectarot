@@ -83,7 +83,9 @@
   </p>
   <p>
     <%= form_for([@entry, @entry.thoughts.build]) do |f| %>
-      <span class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></span>
+      <span class="thoughts-keyword">
+        <%= f.label :content, "Add a thought: " %>
+      </span>
       <p>
         <%= f.text_area :content %>
       </p>
