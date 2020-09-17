@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
     t.integer "user_id"
     t.integer "category_id"
     t.string "title"
-    t.string "custom_meaning"
+    t.string "interpretation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

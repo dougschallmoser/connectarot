@@ -31,7 +31,8 @@ class RequestsController < ApplicationController
                 render :show 
             end
         else
-            redirect_to requests_path, :notice => "You cannot accept your own request"
+            flash[:error] = "You cannot accept your own request"
+            redirect_to requests_path
         end
     end
 
