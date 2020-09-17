@@ -6,8 +6,10 @@ class EntriesController < ApplicationController
     def index
         @user = User.find_by(id: params[:user_id])
         @all_user_entries = @user.entries.order(created_at: :desc)
-        if params[:entry].present?
-            @user_entries = @all_user_entries.filter_by_spread(params[:entry][:category_name])
+        if params[:spread].present?
+            @user_entries = @all_user_entries.filter_by_spread(params[:spread][:category_name])
+        elsif params[:card].present?
+            @user_entries = @all_user_entries.filter_by_card(params[:card][:card_id])
         else
             @user_entries = @all_user_entries 
         end    
@@ -56,7 +58,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:category_id, :category_name, :title, category_attributes: [:question_1, :question_2, :question_3])
+        params.require(:entry).permit(:category_id, :title, category_attributes: [:question_1, :question_2, :question_3])
     end
 
 end

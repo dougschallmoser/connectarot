@@ -46,9 +46,17 @@
 <p></p>
 
   <%= form_tag user_entries_path(@user), method: 'get' do %>
-      Filter readings by spread:
-      <%= collection_select :entry, :category_name, Category.all.limit(6), :name, :name, include_blank: true %>
-      <%= submit_tag 'Filter' %>
+    Filter by card pulled:
+    <%= collection_select :card, :card_id, Card.all, :id, :name, include_blank: true %>
+    <%= submit_tag 'Filter' %>
+  <% end %>
+
+<br>
+
+  <%= form_tag user_entries_path(@user), method: 'get' do %>
+    Filter by spread:
+    <%= collection_select :spread, :category_name, Category.all.limit(6), :name, :name, include_blank: true %>
+    <%= submit_tag 'Filter' %>
   <% end %>
   <br>
 

@@ -1,7 +1,7 @@
 <h2>Request a Reading</h2>
 
 <% @request.errors.full_messages.each do |msg| %>
-    <span class="error-font"><%= msg %></span><br>
+    <span class="error-font"><%= msg %></span>
 <% end %>
 
 <%= form_for @request do |f| %>

@@ -10,9 +10,9 @@ class Entry < ApplicationRecord
     validates_presence_of :category, :message => "A spread must be selected from the menu or created with three custom questions."
 
     scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
-    scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", "#{designation}") }
+    scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", designation) }
     scope :court_cards, -> { joins(:cards).where("cards.court = ?", true) }
-    scope :suit_cards, -> (suit) { joins(:cards).where("cards.suit = ?", "#{suit}") }
+    scope :suit_cards, -> (suit) { joins(:cards).where("cards.suit = ?", suit) }
 
     def add_randomized_card
         until !self.cards.include?(random_card = Card.randomize) do
@@ -30,6 +30,14 @@ class Entry < ApplicationRecord
     def self.filter_by_spread(category_name)
         if category_name.present?
             self.select { |entry| entry.category.name == category_name }
+        else
+            self.all
+        end
+    end
+
+    def self.filter_by_card(card_id)
+        if card_id.present?
+            self.joins(:cards).where("cards.id = ?", card_id)
         else
             self.all
         end
