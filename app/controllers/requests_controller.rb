@@ -5,6 +5,16 @@ class RequestsController < ApplicationController
     def index
         @requests = Request.all
     end
+
+    def show
+        @request = Request.find_by(id: params[:id])
+        if !@request.nil? && @request.requestor_id != current_user.id
+            @request.responder_id = current_user.id 
+            render :show 
+        else
+            redirect_to requests_path, :notice => "You cannot accept your own request."
+        end
+    end
     
     def new
         @request = Request.new

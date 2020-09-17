@@ -1,5 +1,13 @@
-<h2>View Requests</h2>
+<h2>Reading Requests</h2>
 
-<% @requests.each do |request| %>
-    <li><%= request.title %></li>
+<p>
+  <span class="error-font"><%= flash[:notice] if flash[:notice] %></span>
+</p>
+
+<% if @requests.any? %>
+  <% @requests.each do |request| %>
+    <% if request.responder.nil? %>
+      <li><%= request.title %> from <%= request.requestor.name %> - <%= button_to "Accept Request", request_path(request), method: "get" %></li>
+    <% end %>
+  <% end %>
 <% end %>
