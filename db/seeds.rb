@@ -12,6 +12,8 @@ Category.create(name: "The Truth Spread", question_1: "What do I feel is true in
 
 Category.create(name: "The Anxiety Spread", question_1: "What is the root cause of my anxiety?", question_2: "What can my anxiety teach me?", question_3: "What can help ground me during this experience?")
 
+Category.create(name: "Custom Request Spread", question_1: "Card #1", question_2: "Card #2", question_3: "Card #3")
+
 
 # Cards
 

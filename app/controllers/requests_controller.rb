@@ -9,7 +9,9 @@ class RequestsController < ApplicationController
 
     def show
         @request = Request.find_by(id: params[:id])
-        @entry = Entry.new
+        # @entry = Entry.new
+        # @entry = @request.requestor.entries.build
+        # 2.times {@entry.cards.build}
     end
     
     def new
@@ -28,6 +30,7 @@ class RequestsController < ApplicationController
     def update
         if !@request.nil? && @request.requestor_id != current_user.id
             if @request.update(responder_id: current_user.id)
+                @entry = Entry.new
                 render :show 
             end
         else

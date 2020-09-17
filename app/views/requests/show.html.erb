@@ -12,16 +12,19 @@
 </p>
 
 <% if @request.responder %>
-  <%= form_for([@request.responder, @entry]) do |f| %>
+  <%= form_for([@request.requestor, @entry]) do |f| %>
     <%#= f.hidden_field :requestor_id, value: current_user.id %>
-    <p>
-      <%= f.label :card_id, "Select card:" %><br>
-      <%= f.collection_select :card_ids, Card.all, :id, :name %>
-    </p>
+    <%= f.hidden_field :category_id, value: 6 %>
+    <%= f.fields_for :card_ids do |c| %>
+      <p>Select three cards:</p>
+      <%= c.collection_select(nil, Card.all, :id, :name, {include_blank: true}) %>
+      <%= c.collection_select(nil, Card.all, :id, :name, {include_blank: true}) %>
+      <%= c.collection_select(nil, Card.all, :id, :name, {include_blank: true}) %>
+    <% end %>
     <p>
       <%= f.label :interpretation, "Interpretation:" %><br>
-      <%= f.text_area :custom_meaning %>
+      <%= f.text_area :interpretation %>
     </p>
-    <%= f.submit %>
+    <%= f.submit "Submit Reading" %>
   <% end %>
 <% end %>

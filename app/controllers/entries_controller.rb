@@ -1,14 +1,14 @@
 class EntriesController < ApplicationController
 
     before_action :set_entry, only: [:show, :update, :destroy]
-    before_action :set_user, only: [:index, :new, :create,]
+    before_action :set_user, only: [:index, :new, :create]
     before_action :require_login
-    before_action except: :show do 
+    before_action except: [:show, :create, :destroy] do 
         require_authorization(@user)
     end
-    before_action only: :show do
-        require_authorization(@entry.user)
-    end
+    # before_action only: :show do
+    #     require_authorization(@entry.user)
+    # end
 
     def index
         @all_user_entries = @user.entries.order(created_at: :desc)
@@ -42,7 +42,7 @@ class EntriesController < ApplicationController
             @entry = @user.entries.create(entry_params)
         end
         if @entry.valid?
-            @entry.add_randomized_card
+            @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
             redirect_to entry_path(@entry)
         else
             @category = @entry.build_category
@@ -66,7 +66,20 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:category_id, :title, category_attributes: [:question_1, :question_2, :question_3])
+        params.require(:entry).permit(:category_id, :title, { card_ids: [] }, :interpretation, category_attributes: [:question_1, :question_2, :question_3])
     end
 
 end
+
+# <p>
+# <%= f.label :card_ids, "Select card:" %><br>
+# <%= f.collection_select :card_ids, Card.all, :id,  :name, {include_blank: true}, {:name => "entry[card_ids][]"} %>
+# </p>
+# <p>
+# <%= f.label :card_ids, "Select card:" %><br>
+# <%= f.collection_select :card_ids, Card.all, :id, :name, {include_blank: true}, {name: "entry[card_ids][]"} %>
+# </p>
+# <p>
+# <%= f.label :card_ids, "Select card:" %><br>
+# <%= f.collection_select :card_ids, Card.all, :id, :name, {include_blank: true}, {name: "entry[card_ids][]"} %>
+# </p>
