@@ -3,12 +3,14 @@
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p><h4>Pull two more cards...</h4></p>
+  <p>&nbsp;</p>
   <p><%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %></p>
 <% elsif @entry.cards.size == 2 %>
   <h2>New Reading</h2>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <p><h4>Pull one more card...</h4></p>
+  <p>&nbsp;</p>
   <p><%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %></p>
 <% elsif @entry.cards.size == 3 %>
   <h2>Reading</h2>
