@@ -9,16 +9,10 @@ class EntriesController < ApplicationController
 
     def index
         @all_user_entries = @user.entries.order(created_at: :desc)
-        if params[:spread].present?
-            @user_entries = @all_user_entries.filter_by_spread(params[:spread][:category_name])
-        elsif params[:card].present?
-            @user_entries = @all_user_entries.filter_by_card(params[:card][:card_id])
-        else
-            @user_entries = @all_user_entries 
-        end    
+        filter_entries(@all_user_entries)
         @monthly_entries = @all_user_entries.this_month
-        @total_cards = @monthly_entries.size * 3
-        @duplicate_cards_hash = @user.cards.select_duplicates
+        @total_cards = @monthly_entries.total_cards
+        @duplicate_cards_hash = @user.cards.select_duplicates # displays user cards (all months)
         # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
     end
 
@@ -52,6 +46,16 @@ class EntriesController < ApplicationController
     end
 
     private
+
+    def filter_entries(all_entries)
+        if params[:spread].present?
+            @user_entries = @all_user_entries.filter_by_spread(params[:spread][:category_name])
+        elsif params[:card].present?
+            @user_entries = @all_user_entries.filter_by_card(params[:card][:card_id])
+        else
+            @user_entries = @all_user_entries 
+        end    
+    end
 
     def set_entry
         @entry = Entry.find_by(id: params[:id])

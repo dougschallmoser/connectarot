@@ -44,5 +44,9 @@ class Entry < ApplicationRecord
             self.all
         end
     end
+
+    def self.total_cards
+        self.all.size * 3
+    end
     
 end
