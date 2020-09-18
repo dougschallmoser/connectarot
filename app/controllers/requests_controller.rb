@@ -10,9 +10,8 @@ class RequestsController < ApplicationController
 
     def show
         @request = Request.find_by(id: params[:id])
+        check_authorization(@request)
         @entry = Entry.new
-        # @entry = @request.requestor.entries.build
-        # 2.times {@entry.cards.build}
     end
     
     def new
@@ -46,6 +45,13 @@ class RequestsController < ApplicationController
 
     def request_params
         params.require(:request).permit(:title, :description, :requestor_id,)
+    end
+
+    def check_authorization(request)
+        unless request.requestor == current_user || request.responder == current_user 
+            flash[:error] = "You do not have permission to view that request"
+            redirect_to requests_path
+            end
     end
 
 end
