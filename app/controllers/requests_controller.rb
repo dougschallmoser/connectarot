@@ -30,6 +30,7 @@ class RequestsController < ApplicationController
     def update
         if @request.update(responder_id: current_user.id)
             @entry = Entry.new
+            @cards = Card.all
             render :show 
         else
             flash[:error] = @request.errors.full_messages.to_sentence
