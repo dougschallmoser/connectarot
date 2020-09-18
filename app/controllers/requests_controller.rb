@@ -29,13 +29,11 @@ class RequestsController < ApplicationController
     end
 
     def update
-        if !@request.nil? && @request.requestor_id != current_user.id
-            if @request.update(responder_id: current_user.id)
-                @entry = Entry.new
-                render :show 
-            end
+        if @request.update(responder_id: current_user.id)
+            @entry = Entry.new
+            render :show 
         else
-            flash[:error] = "You cannot accept your own request"
+            flash[:error] = @request.errors.full_messages.to_sentence
             redirect_to requests_path
         end
     end
