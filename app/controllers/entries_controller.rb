@@ -13,6 +13,8 @@ class EntriesController < ApplicationController
         @monthly_entries = @all_user_entries.this_month
         @total_cards = @monthly_entries.total_cards
         @duplicate_cards_hash = @user.cards.select_duplicates # displays user cards (all months)
+        @cards = Card.all
+        @categories = Category.all.limit(7)
         # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
     end
 
