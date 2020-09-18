@@ -36,11 +36,6 @@ class EntriesController < ApplicationController
     def create
         @entry = Entry.find_by(id: params[:entry_id]) if params[:entry_id].present?
         @entry ||= @user.entries.create(entry_params)
-        # if params[:entry_id].present?
-        #     @entry = Entry.find_by(id: params[:entry_id])
-        # else
-        #     @entry = @user.entries.create(entry_params)
-        # end
         if @entry.valid?
             @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
             @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))

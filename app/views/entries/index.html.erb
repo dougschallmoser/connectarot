@@ -1,7 +1,7 @@
 <h2><%= current_user.name %>'s Readings</h2>
 
 <% if flash[:error] %>
-<p><span class="error-font"><%= flash[:error] %></span></p>
+<p><span class="error-font"><%= flash[:error] %></span></p><br>
 <% end %>
 
 <% if @all_user_entries.blank? %>

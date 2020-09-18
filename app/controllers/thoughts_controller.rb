@@ -4,11 +4,12 @@ class ThoughtsController < ApplicationController
 
     def create
         entry = Entry.find_by(id: params[:entry_id])
+        require_authorization(entry.user)
         thought = entry.thoughts.build(thought_params)
         if thought.save
             #message
         else
-            #message
+            flash[:error] = thought.errors.full_messages.to_sentence
         end
         redirect_to entry_path(entry.id)
     end
@@ -16,6 +17,7 @@ class ThoughtsController < ApplicationController
     def destroy
         thought = Thought.find_by(id: params[:id])
         entry = thought.entry
+        require_authorization(entry.user)
         thought.destroy
         redirect_to entry_path(entry.id)
     end

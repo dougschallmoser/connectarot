@@ -15,6 +15,10 @@
 <% elsif @entry.cards.size == 3 %>
   <h2>Reading</h2>
 
+  <% if flash[:error] %>
+  <p><span class="error-font"><%= flash[:error] %></span></p><br>
+  <% end %>
+
   <div class="justified">
     <div class="centered">
       <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
