@@ -43,7 +43,7 @@
             <div class="dropdown">
               <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
               <div class="dropdown-content-logout">
-                You are logged in as:<br><%= current_user.name %>
+                You are logged in as:<br><span class="user-email"><%= current_user.email %></span>
               </div>
             </div>
           <% else %>
