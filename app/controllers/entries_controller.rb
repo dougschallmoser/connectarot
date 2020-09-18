@@ -26,6 +26,7 @@ class EntriesController < ApplicationController
     def new
         @entry = @user.entries.build
         @category = @entry.build_category
+        @categories = Category.all.limit(5)
         # @anything = Category.all.limit(5)
     end
 
