@@ -3,12 +3,9 @@ class EntriesController < ApplicationController
     before_action :set_entry, only: [:show, :update, :destroy]
     before_action :set_user, only: [:index, :new, :create]
     before_action :require_login
-    before_action except: [:show, :create, :destroy] do 
+    before_action except: [:show, :destroy] do 
         require_authorization(@user)
     end
-    # before_action only: :show do
-    #     require_authorization(@entry.user)
-    # end
 
     def index
         @all_user_entries = @user.entries.order(created_at: :desc)
@@ -26,6 +23,7 @@ class EntriesController < ApplicationController
     end
 
     def show
+        require_authorization(@entry.user)
         @thoughts = @entry.thoughts.order(created_at: :desc)
     end
 
@@ -36,14 +34,15 @@ class EntriesController < ApplicationController
     end
 
     def create
-        if params[:entry_id].present?
-            @entry = Entry.find_by(id: params[:entry_id])
-        else
-            @entry = @user.entries.create(entry_params)
-        end
+        @entry = Entry.find_by(id: params[:entry_id]) if params[:entry_id].present?
+        @entry ||= @user.entries.create(entry_params)
+        # if params[:entry_id].present?
+        #     @entry = Entry.find_by(id: params[:entry_id])
+        # else
+        #     @entry = @user.entries.create(entry_params)
+        # end
         if @entry.valid?
             @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
-            # redirect_to entry_path(@entry)
             @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))
         else
             @category = @entry.build_category
@@ -52,6 +51,7 @@ class EntriesController < ApplicationController
     end
 
     def destroy
+        require_authorization(@entry.user)
         @entry.destroy
         redirect_to user_entries_path(current_user)
     end
