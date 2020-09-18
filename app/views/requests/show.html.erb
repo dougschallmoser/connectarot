@@ -30,7 +30,7 @@
       <%= @request.entry.interpretation_3 %>
     </div>
   </p>
-<% elsif @request.responder %>
+<% elsif @request.responder && @request.responder == current_user %>
   <%= form_for [@request.requestor, @entry] do |f| %>
     <%= f.hidden_field :request_id, value: @request.id %>
     <%= f.hidden_field :responder_id, value: @request.responder.id %>
