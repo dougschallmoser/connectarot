@@ -31,8 +31,9 @@
     </div>
   </p>
 <% elsif @request.responder %>
-  <%= form_with model: [@request.requestor, @entry] do |f| %>
+  <%= form_for [@request.requestor, @entry] do |f| %>
     <%= f.hidden_field :request_id, value: @request.id %>
+    <%= f.hidden_field :responder_id, value: @request.responder.id %>
     <%= f.hidden_field :category_id, value: 6 %>
     <%= f.fields_for :card_ids do |c| %>
       <p>Select three cards:</p>

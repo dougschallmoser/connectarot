@@ -4,7 +4,7 @@
   <span class="error-font"><%= msg unless msg == @entry.errors[:category].first %></span>
 <% end %>
 
-<%= form_with model: [@user, @entry] do |f| %>
+<%= form_for [@user, @entry] do |f| %>
   <h4>Enter a title: (optional)</h4>
   <%= f.text_field :title, size: "35" %><br>
   <br><hr>

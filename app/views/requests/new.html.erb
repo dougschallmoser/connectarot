@@ -4,7 +4,7 @@
     <span class="error-font"><%= msg %></span>
 <% end %>
 
-<%= form_with model: @request do |f| %>
+<%= form_for @request do |f| %>
   <%= f.hidden_field :requestor_id, value: current_user.id %>
   <p>
     <%= f.label :title, "Title:" %><br>

@@ -119,7 +119,7 @@
   </p>
 
   <p>
-    <%= form_with model: [@entry, @entry.thoughts.build] do |f| %>
+    <%= form_for [@entry, @entry.thoughts.build] do |f| %>
       <span class="thoughts-keyword">
         <%= f.label :content, "Add a thought: " %>
       </span>

@@ -2,28 +2,26 @@
 
 <h5>All fields required.</h5>
 <% @user.errors.full_messages.each do |msg| %>
-    <span class="error-font"><%= msg %></span>
+  <span class="error-font"><%= msg %></span>
 <% end %>
 
-<%= form_with model: @user do |f| %>
-    <p>
-      <%= f.label :name, "Name: " %>
-      <%= f.text_field :name, size: "25" %>
-    </p>
-    <p>
-      <%= f.label :email, "Email: " %>
-     <%= f.text_field :email, size: "25" %>
-    </p>
-    <p>
-    <%= f.label :password, "Password: " %>
-    <%= f.password_field :password, size: "20" %><br>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
+<%= form_for @user do |f| %>
+  <p>
+    <%= f.label :name, "Name: " %>
+    <%= f.text_field :name, size: "25" %>
+  </p>
+  <p>
+    <%= f.label :email, "Email: " %>
+    <%= f.text_field :email, size: "25" %>
+  </p>
+  <p>
+  <%= f.label :password, "Password: " %>
+  <%= f.password_field :password, size: "20" %><br>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>
 
-<br>
-or sign up with <%= link_to "Github", "/auth/github" %>
-<br>
-or sign up with <%= link_to "Facebook", "/auth/facebook" %>
+<br>or sign up with <%= link_to "Github", "/auth/github" %>
+<br>or sign up with <%= link_to "Facebook", "/auth/facebook" %>
