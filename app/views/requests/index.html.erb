@@ -9,7 +9,7 @@
   <% @requests.each do |request| %>
       <tr>
         <td id="request-title">
-          <span class="pink-color"><%= request.title %></span>
+          <span class="pink-color"><%= link_to request.title, request_path(request) %></span>
         </td>
         <td>
           <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span>
