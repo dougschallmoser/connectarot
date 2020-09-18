@@ -43,7 +43,8 @@ class EntriesController < ApplicationController
         end
         if @entry.valid?
             @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
-            redirect_to entry_path(@entry)
+            # redirect_to entry_path(@entry)
+            @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))
         else
             @category = @entry.build_category
             render :new 

@@ -11,7 +11,26 @@
   <div class="justified"><%= @request.description %></div>
 </p>
 
-<% if @request.responder %>
+<% if @request.entry %>
+  <p>
+    <span class="card-name-small"><%= @request.entry.cards[0].name %></span>
+    <div class="interpretations">
+      <%= @request.entry.interpretation_1 %>
+    </div>
+  </p>
+  <p>
+    <span class="card-name-small"><%= @request.entry.cards[1].name %></span>
+    <div class="interpretations">
+      <%= @request.entry.interpretation_2 %>
+    </div>
+  </p>
+  <p>
+    <span class="card-name-small"><%= @request.entry.cards[2].name %></span>
+    <div class="interpretations">
+      <%= @request.entry.interpretation_3 %>
+    </div>
+  </p>
+<% elsif @request.responder %>
   <%= form_for([@request.requestor, @entry]) do |f| %>
     <%= f.hidden_field :request_id, value: @request.id %>
     <%= f.hidden_field :category_id, value: 6 %>
