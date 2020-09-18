@@ -2,6 +2,7 @@ class Entry < ApplicationRecord
 
     belongs_to :category
     belongs_to :user
+    belongs_to :request, optional: true
     has_many :thoughts
     has_many :entries_cards
     has_many :cards, through: :entries_cards

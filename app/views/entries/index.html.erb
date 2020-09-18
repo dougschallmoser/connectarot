@@ -59,7 +59,7 @@
 
   <%= form_tag user_entries_path(@user), method: 'get' do %>
     Filter by spread:
-    <%= collection_select :spread, :category_name, Category.all.limit(6), :name, :name, include_blank: true %>
+    <%= collection_select :spread, :category_name, Category.all.limit(7), :name, :name, include_blank: true %>
     <%= submit_tag 'Filter' %>
   <% end %>
   <br>

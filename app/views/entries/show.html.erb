@@ -44,6 +44,15 @@
         </div>
       </p>
         <%= @entry.cards[0].meaning %><br>
+        
+        <% if @entry.request %>
+          <p>
+            <div class="interpretations">
+              <%= @entry.interpretation_1 %> - <%= @entry.request.responder.name %>
+            </div>
+          </p>
+        <% end %>
+
         <hr>
       </p>
       <p>
@@ -53,6 +62,15 @@
         </div>
       </p>
         <%= @entry.cards[1].meaning %><br>
+
+        <% if @entry.request %>
+          <p>
+            <div class="interpretations">
+              <%= @entry.interpretation_2 %> - <%= @entry.request.responder.name %>
+            </div>
+          </p>
+        <% end %>
+
         <hr>
       <p>
         <div class="centered">
@@ -61,6 +79,15 @@
         </div>
       </p>
         <%= @entry.cards[2].meaning %><br>
+
+        <% if @entry.request %>
+          <p>
+            <div class="interpretations">
+              <%= @entry.interpretation_3 %> - <%= @entry.request.responder.name %>
+            </div>
+          </p>
+        <% end %>
+
         <hr>
   </div>
 

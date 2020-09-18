@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
 
     def show
         @request = Request.find_by(id: params[:id])
-        # @entry = Entry.new
+        @entry = Entry.new
         # @entry = @request.requestor.entries.build
         # 2.times {@entry.cards.build}
     end
