@@ -31,6 +31,7 @@ class Entry < ApplicationRecord
     def self.filter_by_spread(category_name)
         if category_name.present?
             self.select { |entry| entry.category.name == category_name }
+            # self.joins(:category).where(categories: {name: category_name} )
         else
             self.all
         end

@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-        params.require(:request).permit(:title, :description, :requestor_id)
+        params.require(:request).permit(:title, :description, :requestor_id,)
     end
 
 end

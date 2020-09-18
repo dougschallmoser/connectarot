@@ -5,7 +5,7 @@
     <span class="error-font"><%= msg %></span>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_with model: @user do |f| %>
     <p>
       <%= f.label :name, "Name: " %>
       <%= f.text_field :name, size: "25" %>
