@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
     before_action :require_login
 
     def index
-        @requests = Request.all.order(created_at: :desc)
+        @requests = Request.all_open_requests.by_recent
         @requests = @requests.search_by_name(params[:name]) if params[:name]
     end
 

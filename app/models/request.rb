@@ -7,6 +7,9 @@ class Request < ApplicationRecord
     validates :description, presence: true
     validate :different_responder
 
+    scope :all_open_requests, -> { order(:responder_id) }
+    scope :by_recent , -> { order(created_at: :desc) }
+
     def self.search_by_name(name)
         if name.present?
             self.select {|request| request.requestor.name.titlecase.include?(name.titlecase)}
