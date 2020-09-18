@@ -6,5 +6,13 @@ class Request < ApplicationRecord
 
     validates :title, presence: true, length: { minimum: 3 }
     validates :description, presence: true
+
+    def self.search_by_name(name)
+        if name.present?
+            self.select {|request| request.requestor.name.titlecase.include?(name.titlecase)}
+        else
+            self.all
+        end
+    end
     
 end

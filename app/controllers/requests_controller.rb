@@ -5,6 +5,7 @@ class RequestsController < ApplicationController
 
     def index
         @requests = Request.all.order(created_at: :desc)
+        @requests = @requests.search_by_name(params[:name]) if params[:name]
     end
 
     def show

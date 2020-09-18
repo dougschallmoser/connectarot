@@ -5,35 +5,43 @@
 <% end %>
 
 <% if @requests.any? %>
-    <table class="all-requests">
+  <p>
+    <%= form_tag requests_path, method: 'get' do %>
+      Filter by name:
+      <%= text_field_tag :name %>
+      <%= submit_tag 'Filter' %>
+    <% end %>
+  </p>
+
+  <table class="all-requests">
   <% @requests.each do |request| %>
-      <tr>
-        <td id="request-title">
-          <span class="pink-color"><%= link_to request.title, request_path(request) %></span>
-        </td>
-        <td>
-          <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span>
-        </td>
-        <td>
-          <% if request.responder.nil? %>
-            <%= button_to "Accept", request_path(request), method: "patch", class: "accept-button" %>
-          <% elsif request.responder && request.entry.nil? %>
-            <button type="button">Pending</button>
-          <% elsif request.entry %>
-            <button type="button">Fulfilled</button>
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3" id="request-description">
-          <%= request.description %>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3"><hr></td>
-      </tr>
+    <tr>
+      <td id="request-title">
+        <span class="pink-color"><%= link_to request.title, request_path(request) %></span>
+      </td>
+      <td>
+        <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span>
+      </td>
+      <td>
+        <% if request.responder.nil? %>
+          <%= button_to "Accept", request_path(request), method: "patch", class: "accept-button" %>
+        <% elsif request.responder && request.entry.nil? %>
+          <button type="button">Pending</button>
+        <% elsif request.entry %>
+          <button type="button">Fulfilled</button>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" id="request-description">
+        <%= request.description %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><hr></td>
+    </tr>
   <% end %>
-    </table>
+  </table>
 <% else %>
   "There are currently no requests."
 <% end %>
