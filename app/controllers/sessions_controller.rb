@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
                 redirect_to login_path
             end
         else 
-            user = User.find_by(email: params[:user][:email])
-            if user && user.authenticate(params[:user][:password])
-                session[:user_id] = user.id
-                redirect_to user_entries_path(user)
+            @user = User.find_by(email: params[:user][:email])
+            if @user && @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id
+                redirect_to user_entries_path(@user)
             else
                 redirect_to login_path
             end
@@ -33,6 +33,5 @@ class SessionsController < ApplicationController
     def auth_hash
         request.env['omniauth.auth']
     end
-
 
 end
