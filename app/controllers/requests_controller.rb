@@ -12,6 +12,7 @@ class RequestsController < ApplicationController
         @request = Request.find_by(id: params[:id])
         check_authorization(@request)
         @entry = Entry.new
+        @cards = Card.all
     end
     
     def new
