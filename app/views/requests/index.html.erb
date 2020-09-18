@@ -16,8 +16,10 @@
         </td>
         <td>
           <% if request.responder.nil? %>
-            <%= button_to "Accept Request", request_path(request), method: "patch", class: "accept-button" %>
-          <% else %>
+            <%= button_to "Accept", request_path(request), method: "patch", class: "accept-button" %>
+          <% elsif request.responder && request.entry.nil? %>
+            <button type="button">Pending</button>
+          <% elsif request.entry %>
             <button type="button">Fulfilled</button>
           <% end %>
         </td>
