@@ -3,7 +3,7 @@
 <%= render partial: "layouts/flash_errors" %>
 
 <% if @all_user_entries.blank? %>
-  You do not have any readings.
+  You do not have any readings
 <% else %>
 
   <div class="summary-display">
@@ -66,9 +66,6 @@
     <% @user_entries.each do |entry| %>
       <tr>
         <td>
-          <%= entry.title unless entry.title.nil? %>
-        </td>
-        <td>
           <%= entry.category.name %>
         </td>
         <td>
@@ -82,7 +79,7 @@
         </td>
       </tr>
       <tr>
-        <td colspan="5"><% if entry != @user_entries.last %><hr><% end %></td>
+        <td colspan="4"><% if entry != @user_entries.last %><hr><% end %></td>
       </tr>
     <% end %>
   </table>

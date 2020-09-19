@@ -87,7 +87,7 @@ class EntriesController < ApplicationController
     end
 
     def entry_params
-        params.require(:entry).permit(:request_id, :category_id, :interpretation_1, :interpretation_2, :interpretation_3, :title, { card_ids: [] }, category_attributes: [:question_1, :question_2, :question_3])
+        params.require(:entry).permit(:request_id, :category_id, :interpretation_1, :interpretation_2, :interpretation_3, { card_ids: [] }, category_attributes: [:question_1, :question_2, :question_3])
     end
 
 end

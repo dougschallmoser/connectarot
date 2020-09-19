@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
     t.integer "user_id"
     t.integer "category_id"
     t.integer "request_id"
-    t.string "title"
     t.string "interpretation_1"
     t.string "interpretation_2"
     t.string "interpretation_3"
