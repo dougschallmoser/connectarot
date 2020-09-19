@@ -2,9 +2,9 @@ button[type="button"] {
     background-color: #ecc7ff;
     color: #fbf0ff;
     size: 50px;
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: 'Roboto Slab', serif;
     border-radius: 15px;
-    font-size: 10px;
+    font-size: 12px;
     border: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -19,6 +19,7 @@ button[type="button"] {
     background-color: #ebe0ff;
     font-size: 11px;
     border: 1px dashed #aa00ff;
+    padding: 10px 10px 10px 10px;
 }
 
 td#request-description {
@@ -31,6 +32,6 @@ td#request-title {
 }
 
 .accept-button {
-    font-size: 10px;
+    font-size: 12px;
     display: inline-block;
 }

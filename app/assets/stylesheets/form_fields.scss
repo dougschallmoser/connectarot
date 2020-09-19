@@ -1,7 +1,7 @@
 input {
     background-color: #ebe0ff;
     border: none;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto Slab', serif;
     color: black;
     border-radius: 15px;
 
@@ -13,7 +13,7 @@ input {
 input[type="submit"] {
     background-color: #d787ff;
     color: #fbf0ff;
-    font-family: 'Lexend Giga', sans-serif;
+    font-family: 'Roboto Slab', serif;
     border-radius: 15px;
     border: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -31,6 +31,7 @@ select {
     background-color: #d787ff;
     font-family: 'Lexend Giga', sans-serif;
     color: #fbf0ff;
+    border-radius: 15px;
     border: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -46,16 +47,12 @@ textarea {
     resize: none;
     background-color: #ebe0ff;
     border: none;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto Slab', serif;
     color: black;
     height: 10em;
     width: 500px;
     padding: 10px 10px 10px 10px;
     border-radius: 15px;
-    // box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    // -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    // -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    // -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
 
     &:hover {
         border: 2px dashed #ee00ff;

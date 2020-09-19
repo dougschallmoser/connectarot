@@ -97,6 +97,8 @@ h2 {
 
 .small-text {
     font-size: 10px;
+    text-align: right;
+    font-style: italic;
 }
 
 .signature {
@@ -106,9 +108,11 @@ h2 {
 
 .purple-color {
     color: #aa00ff;
+    font-style: normal;
 }
 
 .welcome-message {
+    background-color: #ebe0ff;
     text-align: center;
     width: 60%;
     font-size: 30px;
