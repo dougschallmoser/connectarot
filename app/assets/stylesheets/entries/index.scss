@@ -17,6 +17,7 @@ td {
     -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border: 1px dashed #aa00ff;
 }
 
 table.summary-table {
@@ -33,6 +34,7 @@ table.summary-table {
 .all-entries {
     width: 90%;
     font-size: 12px;
+    border: 1px dashed #aa00ff;
 }
 
 .delete-reading {

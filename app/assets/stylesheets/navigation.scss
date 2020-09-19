@@ -33,18 +33,16 @@
 }
 
 .nav-logo {
-    font-family: 'Macondo', cursive;
+    font-family: 'Berkshire Swash', cursive;
     font-size: 24px;
     font-weight: 900;
     text-shadow: 2px 2px rgba(0,0,0,0.07);
 
     a {
         color: #ee00ff;
-
-        &:hover {
-            border: 2px dashed #ee00ff;
-            padding: 0px 4px;
-        }
+        background: -webkit-linear-gradient(#aa00ff, #ee00ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 }
 

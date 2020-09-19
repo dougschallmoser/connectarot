@@ -1,6 +1,6 @@
 body {
     background-color: #7e5c88;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto Slab', serif;
     margin: 0px;
     padding: 0px;
 }
@@ -37,7 +37,7 @@ main {
     height: 100%;
     width: 80%;
     padding: 0px 35px 20px 35px;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto Slab', serif;
 
     a {
         color: #aa00ff;
@@ -50,19 +50,20 @@ main {
 }
 
 .logo-font {
-    font-family: 'Macondo', cursive;
-    color: #ee00ff;
+    font-family: 'Berkshire Swash', cursive;
+    background: -webkit-linear-gradient(#aa00ff, #ee00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     font-size: 36px;
     font-weight: 900;
     text-shadow: 2px 2px rgba(0,0,0,0.07);
-    border: 2px dashed #ee00ff;
     padding: 0px 4px;
 }
 
 footer {
     text-align: center;
     font-size: 12px;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Roboto Slab', serif;
     color: #fbf0ff;
     margin-top: 20px;
 
@@ -77,9 +78,9 @@ footer {
 }
 
 h2 {
-    font-family: 'Macondo', cursive;
+    font-family: 'Lexend Giga', sans-serif;
     color: #ee00ff;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .underline {
@@ -101,8 +102,9 @@ h2 {
 .welcome-message {
     text-align: center;
     width: 60%;
-    font-size: 24px;
+    font-size: 30px;
     color: #aa00ff;
-    font-family: 'Macondo', cursive;
+    font-family: 'Amatic SC', cursive;
     line-height: 40px;
+    border: 2px dashed #ee00ff;
 }
