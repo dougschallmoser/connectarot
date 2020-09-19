@@ -9,3 +9,12 @@ img#profile-pic {
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
     -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
+.edit-account {
+    padding: 20px;
+    width: 70%;
+
+    td {
+        text-align: justify;
+    }
+}
