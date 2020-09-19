@@ -11,7 +11,10 @@ class Request < ApplicationRecord
 
     def self.search_by_name(name)
         if name.present?
-            self.select {|request| request.requestor.name.titlecase.include?(name.titlecase)}
+            self.select do |request|
+                request.requestor.name.titlecase.include?(name.titlecase) ||
+                (request.responder.name.titlecase.include?(name.titlecase) if request.responder.present?)
+            end
         else
             self.all
         end
