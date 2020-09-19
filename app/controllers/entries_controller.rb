@@ -51,8 +51,10 @@ class EntriesController < ApplicationController
         if @entry.valid?
             redirect_to request_path(@entry.request)
         else
+            @request = Request.find_by(id: params[:entry][:request_id])
+            @cards = Card.all
             flash[:error] = @entry.errors.full_messages
-            redirect_to request_path(@entry.request)
+            render "requests/show"
         end
     end
 
