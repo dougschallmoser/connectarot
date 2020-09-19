@@ -38,12 +38,7 @@
                 <%= link_to_unless_current "My Page", user_entries_path(current_user) %><br>
                 <%= link_to_unless_current "Account", edit_user_path(current_user) %><br>
                 <%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %>
-              </div>
-            </div>
-            <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Logout", logout_path, method: "delete" %></span>
-              <div class="dropdown-content-logout">
-                You are logged in as:<br><span class="user-email"><%= current_user.email %></span>
+                <%= link_to "Logout", logout_path, method: "delete" %>
               </div>
             </div>
           <% else %>
