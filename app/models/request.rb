@@ -1,12 +1,11 @@
 class Request < ApplicationRecord
 
     belongs_to :requestor, class_name: "User"
-    has_one :entry
     belongs_to :responder, class_name: "User", optional: true
+    has_one :entry
     validates :title, presence: true, length: { minimum: 3 }
     validates :description, presence: true
     validate :different_responder
-
     scope :all_open_requests, -> { order(:responder_id) }
     scope :by_recent , -> { order(created_at: :desc) }
 

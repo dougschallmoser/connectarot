@@ -32,14 +32,32 @@ class EntriesController < ApplicationController
     def create
         @entry = Entry.find_by(id: params[:entry_id]) if params[:entry_id].present?
         @entry ||= @user.entries.create(entry_params)
-        if @entry.valid?
-            @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
-            @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))
+        if params[:entry] && params[:entry][:card_ids]
+            if @entry.valid?
+                redirect_to request_path(@entry.request)
+            else
+                flash[:error] = @entry.errors.full_messages
+                redirect_to request_path(@entry.request)
+            end
         else
-            @category = @entry.build_category
-            @categories = Category.all.limit(5)
-            render :new 
+            if @entry.valid?
+                @entry.add_randomized_card
+                redirect_to(entry_path(@entry))
+            else
+                @category = @entry.build_category
+                @categories = Category.all.limit(5)
+                render :new 
+            end
         end
+
+        # if @entry.valid?
+        #     @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
+        #     @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))
+        # else
+        #     @category = @entry.build_category
+        #     @categories = Category.all.limit(5)
+        #     render :new 
+        # end
     end
 
     def destroy

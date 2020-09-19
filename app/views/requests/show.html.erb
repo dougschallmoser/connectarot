@@ -1,5 +1,11 @@
 <h2>Reading Request</h2>
 
+<% if flash[:error].present? %>
+  <% flash[:error].each do |error| %>
+    <span class="error-font"><%= error %></span>
+  <% end %>
+<% end %>
+
 <p>
   Request created by: <span class="pink-color"><%= @request.requestor.name %></span><br>
   Request accepted by: <span class="pink-color"><%= @request.responder.name if @request.responder %></span>

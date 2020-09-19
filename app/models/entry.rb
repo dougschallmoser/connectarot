@@ -6,6 +6,7 @@ class Entry < ApplicationRecord
     has_many :thoughts
     has_many :entries_cards
     has_many :cards, through: :entries_cards
+    validates :interpretation_1, :interpretation_2, :interpretation_3, :card_ids, presence: true, if: -> { request_id.present? }
     validates_length_of :cards, maximum: 3
     validates_presence_of :category, :message => "A spread must be selected from the menu or created with three custom questions"
     scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
