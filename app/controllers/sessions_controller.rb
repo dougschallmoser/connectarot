@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
                 session[:user_id] = user.id
                 flash[:message] = "You have successfully logged in"
                 redirect_to user_entries_path(user)
-            else # email is nil
+            else
+                flash[:error] = "Email is is blank. Please try again"
                 redirect_to login_path
             end
         else 
