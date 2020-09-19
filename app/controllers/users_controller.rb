@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id 
+            flash[:message] = "Account successfully created. You are now logged in."
             redirect_to user_entries_path(@user)
         else
             render :new

@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
             user = User.find_or_create_by_omniauth(auth_hash)
             if user.email
                 session[:user_id] = user.id
+                flash[:message] = "You have successfully logged in"
                 redirect_to user_entries_path(user)
             else # email is nil
                 redirect_to login_path
@@ -16,6 +17,7 @@ class SessionsController < ApplicationController
             @user = User.find_by(email: params[:user][:email])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id
+                flash[:message] = "You have successfully logged in"
                 redirect_to user_entries_path(@user)
             else
                 flash[:error] = "Invalid credentials. Please try again"
