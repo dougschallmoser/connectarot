@@ -15,17 +15,19 @@
 <% elsif @entry.cards.size == 3 %>
   <h2>Reading</h2>
 
-<%= render partial: "layouts/flash_errors" %>
+  <%= render partial: "layouts/flash_errors" %>
+  <%= render partial: "layouts/flash_message" %><br>
 
   <div class="justified">
     <div class="centered">
-      <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
+      <span class="category-name"><%= @entry.category.name.upcase %></span>
+
+      <% if @entry.request %>
+        <div class="catgegory-name"><%= link_to "Show Original Request", request_path(@entry.request) %></div>
+      <% end %>
+
       <p>
-        <span class="category-name"><%= @entry.category.name.upcase %></span>
-        
-        <% if @entry.request %>
-          <div class="catgegory-name"><%= link_to "Show Original Request", request_path(@entry.request) %></div>
-        <% end %>
+      <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
 
         <p>
             <table class="three-cards">
@@ -121,10 +123,10 @@
               <td colspan="2"><hr></td>
             </tr>
           <% end %>
-        </table>
-      </div>
-    <% end %>
-  </p>
+          </table>
+        </div>
+      <% end %>
+    </p>
 
   <p>
     <%= form_for [@entry, @entry.thoughts.build] do |f| %>

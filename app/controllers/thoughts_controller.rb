@@ -8,6 +8,8 @@ class ThoughtsController < ApplicationController
         thought = entry.thoughts.build(thought_params)
         if !thought.save
             flash[:error] = thought.errors.full_messages.to_sentence
+        else
+            flash[:message] = "Thought saved"
         end
         redirect_to entry_path(entry.id)
     end
