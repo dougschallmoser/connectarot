@@ -20,9 +20,23 @@
       </td>
       <td>
         <div class="small-text">
-          Requested on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span><br>
-          <% if request.responder == current_user %>
-            Responded on <%= request.updated_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.responder.name %></span>
+          Requested on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by
+          <span class="purple-color">
+            <% if request.requestor == current_user %>
+              You
+            <% else %>
+              <%= request.requestor.name %>
+            <% end %>
+          </span><br>
+          <% if request.responder.present? %>
+            Responded on <%= request.updated_at.strftime("%B %e, %Y at %l:%M%p") %> by
+            <span class="purple-color">
+              <% if request.responder == current_user %>
+                You
+              <% else %>
+                <%= request.responder.name %>
+              <% end %>
+            </span><br>
           <% end %>
         </div>
 
