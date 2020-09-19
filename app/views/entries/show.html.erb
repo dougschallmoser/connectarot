@@ -22,6 +22,11 @@
       <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
       <p>
         <span class="category-name"><%= @entry.category.name.upcase %></span>
+        
+        <% if @entry.request %>
+          <div class="catgegory-name"><%= link_to "Show Original Request", request_path(@entry.request) %></div>
+        <% end %>
+
         <p>
             <table class="three-cards">
               <tr>
@@ -50,7 +55,8 @@
         <% if @entry.request %>
           <p>
             <div class="interpretations">
-              <%= @entry.interpretation_1 %> - <%= @entry.request.responder.name %>
+              <%= @entry.interpretation_1 %>
+              <div class="signature">-<%= @entry.request.responder.name %></div>
             </div>
           </p>
         <% end %>
@@ -68,7 +74,8 @@
         <% if @entry.request %>
           <p>
             <div class="interpretations">
-              <%= @entry.interpretation_2 %> - <%= @entry.request.responder.name %>
+              <%= @entry.interpretation_2 %>
+              <div class="signature">-<%= @entry.request.responder.name %></div>
             </div>
           </p>
         <% end %>
@@ -85,15 +92,14 @@
         <% if @entry.request %>
           <p>
             <div class="interpretations">
-              <%= @entry.interpretation_3 %> - <%= @entry.request.responder.name %>
+              <%= @entry.interpretation_3 %>
+              <div class="signature">-<%= @entry.request.responder.name %></div>
             </div>
           </p>
         <% end %>
 
         <hr>
   </div>
-
-  <p></p>
 
     <p>
       <% if @thoughts.any? %>
