@@ -36,6 +36,7 @@
     font-family: 'Berkshire Swash', cursive;
     font-size: 24px;
     font-weight: 900;
+    line-height: 90%;
     text-shadow: 2px 2px rgba(0,0,0,0.07);
 
     a {
@@ -61,7 +62,7 @@ line-height: 200%;
 word-spacing: 1px;
 padding: 8px 2px 2px 2px;
 position: absolute;
-width: 200%;
+width: 175%;
 overflow: auto;
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 z-index: 1;
@@ -74,12 +75,14 @@ display: block;
 
 .user-email {
     color: #ee00ff;
-    font-size: 9px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 10px;
 }
 
 .logged-in {
     color: #aa00ff;
-    font-size: 8px;
+    font-family: 'Roboto Slab', serif;
+    font-size: 9px;
     text-align: left;
 }
 
