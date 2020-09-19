@@ -1,10 +1,8 @@
 <h2>Log In</h2>
 
-<% if flash[:error] %>
-<p><span class="error-font"><%= flash[:error] %></span></p><br>
-<% end %>
+<%= render partial: "layouts/flash_errors" %>
 
-<%= form_with scope: "user", method: :post do |f| %>
+<%= form_for :user, method: :post do |f| %>
     <p>
       <%= f.label :email, "Email: " %>
       <%= f.text_field :email, size: "25" %>

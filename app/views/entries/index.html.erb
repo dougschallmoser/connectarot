@@ -1,8 +1,6 @@
 <h2><%= current_user.name %>'s Readings</h2>
 
-<% if flash[:error] %>
-<p><span class="error-font"><%= flash[:error] %></span></p><br>
-<% end %>
+<%= render partial: "layouts/flash_errors" %>
 
 <% if @all_user_entries.blank? %>
   You do not have any readings.

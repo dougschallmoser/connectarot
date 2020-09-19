@@ -1,8 +1,6 @@
 <h2>Request a Reading</h2>
 
-<% @request.errors.full_messages.each do |msg| %>
-    <span class="error-font"><%= msg %></span>
-<% end %>
+<%= render partial: "layouts/errors", locals: {object: @request} %>
 
 <%= form_for @request do |f| %>
   <%= f.hidden_field :requestor_id, value: current_user.id %>

@@ -1,8 +1,6 @@
 <h2>Reading Requests</h2>
 
-<% if flash[:error] %>
-<p><span class="error-font"><%= flash[:error] %></span></p><br>
-<% end %>
+<%= render partial: "layouts/flash_errors" %>
 
 <% if @requests.any? %>
   <p>

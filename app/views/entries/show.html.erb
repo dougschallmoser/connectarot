@@ -15,9 +15,7 @@
 <% elsif @entry.cards.size == 3 %>
   <h2>Reading</h2>
 
-  <% if flash[:error] %>
-  <p><span class="error-font"><%= flash[:error] %></span></p><br>
-  <% end %>
+<%= render partial: "layouts/flash_errors" %>
 
   <div class="justified">
     <div class="centered">

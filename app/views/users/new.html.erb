@@ -1,9 +1,7 @@
 <h2>Sign Up</h2>
 
 <h5>All fields required.</h5>
-<% @user.errors.full_messages.each do |msg| %>
-  <span class="error-font"><%= msg %></span>
-<% end %>
+<%= render partial: "layouts/errors", locals: {object: @user} %>
 
 <%= form_for @user do |f| %>
   <p>
