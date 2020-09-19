@@ -12,9 +12,9 @@ class EntriesController < ApplicationController
         filter_entries(@all_user_entries)
         @monthly_entries = @all_user_entries.this_month
         @total_cards = @monthly_entries.total_cards
-        @duplicate_cards_hash = @user.cards.select_duplicates # displays user cards (all months)
         @cards = Card.all
         @categories = Category.all.limit(7)
+        @duplicate_cards_hash = @user.cards.select_duplicates # displays user cards (all months)
         # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
     end
 
@@ -27,7 +27,6 @@ class EntriesController < ApplicationController
         @entry = @user.entries.build
         @category = @entry.build_category
         @categories = Category.all.limit(5)
-        # @anything = Category.all.limit(5)
     end
 
     def create
@@ -38,6 +37,7 @@ class EntriesController < ApplicationController
             @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))
         else
             @category = @entry.build_category
+            @categories = Category.all.limit(5)
             render :new 
         end
     end

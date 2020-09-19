@@ -1,7 +1,7 @@
 <h2>New Reading</h2>
 
-<% @entry.errors[:category].each do |msg| %>
-  <span class="error-font"><%= msg unless msg == @entry.errors[:category].first %></span>
+<% if @entry.errors[:category].present? %>
+  <span class="error-font"><%= @entry.errors[:category][1] %></span>
 <% end %>
 
 <%= form_for [@user, @entry] do |f| %>
