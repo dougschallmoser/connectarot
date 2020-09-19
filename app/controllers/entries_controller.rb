@@ -33,31 +33,10 @@ class EntriesController < ApplicationController
         @entry = Entry.find_by(id: params[:entry_id]) if params[:entry_id].present?
         @entry ||= @user.entries.create(entry_params)
         if params[:entry] && params[:entry][:card_ids]
-            if @entry.valid?
-                redirect_to request_path(@entry.request)
-            else
-                flash[:error] = @entry.errors.full_messages
-                redirect_to request_path(@entry.request)
-            end
+            custom_entry_redirect(@entry)
         else
-            if @entry.valid?
-                @entry.add_randomized_card
-                redirect_to(entry_path(@entry))
-            else
-                @category = @entry.build_category
-                @categories = Category.all.limit(5)
-                render :new 
-            end
+            regular_entry_redirect(@entry)
         end
-
-        # if @entry.valid?
-        #     @entry.add_randomized_card unless params[:entry] && params[:entry][:card_ids]
-        #     @entry.request ? redirect_to(request_path(@entry.request)) : redirect_to(entry_path(@entry))
-        # else
-        #     @category = @entry.build_category
-        #     @categories = Category.all.limit(5)
-        #     render :new 
-        # end
     end
 
     def destroy
@@ -67,6 +46,26 @@ class EntriesController < ApplicationController
     end
 
     private
+
+    def custom_entry_redirect(entry)
+        if @entry.valid?
+            redirect_to request_path(@entry.request)
+        else
+            flash[:error] = @entry.errors.full_messages
+            redirect_to request_path(@entry.request)
+        end
+    end
+
+    def regular_entry_redirect(entry)
+        if @entry.valid?
+            @entry.add_randomized_card
+            redirect_to(entry_path(@entry))
+        else
+            @category = @entry.build_category
+            @categories = Category.all.limit(5)
+            render :new 
+        end
+    end
 
     def filter_entries(all_entries)
         if params[:spread].present?
