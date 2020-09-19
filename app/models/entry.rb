@@ -6,9 +6,10 @@ class Entry < ApplicationRecord
     has_many :thoughts
     has_many :entries_cards
     has_many :cards, through: :entries_cards
-    validates :interpretation_1, :interpretation_2, :interpretation_3, :card_ids, presence: true, if: -> { request_id.present? }
-    validates_length_of :cards, maximum: 3
+    validates :interpretation_1, :interpretation_2, :interpretation_3, presence: true, if: -> { request_id.present? }
+    validates_presence_of :card_ids, presence: true, if: -> { request_id.present? }, :message => "- Three cards must be selected"
     validates_presence_of :category, :message => "A spread must be selected from the menu or created with three custom questions"
+    validates_length_of :cards, maximum: 3
     scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
     scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", designation) }
     scope :court_cards, -> { joins(:cards).where("cards.court = ?", true) }

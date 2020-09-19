@@ -3,7 +3,6 @@ class User < ApplicationRecord
     has_secure_password
     validates :name, :email, :password, presence: true
     validates :email, uniqueness: true
-
     has_many :entries
     has_many :cards, through: :entries
     has_many :requests, class_name: "Request", foreign_key: "requestor_id"
