@@ -1,6 +1,7 @@
 <h2>Reading Requests</h2>
 
 <%= render partial: "layouts/flash_errors" %>
+<%= render partial: "layouts/flash_message" %>
 
 <% if @requests.any? %>
   <p>
@@ -18,7 +19,13 @@
         <span class="pink-color"><%= link_to request.title, request_path(request) %></span>
       </td>
       <td>
-        <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span>
+        <div class="small-text">
+          Requested on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.requestor.name %></span><br>
+          <% if request.responder == current_user %>
+            Responded on <%= request.updated_at.strftime("%B %e, %Y at %l:%M%p") %> by <span class="purple-color"><%= request.responder.name %></span>
+          <% end %>
+        </div>
+
       </td>
       <td>
         <% if request.responder.nil? %>

@@ -22,6 +22,7 @@ class RequestsController < ApplicationController
     def create
         @request = Request.new(request_params)
         if @request.save
+            flash[:message] = "Request successfully created"
             redirect_to requests_path
         else
             render :new
