@@ -47,15 +47,15 @@
     <%= f.fields_for :card_ids do |c| %>
       <p>
         <%= c.label "Card #1:" %><br>
-        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}) %>
+        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
       </p>
       <p>
         <%= c.label "Card #2:" %><br>
-        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}) %>
+        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
       </p>
       <p>
         <%= c.label "Card #3:" %><br>
-        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}) %>
+        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
       </p>
     <% end %>
     <p>&nbsp;</p>
