@@ -19,45 +19,25 @@
           <div class="navigation">
           <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
           <% if logged_in? %>
-            <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Requests", requests_path %></span>
-              <div class="dropdown-content">
-                <%= link_to_unless_current "View Requests", requests_path %>
-              </div>
-            </div>
-            <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Cards", cards_path %></span>
-              <div class="dropdown-content">
-                <%= link_to_unless_current "All Cards", cards_path %>
-              </div>
-            </div>
+            <span class="nav-text"><%= link_to_unless_current "Requests", requests_path %></span>
+            <span class="nav-text"><%= link_to_unless_current "Cards", cards_path %></span>
             <div class="dropdown">
               <span class="nav-text"><%= link_to_unless_current "My Tarot", user_entries_path(current_user) %></span> 
               <div class="dropdown-content">
-                <%= link_to_unless_current "Readings", user_entries_path(current_user) %><br>
-                <%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %><br>
-                <%= link_to_unless_current "New Request", new_request_path %><br>
-                <%= link_to_unless_current "Account", edit_user_path(current_user) %><br>
-                <%= link_to "Logout", logout_path, method: "delete" %>
+                <div class="who-you-are">
+                  <span class="logged-in">You are logged in as<br></span>
+                  <span class="user-email"><%= current_user.email %></span><hr>
+                </div>
+                <div class="highlight"><%= link_to_unless_current "Readings", user_entries_path(current_user) %></div>
+                <div class="highlight"><%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %></div>
+                <div class="highlight"><%= link_to_unless_current "New Request", new_request_path %></div><hr>
+                <div class="highlight"><%= link_to_unless_current "Account", edit_user_path(current_user) %></div>
+                <div class="highlight"><%= link_to "Logout", logout_path, method: "delete" %>
               </div>
             </div>
           <% else %>
-            <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
-              <div class="dropdown-content-login">
-                <%= link_to_unless_current "Signup form", new_user_path %><br>
-                <%= link_to_unless_current "use Facebook", "/auth/facebook" %><br>
-                <%= link_to_unless_current "use Github", "/auth/github" %>
-              </div>
-            </div>
-            <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
-              <div class="dropdown-content-login">
-                <%= link_to_unless_current "Login form", login_path %><br>
-                <%= link_to_unless_current "use Facebook", "/auth/facebook" %><br>
-                <%= link_to_unless_current "use Github", "/auth/github" %>
-              </div>
-            </div>
+            <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
+            <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
           <% end %>
           </div>
         </nav>

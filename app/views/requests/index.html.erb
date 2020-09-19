@@ -7,9 +7,9 @@
 <% if @requests.any? %>
   <p>
     <%= form_tag requests_path, method: 'get' do %>
-      Filter by name:
+      Search by name:
       <%= text_field_tag :name %>
-      <%= submit_tag 'Filter' %>
+      <%= submit_tag 'Search' %>
     <% end %>
   </p>
 

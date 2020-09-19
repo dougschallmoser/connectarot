@@ -58,54 +58,57 @@ color: #d787ff;
 border-radius: 5px;
 background-color: #e4d6ff;
 font-size: 12px;
+line-height: 200%;
 word-spacing: 1px;
+padding: 8px 2px 2px 2px;
 position: absolute;
-width: 140%;
+width: 185%;
 overflow: auto;
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-padding: 6px 8px;
 z-index: 1;
 }
-
-.dropdown-content-logout {
-    display: none;
-    font-size: 10px;
-    word-spacing: 1px;
-    position: absolute;
-    border-radius: 5px;
-    background-color: #e4d6ff;
-    width: 200%;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 6px 8px;
-    z-index: 1;
-    color: #aa00ff;
-    }
 
 .dropdown-content-login {
     display: none;
     color: #d787ff;
     font-size: 12px;
     word-spacing: 1px;
+    line-height: 200%;
     position: absolute;
     border-radius: 5px;
     background-color: #e4d6ff;
-    width: 200%;
+    width: 215%;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 6px 8px;
+    padding: 8px 2px;
     z-index: 1;
-    }
+}
+
+.dropdown-content-requests {
+    display: none;
+    color: #d787ff;
+    font-size: 12px;
+    word-spacing: 1px;
+    line-height: 175%;
+    position: absolute;
+    border-radius: 5px;
+    background-color: #e4d6ff;
+    width: 140%;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 5px 2px 2px 2px;
+    z-index: 1;
+}
   
 .dropdown:hover .dropdown-content {
 display: block;
 }
 
-.dropdown:hover .dropdown-content-logout {
+.dropdown:hover .dropdown-content-login {
     display: block;
     }
 
-.dropdown:hover .dropdown-content-login {
+.dropdown:hover .dropdown-content-requests {
     display: block;
     }
 
@@ -113,3 +116,26 @@ display: block;
         color: #ee00ff;
         font-size: 8px;
     }
+
+.logged-in {
+    color: #aa00ff;
+    font-size: 8px;
+    text-align: left;
+}
+
+.who-you-are {
+    line-height: 75%;
+}
+
+.highlight {
+    
+    &:hover {
+        background-color: #d7c2ff;
+        color: #ee00ff;
+
+        a {
+            color: #ee00ff;
+        }
+    }
+
+}
