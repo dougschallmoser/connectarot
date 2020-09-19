@@ -50,7 +50,7 @@
 <p></p>
 
   <%= form_tag user_entries_path(@user), method: 'get' do %>
-    Filter by card pulled:
+    Filter by card:
     <%= collection_select :card, :card_id, @cards, :id, :name, include_blank: true %>
     <%= submit_tag 'Filter' %>
   <% end %>

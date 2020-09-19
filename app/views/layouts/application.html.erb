@@ -20,24 +20,24 @@
           <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
           <% if logged_in? %>
             <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "Request", requests_path %></span>
+              <span class="nav-text"><%= link_to_unless_current "Requests", requests_path %></span>
               <div class="dropdown-content">
-                <%= link_to_unless_current "View Requests", requests_path %><br>
-                <%= link_to_unless_current "New Request", new_request_path %><br>
+                <%= link_to_unless_current "View Requests", requests_path %>
               </div>
             </div>
             <div class="dropdown">
               <span class="nav-text"><%= link_to_unless_current "Cards", cards_path %></span>
               <div class="dropdown-content">
-                <%= link_to_unless_current "All Cards", cards_path %><br>
+                <%= link_to_unless_current "All Cards", cards_path %>
               </div>
             </div>
             <div class="dropdown">
               <span class="nav-text"><%= link_to_unless_current "My Tarot", user_entries_path(current_user) %></span> 
               <div class="dropdown-content">
-                <%= link_to_unless_current "My Page", user_entries_path(current_user) %><br>
+                <%= link_to_unless_current "Readings", user_entries_path(current_user) %><br>
+                <%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %><br>
+                <%= link_to_unless_current "New Request", new_request_path %><br>
                 <%= link_to_unless_current "Account", edit_user_path(current_user) %><br>
-                <%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %>
                 <%= link_to "Logout", logout_path, method: "delete" %>
               </div>
             </div>
