@@ -43,6 +43,7 @@
 
         &:hover {
             border: 2px dashed #ee00ff;
+            padding: 0px 4px;
         }
     }
 }
@@ -62,60 +63,21 @@ line-height: 200%;
 word-spacing: 1px;
 padding: 8px 2px 2px 2px;
 position: absolute;
-width: 185%;
+width: 200%;
 overflow: auto;
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 z-index: 1;
-}
-
-.dropdown-content-login {
-    display: none;
-    color: #d787ff;
-    font-size: 12px;
-    word-spacing: 1px;
-    line-height: 200%;
-    position: absolute;
-    border-radius: 5px;
-    background-color: #e4d6ff;
-    width: 215%;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 8px 2px;
-    z-index: 1;
-}
-
-.dropdown-content-requests {
-    display: none;
-    color: #d787ff;
-    font-size: 12px;
-    word-spacing: 1px;
-    line-height: 175%;
-    position: absolute;
-    border-radius: 5px;
-    background-color: #e4d6ff;
-    width: 140%;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 5px 2px 2px 2px;
-    z-index: 1;
 }
   
 .dropdown:hover .dropdown-content {
 display: block;
 }
 
-.dropdown:hover .dropdown-content-login {
-    display: block;
-    }
 
-.dropdown:hover .dropdown-content-requests {
-    display: block;
-    }
-
-    .user-email {
-        color: #ee00ff;
-        font-size: 8px;
-    }
+.user-email {
+    color: #ee00ff;
+    font-size: 9px;
+}
 
 .logged-in {
     color: #aa00ff;
