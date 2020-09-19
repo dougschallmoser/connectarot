@@ -17,10 +17,10 @@
           <div class="navigation">
           <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
           <% if logged_in? %>
-            <span class="nav-text"><%= link_to_unless_current "Requests", requests_path %></span>
-            <span class="nav-text"><%= link_to_unless_current "Cards", cards_path %></span>
+            <span class="nav-text"><%= link_to "Requests", requests_path %></span>
+            <span class="nav-text"><%= link_to "Cards", cards_path %></span>
             <div class="dropdown">
-              <span class="nav-text"><%= link_to_unless_current "My Tarot", user_entries_path(current_user) %></span> 
+              <span class="nav-text"><%= link_to "My Tarot", user_entries_path(current_user) %></span> 
               <div class="dropdown-content">
                 <div class="who-you-are">
                   <span class="logged-in">You are logged in as<br></span>
@@ -35,8 +35,8 @@
               </div>
             </div>
           <% else %>
-            <span class="nav-text"><%= link_to_unless_current "Sign Up", new_user_path %></span> 
-            <span class="nav-text"><%= link_to_unless_current "Login", login_path %></span>
+            <span class="nav-text"><%= link_to "Sign Up", new_user_path %></span> 
+            <span class="nav-text"><%= link_to "Login", login_path %></span>
           <% end %>
           </div>
         </nav>
