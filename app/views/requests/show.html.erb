@@ -7,8 +7,24 @@
 <% end %>
 
 <p>
-  Request created by: <span class="pink-color"><%= @request.requestor.name %></span><br>
-  Request accepted by: <span class="pink-color"><%= @request.responder.name if @request.responder %></span>
+  Request created by:
+  <span class="purple-color">
+    <% if @request.requestor == current_user %>
+      You
+    <% else %>
+      <%= @request.requestor.name %>
+    <% end %>
+  </span><br>
+  Request accepted by:
+  <span class="purple-color">
+    <% if @request.responder.present? %>
+      <% if @request.responder == current_user %>
+        You
+      <% else %>
+        <%= @request.responder.name %>
+      <% end %>
+    <% end %>
+  </span><br>
 </p>
 
 
