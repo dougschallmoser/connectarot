@@ -4,14 +4,11 @@
 
 <%= form_for @request do |f| %>
   <%= f.hidden_field :requestor_id, value: current_user.id %>
-  <p>
-    <%= f.label :title, "Title:" %><br>
-    <%= f.text_field :title, size: "35" %>
-    <p>&nbsp;</p>
-  </p>
-  <p>
-    <%= f.label :description, "Describe (in detail) what you are seeking:" %><br>
-    <%= f.text_area :description %>
-  </p><br>
+  <%= f.label :title, "Title:" %><br>
+  <%= f.text_field :title, size: "35" %>
+  <p>&nbsp;</p>
+  <%= f.label :description, "Describe (in detail) what you are seeking:" %><br>
+  <%= f.text_area :description %>
+  <p>&nbsp;</p>
   <%= f.submit %>
 <% end %>

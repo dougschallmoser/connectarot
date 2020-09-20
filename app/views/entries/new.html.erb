@@ -10,7 +10,7 @@
     <%= f.collection_select :category_id, @categories, :id, :name, include_blank: true %>
   </p>
   <p>&nbsp;</p>
-  <p>
+  <p></p>
     <h4>Or, create your own spread:</h4>
     <%= f.fields_for :category do |c| %>
       <%= c.label :question_1, "Question 1:" %>
@@ -22,7 +22,7 @@
       <%= c.label :question_3, "Question 3:" %>
       <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
     <% end %>
-  </p>
+  <p>&nbsp;</p>
   <hr>
   <h4>Then, pull three cards to create a new reading:</h4>
   <%= f.submit "Pull Card", class: "pull-card" %>

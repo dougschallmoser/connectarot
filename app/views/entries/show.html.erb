@@ -26,109 +26,104 @@
         <div class="catgegory-name"><%= link_to "Show Original Request", request_path(@entry.request) %></div>
       <% end %>
 
-      <p>
-      <span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span>
+      <p><span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span></p>
 
-        <p>
-            <table class="three-cards">
-              <tr>
-                <% @entry.cards.each do |card| %>
-                  <td><%= image_tag card.image, width: "150px", height: "261px" %></td>
-                <% end %>
-              </tr>
-            </table>
-          <br>
-          
-            <% @entry.cards.each do |card| %>
-              <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
-            <% end %>
-        </p>
+      <table class="three-cards">
+        <tr>
+          <% @entry.cards.each do |card| %>
+            <td><%= image_tag card.image, width: "150px", height: "261px" %></td>
+          <% end %>
+        </tr>
+      </table>
+      <br>
+    
+      <% @entry.cards.each do |card| %>
+        <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
+      <% end %>
+      
     </div>
-      </p>
-      <br><hr>
+      
+    <br><hr>
+    <p>
+      <div class="centered">
+        <span class="question-title"><%= @entry.category.question_1 %></span><br>
+        You pulled <span class="card-name-small"><%= @entry.cards[0].name %><%= " (#{@entry.cards[0].number})" if @entry.cards[0].designation == "Major" %></span>
+      </div>
+    </p>
+    <%= @entry.cards[0].meaning %><br>
+    <% if @entry.request %>
       <p>
-        <div class="centered">
-          <span class="question-title"><%= @entry.category.question_1 %></span><br>
-          You pulled <span class="card-name-small"><%= @entry.cards[0].name %><%= " (#{@entry.cards[0].number})" if @entry.cards[0].designation == "Major" %></span>
+        <div class="interpretations">
+          <%= @entry.interpretation_1 %>
+          <div class="signature">-<%= @entry.request.responder.name %></div>
         </div>
       </p>
-        <%= @entry.cards[0].meaning %><br>
-        
-        <% if @entry.request %>
-          <p>
-            <div class="interpretations">
-              <%= @entry.interpretation_1 %>
-              <div class="signature">-<%= @entry.request.responder.name %></div>
-            </div>
-          </p>
-        <% end %>
+    <% end %>
 
-        <hr>
-      </p>
+    <hr>
+      
+    <p>
+      <div class="centered">
+        <span class="question-title"><%= @entry.category.question_2 %></span><br>
+        You pulled <span class="card-name-small"><%= @entry.cards[1].name %><%= " (#{@entry.cards[1].number})" if @entry.cards[1].designation == "Major" %></span></br>
+      </div>
+    </p>
+    <%= @entry.cards[1].meaning %><br>
+    <% if @entry.request %>
       <p>
-        <div class="centered">
-          <span class="question-title"><%= @entry.category.question_2 %></span><br>
-          You pulled <span class="card-name-small"><%= @entry.cards[1].name %><%= " (#{@entry.cards[1].number})" if @entry.cards[1].designation == "Major" %></span></br>
+        <div class="interpretations">
+          <%= @entry.interpretation_2 %>
+          <div class="signature">-<%= @entry.request.responder.name %></div>
         </div>
       </p>
-        <%= @entry.cards[1].meaning %><br>
+    <% end %>
 
-        <% if @entry.request %>
-          <p>
-            <div class="interpretations">
-              <%= @entry.interpretation_2 %>
-              <div class="signature">-<%= @entry.request.responder.name %></div>
-            </div>
-          </p>
-        <% end %>
-
-        <hr>
-      <p>
-        <div class="centered">
-          <span class="question-title"><%= @entry.category.question_3 %></span><br>
-          You pulled <span class="card-name-small"><%= @entry.cards[2].name %><%= " (#{@entry.cards[2].number})" if @entry.cards[2].designation == "Major" %></span><br>
-        </div>
-      </p>
-        <%= @entry.cards[2].meaning %><br>
-
-        <% if @entry.request %>
-          <p>
-            <div class="interpretations">
-              <%= @entry.interpretation_3 %>
-              <div class="signature">-<%= @entry.request.responder.name %></div>
-            </div>
-          </p>
-        <% end %>
-
-        <hr>
-  </div>
+    <hr>
 
     <p>
-      <% if @thoughts.any? %>
-      <div class="thoughts-display">
-        <div class="thoughts-keyword">Thoughts</div>
-        
-        <table>
-          <% @thoughts.each do |thought| %>
-            <tr>
-              <td id="thoughts-align">
-                <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
-                <%= thought.content %>
-              </td>
-              <td>
-                <%= button_to "Delete", thought_path(thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2"><hr></td>
-            </tr>
-          <% end %>
-          </table>
-        </div>
-      <% end %>
+      <div class="centered">
+        <span class="question-title"><%= @entry.category.question_3 %></span><br>
+        You pulled <span class="card-name-small"><%= @entry.cards[2].name %><%= " (#{@entry.cards[2].number})" if @entry.cards[2].designation == "Major" %></span><br>
+      </div>
     </p>
+    <%= @entry.cards[2].meaning %><br>
+    <% if @entry.request %>
+      <p>
+        <div class="interpretations">
+          <%= @entry.interpretation_3 %>
+          <div class="signature">-<%= @entry.request.responder.name %></div>
+        </div>
+      </p>
+    <% end %>
 
-  <p>
+    <hr>
+  </div>
+
+  <p></p>
+  <% if @thoughts.any? %>
+    <div class="thoughts-display">
+      <div class="thoughts-keyword">Thoughts</div>
+      <table>
+        <% @thoughts.each do |thought| %>
+          <tr>
+            <td id="thoughts-align">
+              <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
+              <%= thought.content %>
+            </td>
+            <td>
+              <%= button_to "Delete", thought_path(thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+  
+
+  <p></p>
     <%= form_for [@entry, @entry.thoughts.build] do |f| %>
       <span class="thoughts-keyword">
         <%= f.label :content, "Add a thought: " %>
@@ -138,5 +133,5 @@
       </p>
       <%= f.submit "Create" %>
     <% end %>
-  </p>
+
 <% end %>

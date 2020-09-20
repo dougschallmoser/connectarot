@@ -4,21 +4,18 @@
 <p>&nbsp;</p>
 
 <%= form_for :user, method: :post do |f| %>
-    <p>
-      <%= f.label :email, "Email: " %>
-      <%= f.text_field :email, size: "25" %>
-    </p>
-    <p>
-      <%= f.label :password, "Password: " %>
-      <%= f.password_field :password, size: "20" %><p>&nbsp;</p>
-    </p>
-    <p>
-      <%= f.submit "Login" %>
-    </p>
+  <p>
+    <%= f.label :email, "Email: " %>
+    <%= f.text_field :email, size: "25" %>
+  </p>
+  <p>
+    <%= f.label :password, "Password: " %>
+    <%= f.password_field :password, size: "20" %><p>&nbsp;</p>
+  </p>
+  <p><%= f.submit "Login" %></p>
 <% end %>
 
 <br>
 
-or login with <%= link_to "Github", "/auth/github" %>
-<br>
+or login with <%= link_to "Github", "/auth/github" %><br>
 or login with <%= link_to "Facebook", "/auth/facebook" %>

@@ -6,7 +6,6 @@
 <% if @all_user_entries.blank? %>
   You do not have any readings
 <% else %>
-
   <div class="summary-display">
     <div class="thoughts-keyword">Monthly Summary</div>
       <table class="summary-table">
@@ -46,7 +45,7 @@
         </p>
   </div>
 
-<p><hr></p>
+  <p><hr></p>
 
   <%= form_tag user_entries_path(@user), method: 'get' do %>
     Filter by card:
@@ -54,7 +53,7 @@
     <%= submit_tag 'Filter' %>
   <% end %>
 
-<br>
+  <br>
 
   <%= form_tag user_entries_path(@user), method: 'get' do %>
     Filter by spread:

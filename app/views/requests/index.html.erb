@@ -13,53 +13,50 @@
   </p>
 
   <table class="all-requests">
-  <% @requests.each do |request| %>
-    <tr>
-      <td id="request-title">
-        <span class="pink-color"><%= link_to request.title, request_path(request) %></span>
-      </td>
-      <td>
-        <div class="small-text">
-          Requested on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by
-          <span class="purple-color">
-            <% if request.requestor == current_user %>
-              You
-            <% else %>
-              <%= request.requestor.name %>
-            <% end %>
-          </span><br>
-          <% if request.responder.present? %>
-            Responded on <%= request.updated_at.strftime("%B %e, %Y at %l:%M%p") %> by
+    <% @requests.each do |request| %>
+      <tr>
+        <td id="request-title">
+          <span class="pink-color"><%= link_to request.title, request_path(request) %></span>
+        </td>
+        <td>
+          <div class="small-text">
+            Requested on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by
             <span class="purple-color">
-              <% if request.responder == current_user %>
+              <% if request.requestor == current_user %>
                 You
               <% else %>
-                <%= request.responder.name %>
+                <%= request.requestor.name %>
               <% end %>
             </span><br>
+            <% if request.responder.present? %>
+              Responded on <%= request.updated_at.strftime("%B %e, %Y at %l:%M%p") %> by
+              <span class="purple-color">
+                <% if request.responder == current_user %>
+                  You
+                <% else %>
+                  <%= request.responder.name %>
+                <% end %>
+              </span><br>
+            <% end %>
+          </div>
+        </td>
+        <td>
+          <% if request.responder.nil? %>
+            <%= button_to "Accept", request_path(request), method: "patch", class: "accept-button" %>
+          <% elsif request.responder && request.entry.nil? %>
+            <button type="button">Pending</button>
+          <% elsif request.entry %>
+            <button type="button">Fulfilled</button>
           <% end %>
-        </div>
-
-      </td>
-      <td>
-        <% if request.responder.nil? %>
-          <%= button_to "Accept", request_path(request), method: "patch", class: "accept-button" %>
-        <% elsif request.responder && request.entry.nil? %>
-          <button type="button">Pending</button>
-        <% elsif request.entry %>
-          <button type="button">Fulfilled</button>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3" id="request-description">
-        <%= request.description %>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3"><% if request != @requests.last %><hr><% end %></td>
-    </tr>
-  <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" id="request-description"><%= request.description %></td>
+      </tr>
+      <tr>
+        <td colspan="3"><% if request != @requests.last %><hr><% end %></td>
+      </tr>
+    <% end %>
   </table>
 <% else %>
   There are currently no requests
