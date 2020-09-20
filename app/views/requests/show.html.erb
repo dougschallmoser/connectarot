@@ -34,20 +34,21 @@
 </p>
 
 <% if @request.entry %>
+  <hr>
   <p>
-    <span class="card-name-small"><%= @request.entry.cards[0].name %></span>
+    Card #1: <span class="card-name-small"><%= @request.entry.cards[0].name %></span>
     <div class="interpretations">
       <%= @request.entry.interpretation_1 %>
     </div>
   </p>
   <p>
-    <span class="card-name-small"><%= @request.entry.cards[1].name %></span>
+    Card #2: <span class="card-name-small"><%= @request.entry.cards[1].name %></span>
     <div class="interpretations">
       <%= @request.entry.interpretation_2 %>
     </div>
   </p>
   <p>
-    <span class="card-name-small"><%= @request.entry.cards[2].name %></span>
+    Card #3: <span class="card-name-small"><%= @request.entry.cards[2].name %></span>
     <div class="interpretations">
       <%= @request.entry.interpretation_3 %>
     </div>
