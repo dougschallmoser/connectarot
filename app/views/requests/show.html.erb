@@ -17,15 +17,13 @@
 </p>
 
 <% if @request.entry %>
+
   <hr>
-    <% @request.entry.cards.each_with_index do |card, index| %>
-      <p>Card #<%= index + 1 %>: <span class="card-name-small"><%= card.name %></span>
-      <div class="interpretations">
-        <%= display_interpretation @request, index %>
-      </div>
-    </p>
-    <% end %>
-    
+  <% @request.entry.cards.each_with_index do |card, index| %>
+    Card #<%= index + 1 %>: <span class="card-name-small"><%= card.name %></span>
+    <div class="interpretations"><%= display_interpretation @request, index %></div><br>
+  <% end %>
+  
 <% elsif @request.responder && @request.responder == current_user %>
   <hr>
   <div class="purple-color">Note: Requests require that you use a physical deck to provide the cards for the reading.</div><br>
