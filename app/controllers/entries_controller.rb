@@ -1,11 +1,9 @@
 class EntriesController < ApplicationController
 
   before_action :set_entry, only: [:show, :update, :destroy]
-  before_action :set_user, only: [:index, :new, :create]
+  before_action :set_user
   before_action :require_login
-  before_action except: [:show, :destroy] do 
-      require_authorization(@user)
-  end
+  before_action :require_authorization
 
   def index
     @all_user_entries = @user.entries.order(created_at: :desc)
@@ -19,7 +17,6 @@ class EntriesController < ApplicationController
   end
 
   def show
-    require_authorization(@entry.user)
     @thoughts = @entry.thoughts.order(created_at: :desc)
   end
 
@@ -40,7 +37,6 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    require_authorization(@entry.user)
     @entry.destroy
     redirect_to user_entries_path(current_user)
   end
@@ -84,7 +80,7 @@ class EntriesController < ApplicationController
   end
 
   def set_user
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: params[:user_id]) || @entry.user
   end
 
   def entry_params
