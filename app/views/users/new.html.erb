@@ -1,27 +1,18 @@
-<h2>Sign Up</h2>
-
 <% title "connecTarot - Sign Up" %>
+<h2>Sign Up</h2>
 
 <h5>All fields required.</h5>
 
 <%= render partial: "application/errors", locals: {object: @user} %>
 
 <%= form_for @user do |f| %>
-  <p>
-    <%= f.label :name, "Name: " %>
-    <%= f.text_field :name, size: "25" %>
-  </p>
-  <div>
-    <%= f.label :email, "Email: " %>
-    <%= f.text_field :email, size: "25" %>
-  </div>
-  <p>
+  <%= f.label :name, "Name: " %>
+  <%= f.text_field :name, size: "25" %><p></p>
+  <%= f.label :email, "Email: " %>
+  <%= f.text_field :email, size: "25" %><p></p>
   <%= f.label :password, "Password: " %>
-  <%= f.password_field :password, size: "20" %><p>&nbsp;</p>
-  </p>
-  <p>
-    <%= f.submit "Create Account" %>
-  </p>
+  <%= f.password_field :password, size: "20" %><p></p><br>
+  <%= f.submit "Create Account" %>
 <% end %>
 
 <br>or sign up with <%= link_to "Github", "/auth/github" %>

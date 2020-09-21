@@ -7,34 +7,23 @@
 <table class="edit-account">
   <tr>
     <td>
+      <div class="centered">To edit your account information, submit the form below:</div>
+      <h5 class="centered">*required field</h5>
       <%= form_for @user do |f| %>
-        <div class="centered">
-          To edit your account information, submit the form below:
-          <h5>*required field</h5>
-        </div>
-          <%= f.label :name, "*Name: " %>
-          <%= f.text_field :name, size: "25" %>
-        <p>
-          <%= f.label :email, "*Email: " %>
-          <%= f.text_field :email, size: "33" %>
-        </p>
-        <p>
-          <%= f.label :password, "*Current Password: " %>
-          <%= f.password_field :password, size: "25" %>
-        </p>
+        <%= f.label :name, "*Name: " %>
+        <%= f.text_field :name, size: "25" %><p></p>
+        <%= f.label :email, "*Email: " %>
+        <%= f.text_field :email, size: "33" %><p></p>
+        <%= f.label :password, "*Current Password: " %>
+        <%= f.password_field :password, size: "25" %><p></p>
         <%= f.label :new_password, "New Password: " %>
-        <%= f.password_field :new_password, size: "25" %>
-        <p>
-          <div class="centered"><%= f.submit "Update Account" %></div>
-        </p>
+        <%= f.password_field :new_password, size: "25" %><p></p><br>
+        <div class="centered"><%= f.submit "Update Account" %></div>
       <% end %>
     </td>
-    <% if @user.image %>
-      <td><%= image_tag @user.image, width: "160", id: "profile-pic" %></td>
-    <% end %>
+    <td><%= display_user_photo @user %></td>
   </tr>
 </table>
 
-<br>If you would like to delete your account, please click the button below:
-<p></p>
+<br>If you would like to delete your account, please click the button below:<p></p>
 <%= button_to "Delete Account", user_path(current_user),  method: :delete, onclick: "return confirm('Are you sure you want to delete your account?')" %>
