@@ -1,10 +1,6 @@
 <h2>Reading Request</h2>
 
-<% if flash[:error].present? %>
-  <% flash[:error].each do |error| %>
-    <span class="error-font"><%= error %></span>
-  <% end %>
-<% end %>
+<%= render partial: "application/flash_message" %><br>
 
 <div>
   Request created by:

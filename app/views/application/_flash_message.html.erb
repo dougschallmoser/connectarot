@@ -1,3 +1,10 @@
 <% if flash[:message].present? %>
-  <span class="error-font"><%= flash[:message] %></span>
+  <% if flash[:message].is_a? String %>
+    <span class="error-font"><%= flash[:message] %></span>
+  <% end %>
+
+  <% elsif flash[:message].is_a? Array %>
+    <% flash[:message].each do |msg| %>
+      <span class="error-font"><%= msg %></span>
+    <% end %>
 <% end %>
