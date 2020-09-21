@@ -2,9 +2,7 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: [:edit, :update, :destroy]
   before_action :require_login, only: [:edit, :update, :destroy]
-  before_action only: [:edit, :update, :destroy] do 
-      require_authorization(@user)
-  end
+  before_action :require_authorization, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -26,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if @user && @user.id == session[:user_id]
-      self.authenticate_and_update_info(@user)
+      authenticate_and_update_info(@user)
     else
       redirect_to user_entries_path(@user)
     end
@@ -46,5 +44,20 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password)
   end
+
+  def authenticate_and_update_info(user)
+    if user.authenticate(params[:user][:password])
+      user.update(user_params)
+      if params[:user][:new_password].present?
+        user.password = params[:user][:new_password]
+        user.save
+      end
+      flash[:message] = "Changes saved"
+    else
+        flash[:message] = "Invalid credentials. Please try again."
+    end
+    redirect_to edit_user_path(user)
+  end
+
     
 end
