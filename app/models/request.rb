@@ -25,5 +25,13 @@ class Request < ApplicationRecord
       self.errors.add(:you, "cannot accept your own request")
     end
   end
+
+  def display_date_created
+    self.created_at.strftime("%B %e, %Y at %l:%M%p")
+  end
+
+  def display_date_updated
+    self.updated_at.strftime("%B %e, %Y at %l:%M%p")
+  end
     
 end

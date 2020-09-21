@@ -1,17 +1,13 @@
 <% title "connecTarot - Requests" %>
-
 <h2>Reading Requests</h2>
-
-<%= render partial: "application/flash_message" %>
+<%= render partial: "application/flash_message" %><br>
 
 <% if @requests.any? %>
-  <p>
-    <%= form_tag requests_path, method: 'get' do %>
-      Search by name:
-      <%= text_field_tag :name %>
-      <%= submit_tag 'Search' %>
-    <% end %>
-  </p>
+  <%= form_tag requests_path, method: 'get' do %>
+    Search by name:
+    <%= text_field_tag :name %>
+    <%= submit_tag 'Search' %><p></p>
+  <% end %>
 
   <table class="all-requests">
     <% @requests.each do |request| %>
@@ -21,42 +17,14 @@
         </td>
         <td>
           <div class="small-text">
-            Requested on <%= request.created_at.strftime("%B %e, %Y at %l:%M%p") %> by
-            <span class="purple-color">
-              <% if request.requestor == current_user %>
-                You
-              <% else %>
-                <%= request.requestor.name %>
-              <% end %>
-            </span><br>
-            <% if request.responder.present? %>
-              Responded on <%= request.updated_at.strftime("%B %e, %Y at %l:%M%p") %> by
-              <span class="purple-color">
-                <% if request.responder == current_user %>
-                  You
-                <% else %>
-                  <%= request.responder.name %>
-                <% end %>
-              </span><br>
-            <% end %>
+            Requested on <%= request.display_date_created %> by <span class="purple-color"><%= requestor_name request %></span><br>
+            <%= display_responder_if_present request %>
           </div>
         </td>
-        <td>
-          <% if request.responder.nil? %>
-            <%= button_to "Accept", request_path(request), method: "patch", class: "accept-button" %>
-          <% elsif request.responder && request.entry.nil? %>
-            <button type="button">Pending</button>
-          <% elsif request.entry %>
-            <button type="button">Fulfilled</button>
-          <% end %>
-        </td>
+        <td><%= display_buttons request %></td>
       </tr>
-      <tr>
-        <td colspan="3" id="request-description"><%= request.description %></td>
-      </tr>
-      <tr>
-        <td colspan="3"><% if request != @requests.last %><hr><% end %></td>
-      </tr>
+      <tr><td colspan="3" id="request-description"><%= request.description %></td></tr>
+      <tr><td colspan="3"><% if request != @requests.last %><hr><% end %></td></tr>
     <% end %>
   </table>
 <% else %>

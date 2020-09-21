@@ -3,8 +3,8 @@
 <%= render partial: "application/flash_message" %><br>
 
 <div>
-  Request created by: <span class="purple-color"><%= request_created_by @request %></span><br>
-  Request accepted by: <span class="purple-color"><%= request_accepted_by @request %></span><br>
+  Request created by: <span class="purple-color"><%= requestor_name @request %></span><br>
+  Request accepted by: <span class="purple-color"><%= responder_name @request %></span><br>
 </div>
 
 <br><div class="category-name"><%= @request.title %></div><br>
