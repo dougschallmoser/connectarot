@@ -6,13 +6,7 @@
 
 <div>
   Request created by:
-  <span class="purple-color">
-    <% if @request.requestor == current_user %>
-      You
-    <% else %>
-      <%= @request.requestor.name %>
-    <% end %>
-  </span><br>
+  <span class="purple-color"><%= request_created_by @request %></span><br>
   Request accepted by:
   <span class="purple-color">
     <% if @request.responder.present? %>
