@@ -4,7 +4,8 @@ class ThoughtsController < ApplicationController
 
   def create
     entry = Entry.find_by(id: params[:entry_id])
-    require_authorization(entry.user)
+    set_user(entry)
+    require_authorization
     thought = entry.thoughts.build(thought_params)
     if !thought.save
       flash[:message] = thought.errors.full_messages.to_sentence
@@ -17,7 +18,8 @@ class ThoughtsController < ApplicationController
   def destroy
     thought = Thought.find_by(id: params[:id])
     entry = thought.entry
-    require_authorization(entry.user)
+    set_user(entry)
+    require_authorization
     thought.destroy
     redirect_to entry_path(entry.id)
   end
@@ -26,6 +28,10 @@ class ThoughtsController < ApplicationController
 
   def thought_params
     params.require(:thought).permit(:content)
+  end
+
+  def set_user(entry)
+    @user = entry.user
   end
 
 end
