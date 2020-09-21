@@ -1,29 +1,21 @@
 <% title "connecTarot - #{@request.title}" %>
-
 <h2>Reading Request</h2>
-
 <%= render partial: "application/flash_message" %><br>
 
 <div>
-  Request created by:
-  <span class="purple-color"><%= request_created_by @request %></span><br>
-  Request accepted by:
-  <span class="purple-color"><%= request_accepted_by @request %></span><br>
+  Request created by: <span class="purple-color"><%= request_created_by @request %></span><br>
+  Request accepted by: <span class="purple-color"><%= request_accepted_by @request %></span><br>
 </div>
 
-<p>
-  <span class="category-name"><%= @request.title %></span><br>
-  <div class="justified"><%= @request.description %></div>
-</p>
+<br><div class="category-name"><%= @request.title %></div><br>
+<div class="justified"><%= @request.description %></div><br>
 
 <% if @request.entry %>
-
   <hr>
   <% @request.entry.cards.each_with_index do |card, index| %>
     Card #<%= index + 1 %>: <span class="card-name-small"><%= card.name %></span>
     <div class="interpretations"><%= display_interpretation @request, index %></div><br>
   <% end %>
-  
 <% elsif @request.responder && @request.responder == current_user %>
   <hr>
   <div class="purple-color">Note: Requests require that you use a physical deck to provide the cards for the reading.</div><br>
@@ -33,32 +25,20 @@
     <%= f.hidden_field :responder_id, value: @request.responder.id %>
     <%= f.hidden_field :category_id, value: 6 %>
     <%= f.fields_for :card_ids do |c| %>
-      <p>
-        <%= c.label "Card #1:" %><br>
-        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
-      </p>
-      <p>
-        <%= c.label "Card #2:" %><br>
-        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
-      </p>
-      <p>
-        <%= c.label "Card #3:" %><br>
-        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
-      </p>
+      <%= c.label "Card #1:" %><br>
+      <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %><p></p>
+      <%= c.label "Card #2:" %><br>
+      <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %><p></p>
+      <%= c.label "Card #3:" %><br>
+      <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
     <% end %>
     <p>&nbsp;</p>
-    <p>
-      <%= f.label :interpretation_1, "Interpretation for Card #1:" %><br>
-      <%= f.text_area :interpretation_1 %>
-    </p>
-    <p>
-      <%= f.label :interpretation_2, "Interpretation for Card #2:" %><br>
-      <%= f.text_area :interpretation_2 %>
-    </p>
-    <p>
-      <%= f.label :interpretation_3, "Interpretation for Card #3:" %><br>
-      <%= f.text_area :interpretation_3 %>
-    </p>
+    <%= f.label :interpretation_1, "Interpretation for Card #1:" %><br>
+    <%= f.text_area :interpretation_1 %><p></p>
+    <%= f.label :interpretation_2, "Interpretation for Card #2:" %><br>
+    <%= f.text_area :interpretation_2 %><p></p>
+    <%= f.label :interpretation_3, "Interpretation for Card #3:" %><br>
+    <%= f.text_area :interpretation_3 %><p></p>
     <%= f.submit "Submit Reading" %>
   <% end %>
 <% end %>
