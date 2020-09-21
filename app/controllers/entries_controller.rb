@@ -30,9 +30,9 @@ class EntriesController < ApplicationController
     @entry = Entry.find_by(id: params[:entry_id]) if params[:entry_id].present?
     @entry ||= @user.entries.create(entry_params)
     if params[:entry] && params[:entry][:card_ids]
-        custom_entry_redirect(@entry)
+      custom_entry_redirect(@entry)
     else
-        regular_entry_redirect(@entry)
+      regular_entry_redirect(@entry)
     end
   end
 
@@ -45,23 +45,23 @@ class EntriesController < ApplicationController
 
   def custom_entry_redirect(entry)
     if @entry.valid?
-        redirect_to request_path(@entry.request)
+      redirect_to request_path(@entry.request)
     else
-        @request = Request.find_by(id: params[:entry][:request_id])
-        @cards = Card.all
-        flash[:error] = @entry.errors.full_messages
-        render "requests/show"
+      @request = Request.find_by(id: params[:entry][:request_id])
+      @cards = Card.all
+      flash[:error] = @entry.errors.full_messages
+      render "requests/show"
     end
   end
 
   def regular_entry_redirect(entry)
     if @entry.valid?
-        @entry.add_randomized_card
-        redirect_to(entry_path(@entry))
+      @entry.add_randomized_card
+      redirect_to(entry_path(@entry))
     else
-        @category = @entry.build_category
-        @categories = Category.all.limit(5)
-        render :new 
+      @category = @entry.build_category
+      @categories = Category.all.limit(5)
+      render :new 
     end
   end
 
