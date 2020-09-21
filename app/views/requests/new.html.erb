@@ -1,14 +1,11 @@
 <% title "connecTarot - New Request" %>
-
 <h2>Request a Reading</h2>
-
-<%= render partial: "application/errors", locals: {object: @request} %>
+<%= render partial: "application/errors", locals: {object: @request} %><br>
 
 <%= form_for @request do |f| %>
   <%= f.hidden_field :requestor_id, value: current_user.id %>
   <%= f.label :title, "Title:" %><br>
-  <%= f.text_field :title, size: "35" %>
-  <p>&nbsp;</p>
+  <%= f.text_field :title, size: "35" %><p></p>
   <%= f.label :description, "Describe (in detail) what you are seeking:" %><br>
   <%= f.text_area :description %>
   <p>&nbsp;</p>
