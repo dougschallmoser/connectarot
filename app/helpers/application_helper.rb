@@ -4,5 +4,9 @@ module ApplicationHelper
     "#{root_path}requests?name=#{current_user.name.gsub(" ", "+")}&commit=Search"
   end
 
+  def title(title)
+    content_for :title, title 
+  end
+
 end
 
