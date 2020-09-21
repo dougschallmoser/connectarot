@@ -1,23 +1,15 @@
 <% title "connecTarot - Login" %>
-
 <h2>Log In</h2>
-
 
 <br><%= render partial: "application/flash_message" %><br>
 
 <%= form_for :user, method: :post do |f| %>
-  <p>
-    <%= f.label :email, "Email: " %>
-    <%= f.text_field :email, size: "25" %>
-  </p>
-  <p>
-    <%= f.label :password, "Password: " %>
-    <%= f.password_field :password, size: "20" %><p>&nbsp;</p>
-  </p>
-  <p><%= f.submit "Login" %></p>
+  <%= f.label :email, "Email: " %>
+  <%= f.text_field :email, size: "25" %><p></p>
+  <%= f.label :password, "Password: " %>
+  <%= f.password_field :password, size: "20" %><p>&nbsp;</p>
+  <%= f.submit "Login" %>
 <% end %>
 
-<br>
-
-or login with <%= link_to "Github", "/auth/github" %><br>
-or login with <%= link_to "Facebook", "/auth/facebook" %>
+<br>or login with <%= link_to "Github", "/auth/github" %>
+<br>or login with <%= link_to "Facebook", "/auth/facebook" %>
