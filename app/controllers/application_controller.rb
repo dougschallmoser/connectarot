@@ -13,14 +13,14 @@ class ApplicationController < ActionController::Base
 
   def require_authorization
     unless @user == current_user || (User.find_by(id: params[:entry][:responder_id]) if params[:entry]) == current_user
-      flash[:error] = "You do not have permission to view that page."
+      flash[:message] = "You do not have permission to view that page."
       redirect_to user_entries_path(current_user)
     end
   end
 
   def require_login
     unless logged_in?
-      flash[:error] = "You must be logged in to view that page"
+      flash[:message] = "You must be logged in to view that page"
       redirect_to login_path 
     end
   end

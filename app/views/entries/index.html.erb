@@ -1,7 +1,6 @@
 <h2><%= current_user.name %>'s Readings</h2>
 
-<%= render partial: "layouts/flash_errors" %>
-<%= render partial: "layouts/flash_message" %><br>
+<%= render partial: "application/flash_message" %><br>
 
 <% if @all_user_entries.blank? %>
   You do not have any readings

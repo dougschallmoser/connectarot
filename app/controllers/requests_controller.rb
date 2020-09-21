@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
         @cards = Card.all
         render :show 
     else
-        flash[:error] = @request.errors.full_messages.to_sentence
+        flash[:message] = @request.errors.full_messages.to_sentence
         redirect_to requests_path
     end
   end
@@ -52,7 +52,7 @@ class RequestsController < ApplicationController
 
   def check_authorization(request)
     unless request.requestor == current_user || request.responder == current_user 
-        flash[:error] = "You do not have permission to view that request"
+        flash[:message] = "You do not have permission to view that request"
         redirect_to requests_path
     end
   end

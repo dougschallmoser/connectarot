@@ -49,7 +49,7 @@ class EntriesController < ApplicationController
     else
       @request = Request.find_by(id: params[:entry][:request_id])
       @cards = Card.all
-      flash[:error] = @entry.errors.full_messages
+      flash[:message] = @entry.errors.full_messages
       render "requests/show"
     end
   end

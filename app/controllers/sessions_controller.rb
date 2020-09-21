@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         flash[:message] = "You have successfully authenticated"
         redirect_to user_entries_path(user)
       else
-        flash[:error] = "Email is is blank. Please try again"
+        flash[:message] = "Email is is blank. Please try again"
         redirect_to login_path
       end
     else 
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         flash[:message] = "You have successfully logged in"
         redirect_to user_entries_path(@user)
       else
-        flash[:error] = "Invalid credentials. Please try again"
+        flash[:message] = "Invalid credentials. Please try again"
         redirect_to login_path
       end
     end
