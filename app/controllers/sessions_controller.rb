@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       user = User.find_or_create_by_omniauth(auth_hash)
       if user.email
         session[:user_id] = user.id
-        flash[:message] = "You have successfully logged in"
+        flash[:message] = "You have successfully authenticated"
         redirect_to user_entries_path(user)
       else
         flash[:error] = "Email is is blank. Please try again"
