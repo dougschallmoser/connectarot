@@ -8,15 +8,7 @@
   Request created by:
   <span class="purple-color"><%= request_created_by @request %></span><br>
   Request accepted by:
-  <span class="purple-color">
-    <% if @request.responder.present? %>
-      <% if @request.responder == current_user %>
-        You
-      <% else %>
-        <%= @request.responder.name %>
-      <% end %>
-    <% end %>
-  </span><br>
+  <span class="purple-color"><%= request_accepted_by @request %></span><br>
 </div>
 
 <p>
@@ -26,24 +18,14 @@
 
 <% if @request.entry %>
   <hr>
-  <p>
-    Card #1: <span class="card-name-small"><%= @request.entry.cards[0].name %></span>
-    <div class="interpretations">
-      <%= @request.entry.interpretation_1 %>
-    </div>
-  </p>
-  <p>
-    Card #2: <span class="card-name-small"><%= @request.entry.cards[1].name %></span>
-    <div class="interpretations">
-      <%= @request.entry.interpretation_2 %>
-    </div>
-  </p>
-  <p>
-    Card #3: <span class="card-name-small"><%= @request.entry.cards[2].name %></span>
-    <div class="interpretations">
-      <%= @request.entry.interpretation_3 %>
-    </div>
-  </p>
+    <% @request.entry.cards.each_with_index do |card, index| %>
+      <p>Card #<%= index + 1 %>: <span class="card-name-small"><%= card.name %></span>
+      <div class="interpretations">
+        <%= display_interpretation @request, index %>
+      </div>
+    </p>
+    <% end %>
+    
 <% elsif @request.responder && @request.responder == current_user %>
   <hr>
   <div class="purple-color">Note: Requests require that you use a physical deck to provide the cards for the reading.</div><br>
