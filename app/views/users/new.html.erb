@@ -1,9 +1,8 @@
 <% title "connecTarot - Sign Up" %>
 <h2>Sign Up</h2>
 
-<h5>All fields required.</h5>
-
 <%= render partial: "application/errors", locals: {object: @user} %>
+<h5>All fields required.</h5>
 
 <%= form_for @user do |f| %>
   <%= f.label :name, "Name: " %>
