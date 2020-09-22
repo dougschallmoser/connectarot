@@ -12,11 +12,13 @@
   <h4>Or, create your own spread:</h4>
   <%= f.fields_for :category do |c| %>
     <%= c.label :question_1, "Question 1:" %>
-    <%= c.text_field :question_1, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><p></p>
-    <%= c.label :question_2, "Question 2:" %>
-    <%= c.text_field :question_2, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><p></p>
-    <%= c.label :question_3, "Question 3:" %>
-    <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
+    <div class="<%= display_field_with_errors_if_errors @entry %>">
+      <%= c.text_field :question_1, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><p></p>
+      <%= c.label :question_2, "Question 2:" %>
+      <%= c.text_field :question_2, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><p></p>
+      <%= c.label :question_3, "Question 3:" %>
+      <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
+    </div>
   <% end %>
   <p>&nbsp;</p>
   <hr><h4>Then, pull three cards to create a new reading:</h4>

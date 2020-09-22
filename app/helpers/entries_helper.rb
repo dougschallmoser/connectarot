@@ -27,4 +27,8 @@ module EntriesHelper
   def to_percent(num, den)
     "(#{(num.to_f / den.to_f * 100).ceil}%)"
   end
+
+  def display_field_with_errors_if_errors(entry)
+    'field_with_errors' if entry.errors[:category].any?
+  end
 end
