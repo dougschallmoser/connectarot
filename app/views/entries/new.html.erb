@@ -8,7 +8,7 @@
 <%= form_for [@user, @entry] do |f| %>
   <p></p>
   <h4>Select an existing spread for your reading:</h4>
-  <div class="<%= display_field_with_errors_if_errors @entry, "category" %>">
+  <div class="<%= display_field_with_errors_if_any @entry %>">
     <%= f.collection_select :category_id, @categories, :id, :name, include_blank: true %><p>&nbsp;</p>
     <h4>Or, create your own spread:</h4>
     <%= f.fields_for :category do |c| %>

@@ -28,10 +28,6 @@ module EntriesHelper
     "(#{(num.to_f / den.to_f * 100).ceil}%)"
   end
 
-  def display_field_with_errors_if_errors(entry, name)
-    'field_with_errors' if entry.errors[name.to_sym].any?
-  end
-
   def display_field_with_errors_if_any(entry)
     'field_with_errors' if entry.errors.any?
   end
