@@ -1,5 +1,4 @@
 class Request < ApplicationRecord
-
   belongs_to :requestor, class_name: "User"
   belongs_to :responder, class_name: "User", optional: true
   has_one :entry
@@ -32,6 +31,5 @@ class Request < ApplicationRecord
 
   def display_date_updated
     self.updated_at.strftime("%B %e, %Y at %l:%M%p")
-  end
-    
+  end 
 end

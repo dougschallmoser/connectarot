@@ -1,5 +1,4 @@
 class Entry < ApplicationRecord
-
   belongs_to :category
   belongs_to :user
   belongs_to :request, optional: true
@@ -52,5 +51,4 @@ class Entry < ApplicationRecord
   def display_date_created
     self.created_at.strftime("%B %e, %Y at %l:%M%p")
   end
-    
 end
