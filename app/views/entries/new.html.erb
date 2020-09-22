@@ -1,5 +1,4 @@
 <% title "connecTarot - New Reading" %>
-
 <h2>New Reading</h2>
 
 <% if @entry.errors[:category].present? %>
@@ -7,26 +6,20 @@
 <% end %>
 
 <%= form_for [@user, @entry] do |f| %>
-  <p>
-    <h4>Select an existing spread for your reading:</h4>
-    <%= f.collection_select :category_id, @categories, :id, :name, include_blank: true %>
-  </p>
-  <p>&nbsp;</p>
   <p></p>
-    <h4>Or, create your own spread:</h4>
-    <%= f.fields_for :category do |c| %>
-      <%= c.label :question_1, "Question 1:" %>
-      <%= c.text_field :question_1, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
-      <br>
-      <%= c.label :question_2, "Question 2:" %>
-      <%= c.text_field :question_2, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
-      <br>
-      <%= c.label :question_3, "Question 3:" %>
-      <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
-    <% end %>
+  <h4>Select an existing spread for your reading:</h4>
+  <%= f.collection_select :category_id, @categories, :id, :name, include_blank: true %><p>&nbsp;</p>
+  <h4>Or, create your own spread:</h4>
+  <%= f.fields_for :category do |c| %>
+    <%= c.label :question_1, "Question 1:" %>
+    <%= c.text_field :question_1, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><p></p>
+    <%= c.label :question_2, "Question 2:" %>
+    <%= c.text_field :question_2, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><p></p>
+    <%= c.label :question_3, "Question 3:" %>
+    <%= c.text_field :question_3, size: "65", placeholder: "Ask a question about something you are seeking guidance on" %><br>
+  <% end %>
   <p>&nbsp;</p>
-  <hr>
-  <h4>Then, pull three cards to create a new reading:</h4>
+  <hr><h4>Then, pull three cards to create a new reading:</h4>
   <%= f.submit "Pull Card", class: "pull-card" %>
 <% end %>
 
