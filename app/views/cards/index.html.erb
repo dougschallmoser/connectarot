@@ -1,22 +1,12 @@
 <% title "connecTarot - All Cards" %>
-
-<h2>Tarot Cards</h2>
-<br>
+<h2>Tarot Cards</h2><br>
 
 <table class="cards-display">
   <tr>
-    <td>
-      <span class="thoughts-keyword">Major Cards:</span>
-    </td>
+    <td><span class="thoughts-keyword">Major Cards:</span></td>
   </tr>
   <% @cards.each do |card| %>
-    <% if card.designation == "Major" %>
-      <tr>
-        <td>
-          <%= link_to card.name, card_path(card) %>
-        </td>
-      </tr>
-    <% end %>
+    <%= display_link_by_designation(card, "Major") %>
   <% end %>
 </table>
 
@@ -24,17 +14,9 @@
 
 <table class="cards-display">
   <tr>
-    <td>
-     <span class="thoughts-keyword">Minor Cards:</span>
-    </td>
+    <td><span class="thoughts-keyword">Minor Cards:</span></td>
   </tr>
-<% @cards.each do |card| %>
-  <% if card.designation == "Minor" %>
-    <tr>
-      <td>
-        <%= link_to card.name, card_path(card) %>
-      </td>
-    </tr>
+  <% @cards.each do |card| %>
+    <%= display_link_by_designation(card, "Minor") %>
   <% end %>
-<% end %>
 </table>
