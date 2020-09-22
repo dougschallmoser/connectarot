@@ -38,4 +38,11 @@ module RequestsHelper
       content_tag(:span, responder_name(request), class: 'purple-color')
     end
   end
+
+  def display_delete_button(request)
+    if @request.requestor == current_user
+      concat button_to("Delete Request", request_path(request), method: :delete, class: "delete-reading", onclick: "return confirm('Are you sure you want to delete this request?')")
+      content_tag(:br)
+    end
+  end
 end

@@ -8,6 +8,7 @@
 </div>
 
 <br><div class="category-name"><%= @request.title %></div><br>
+<%= display_delete_button @request %>
 <div class="justified"><%= @request.description %></div><br>
 
 <% if @request.entry %>
