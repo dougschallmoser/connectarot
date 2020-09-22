@@ -41,44 +41,35 @@
         You pulled <span class="card-name-small"><%= card.name %><%= " (#{card.number})" if @entry.cards[0].designation == "Major" %></span><p></p>
       </div>
       <%= card.meaning %><p></p>
-      <div class="interpretations"><%= display_interpretation_if_request_exists(@entry, index) %></div><p></p>
+      <%= display_interpretation_if_request_exists @entry, index %><p></p>
       <hr>
     <% end %>
   </div>
 
-  <p></p>
   <% if @thoughts.any? %>
+    <p></p>
     <div class="thoughts-display">
-      <div class="thoughts-keyword">Thoughts</div>
+      <div class="thoughts-keyword">Thoughts</div><br>
       <table>
         <% @thoughts.each do |thought| %>
           <tr>
             <td id="thoughts-align">
-              <span class="underline"><%= thought.created_at.strftime("%B %e, %Y at %l:%M%p") %></span> - 
-              <%= thought.content %>
+              <span class="underline"><%= thought.display_date_created %></span> - <%= thought.content %>
             </td>
             <td>
               <%= button_to "Delete", thought_path(thought), method: :delete, class: "delete-thought", onclick: "return confirm('Are you sure you want to delete this thought?')" %>
             </td>
           </tr>
-          <tr>
-            <td colspan="2"><hr></td>
-          </tr>
+          <tr><td colspan="2"><hr></td></tr>
         <% end %>
       </table>
     </div>
   <% end %>
-  
 
   <p></p>
-    <%= form_for [@entry, @entry.thoughts.build] do |f| %>
-      <span class="thoughts-keyword">
-        <%= f.label :content, "Add a thought: " %>
-      </span>
-      <p>
-        <%= f.text_area :content %>
-      </p>
-      <%= f.submit "Create" %>
-    <% end %>
-
+  <%= form_for [@entry, @entry.thoughts.build] do |f| %>
+    <div class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></div><p></p>
+    <%= f.text_area :content %><p></p>
+    <%= f.submit "Create" %>
+  <% end %>
 <% end %>

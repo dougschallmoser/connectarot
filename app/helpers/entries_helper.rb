@@ -18,8 +18,10 @@ module EntriesHelper
 
   def display_interpretation_if_request_exists(entry, index)
     if entry.request
-      concat content_tag(:div, display_entry_interpretation(entry, index))
-      content_tag(:div, entry.request.responder.name, class: "signature")
+      content_tag(:div, class: "interpretations") do 
+        concat display_entry_interpretation(entry, index)
+        concat content_tag(:div, entry.request.responder.name, class: "signature")
+      end
     end
   end
 
