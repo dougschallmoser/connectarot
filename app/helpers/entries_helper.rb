@@ -23,4 +23,8 @@ module EntriesHelper
       end
     end
   end
+
+  def to_percent(num, den)
+    "(#{(num.to_f / den.to_f * 100).ceil}%)"
+  end
 end

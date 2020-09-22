@@ -1,7 +1,5 @@
 <% title "connecTarot - #{current_user.name} Readings" %>
-
 <h2><%= current_user.name %>'s Readings</h2>
-
 <%= render partial: "application/flash_message" %><br>
 
 <% if @all_user_entries.blank? %>
@@ -23,61 +21,50 @@
         </tr>
         <tr>
           <td><%= @monthly_entries.size %></td>
-          <td><%= @monthly_entries.size * 3 %></td>
-          <td><%= @monthly_entries.designation("Major").size %> <%= "(#{(@monthly_entries.designation("Major").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
-          <td><%= @monthly_entries.designation("Minor").size %> <%= "(#{(@monthly_entries.designation("Minor").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
-          <td><%= @monthly_entries.court_cards.size %> <%= "(#{(@monthly_entries.court_cards.size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
-          <td><%= @monthly_entries.suit_cards("Cups").size %> <%= "(#{(@monthly_entries.suit_cards("Cups").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
-          <td><%= @monthly_entries.suit_cards("Pentacles").size %> <%= "(#{(@monthly_entries.suit_cards("Pentacles").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
-          <td><%= @monthly_entries.suit_cards("Swords").size %> <%= "(#{(@monthly_entries.suit_cards("Swords").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
-          <td><%= @monthly_entries.suit_cards("Wands").size %> <%= "(#{(@monthly_entries.suit_cards("Wands").size.to_f / @total_cards.to_f * 100).ceil}%)" %></td>
+          <td><%= @total_cards %></td>
+          <td><%= @major_cards %> <%= to_percent @major_cards, @total_cards %></td>
+          <td><%= @minor_cards %> <%= to_percent @minor_cards, @total_cards %></td>
+          <td><%= @court_cards %> <%= to_percent @court_cards, @total_cards %></td>
+          <td><%= @cup_cards %> <%= to_percent @cup_cards, @total_cards %></td>
+          <td><%= @pentacle_cards %> <%= to_percent @pentacle_cards, @total_cards %></td>
+          <td><%= @sword_cards %> <%= to_percent @sword_cards, @total_cards %></td>
+          <td><%= @wand_cards %> <%= to_percent @wand_cards, @total_cards %></td>
         </tr>
       </table>
         
-        <p class="centered">
-        <% if @duplicate_cards_hash.any? %>
-          You pulled
-          <% @duplicate_cards_hash.each do |name, count| %>
-            <span class="pink-color"><%= name %></span> <%= count %> times<%= ',' unless name == @duplicate_cards_hash.keys.last %>
-          <% end %>
-        <% else %>
-          You have not pulled the same card more than two times this month.
+      <p></p>
+      <% if @duplicate_cards_hash.any? %>
+        You pulled
+        <% @duplicate_cards_hash.each do |name, count| %>
+          <span class="pink-color"><%= name %></span>
+          <%= count %> times<%= ',' unless name == @duplicate_cards_hash.keys.last %>
         <% end %>
-        </p>
+      <% else %>
+        You have not pulled the same card more than two times this month.
+      <% end %>
   </div>
 
   <p><hr></p>
-
   <%= form_tag user_entries_path(@user), method: 'get' do %>
     Filter by card:
     <%= collection_select :card, :card_id, @cards, :id, :name, include_blank: true %>
     <%= submit_tag 'Filter' %>
-  <% end %>
-
-  <br>
+  <% end %><br>
 
   <%= form_tag user_entries_path(@user), method: 'get' do %>
     Filter by spread:
     <%= collection_select :spread, :category_name, @categories, :name, :name, include_blank: true %>
     <%= submit_tag 'Filter' %>
-  <% end %>
-  <br>
+  <% end %><br>
 
   <table class="all-entries">
     <% @user_entries.each do |entry| %>
       <tr>
-        <td>
-          <%= entry.category.name %>
-        </td>
-        <td>
-          <%= link_to entry.created_at.strftime("%B %e, %Y"), entry_path(entry) %>
-        </td>
-        <td>
-          <%= entry.thoughts.size %> thoughts
-        </td>
-        <td>
-          <%= button_to "Delete Reading", entry_path(entry), method: :delete, class: "delete-reading", onclick: "return confirm('Are you sure you want to delete this reading?')" %>
-        </td>
+        <td><%= entry.category.name %></td>
+        <td><%= link_to entry.display_date_created_short, entry_path(entry) %></td>
+        <td><%= entry.thoughts.size %> thoughts</td>
+        <td><%= button_to "Delete Reading", entry_path(entry), method: :delete, class: "delete-reading",
+            onclick: "return confirm('Are you sure you want to delete this reading?')" %></td>
       </tr>
       <tr>
         <td colspan="4"><% if entry != @user_entries.last %><hr><% end %></td>

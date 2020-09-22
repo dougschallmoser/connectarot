@@ -9,6 +9,13 @@ class EntriesController < ApplicationController
     filter_entries(@all_user_entries)
     @monthly_entries = @all_user_entries.this_month
     @total_cards = @monthly_entries.total_cards
+    @major_cards = @monthly_entries.major_cards.size
+    @minor_cards = @monthly_entries.minor_cards.size
+    @court_cards = @monthly_entries.court_cards.size
+    @cup_cards = @monthly_entries.suit_cards("Cups").size
+    @pentacle_cards = @monthly_entries.suit_cards("Pentacles").size
+    @sword_cards = @monthly_entries.suit_cards("Swords").size
+    @wand_cards = @monthly_entries.suit_cards("Wands").size
     @cards = Card.all
     @categories = Category.all.limit(7)
     @duplicate_cards_hash = @user.cards.select_duplicates # displays user cards (all months)
@@ -37,6 +44,7 @@ class EntriesController < ApplicationController
 
   def destroy
     @entry.destroy
+    flash[:message] = "Reading successfully deleted"
     redirect_to user_entries_path(current_user)
   end
 

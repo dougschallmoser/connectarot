@@ -10,7 +10,8 @@ class Entry < ApplicationRecord
   validates_presence_of :category, :message => "A spread must be selected from the menu or created with three custom questions"
   validates_length_of :cards, maximum: 3
   scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
-  scope :designation, -> (designation) { joins(:cards).where("cards.designation = ?", designation) }
+  scope :major_cards, -> { joins(:cards).where("cards.designation = ?", "Major") }
+  scope :minor_cards, -> { joins(:cards).where("cards.designation = ?", "Minor") }
   scope :court_cards, -> { joins(:cards).where("cards.court = ?", true) }
   scope :suit_cards, -> (suit) { joins(:cards).where("cards.suit = ?", suit) }
     
@@ -50,5 +51,9 @@ class Entry < ApplicationRecord
 
   def display_date_created
     self.created_at.strftime("%B %e, %Y at %l:%M%p")
+  end
+
+  def display_date_created_short
+    self.created_at.strftime("%B %e, %Y")
   end
 end
