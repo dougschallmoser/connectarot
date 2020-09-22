@@ -16,35 +16,28 @@
   <h2>Reading</h2>
   <%= render partial: "application/flash_message" %><br>
 
-  <div class="justified">
-    <div class="centered">
-      <span class="category-name"><%= @entry.category.name.upcase %></span>
-      <%= display_request_link_if_exists @entry %>
-      <p><span id="entry-date"><%= @entry.display_date_created %></span></p>
-      
-      <div class="centered">
-        <% @entry.cards.each do |card| %>
-          <%= image_tag card.image, width: "150px", height: "261px" %>
-        <% end %>
-      </div><br>
-    
-      <% @entry.cards.each do |card| %>
-        <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
-      <% end %>
-    </div>
-      
-    <br><hr><p></p>
-    
-    <% @entry.cards.each_with_index do |card, index| %>
-      <div class="centered">
-        <span class="question-title"><%= display_question @entry, index %></span><br>
-        You pulled <span class="card-name-small"><%= card.name %><%= " (#{card.number})" if @entry.cards[0].designation == "Major" %></span><p></p>
-      </div>
-      <%= card.meaning %><p></p>
-      <%= display_interpretation_if_request_exists @entry, index %><p></p>
-      <hr>
+  <div class="centered">
+    <span class="category-name"><%= @entry.category.name.upcase %></span>
+    <%= display_request_link_if_exists @entry %>
+    <p><span id="entry-date"><%= @entry.display_date_created %></span></p>
+    <% @entry.cards.each do |card| %>
+      <%= image_tag card.image, width: "150px", height: "261px" %>
+    <% end %><br>
+    <% @entry.cards.each do |card| %>
+      <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
     <% end %>
   </div>
+    
+  <br><hr>
+  
+  <% @entry.cards.each_with_index do |card, index| %>
+    <div class="centered">
+      <span class="question-title"><%= display_question @entry, index %></span><br>
+      You pulled <span class="card-name-small"><%= card.name %><%= " (#{card.number})" if card.designation == "Major" %></span><p></p>
+    </div>
+    <div class="justified"><%= card.meaning %></div><p></p>
+    <%= display_interpretation_if_request_exists @entry, index %><hr>
+  <% end %>
 
   <% if @thoughts.any? %>
     <p></p>
