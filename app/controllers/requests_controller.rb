@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
   end
 
   def show
-    check_authorization(@request)
+    check_authorization
     @entry = Entry.new
     @cards = Card.all
   end
@@ -56,8 +56,8 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:title, :description, :requestor_id)
   end
 
-  def check_authorization(request)
-    unless request.requestor == current_user || request.responder == current_user 
+  def check_authorization
+    unless @request.requestor == current_user || @request.responder == current_user 
         flash[:message] = "You do not have permission to view that request"
         redirect_to requests_path
     end
