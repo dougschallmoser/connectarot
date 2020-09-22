@@ -2,102 +2,48 @@
 
 <% if @entry.cards.size == 1 %>
   <h2>New Reading</h2>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p><h4>Pull two more cards...</h4></p>
-  <p>&nbsp;</p>
-  <p><%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %></p>
+  <p>&nbsp;</p><p>&nbsp;</p>
+  <h4>Pull two more cards...</h4>
+  <p>&nbsp;</p><p>&nbsp;</p>
+  <%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %><p>&nbsp;</p>
 <% elsif @entry.cards.size == 2 %>
   <h2>New Reading</h2>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-  <p><h4>Pull one more card...</h4></p>
-  <p>&nbsp;</p>
-  <p><%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %></p>
+  <p>&nbsp;</p><p>&nbsp;</p>
+  <h4>Pull one more card...</h4>
+  <p>&nbsp;</p><p>&nbsp;</p>
+  <%= button_to "Pull Card", user_entries_path(@entry.user), method: :post, class: "pull-card", params: {"entry_id" => @entry.id} %><p>&nbsp;</p>
 <% elsif @entry.cards.size == 3 %>
   <h2>Reading</h2>
-
   <%= render partial: "application/flash_message" %><br>
 
   <div class="justified">
     <div class="centered">
       <span class="category-name"><%= @entry.category.name.upcase %></span>
-
-      <% if @entry.request %>
-        <div class="catgegory-name"><%= link_to "Show Original Request", request_path(@entry.request) %></div>
-      <% end %>
-
-      <p><span id="entry-date"><%= @entry.created_at.strftime("%B %e, %Y at %l:%M%p") %></span></p>
-
-      <table class="three-cards">
-        <tr>
-          <% @entry.cards.each do |card| %>
-            <td><%= image_tag card.image, width: "150px", height: "261px" %></td>
-          <% end %>
-        </tr>
-      </table>
-      <br>
+      <%= display_request_link_if_exists @entry %>
+      <p><span id="entry-date"><%= @entry.display_date_created %></span></p>
+      
+      <div class="centered">
+        <% @entry.cards.each do |card| %>
+          <%= image_tag card.image, width: "150px", height: "261px" %>
+        <% end %>
+      </div><br>
     
       <% @entry.cards.each do |card| %>
         <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
       <% end %>
-      
     </div>
       
-    <br><hr>
-    <p>
+    <br><hr><p></p>
+    
+    <% @entry.cards.each_with_index do |card, index| %>
       <div class="centered">
-        <span class="question-title"><%= @entry.category.question_1 %></span><br>
-        You pulled <span class="card-name-small"><%= @entry.cards[0].name %><%= " (#{@entry.cards[0].number})" if @entry.cards[0].designation == "Major" %></span>
+        <span class="question-title"><%= display_question @entry, index %></span><br>
+        You pulled <span class="card-name-small"><%= card.name %><%= " (#{card.number})" if @entry.cards[0].designation == "Major" %></span><p></p>
       </div>
-    </p>
-    <%= @entry.cards[0].meaning %><br>
-    <% if @entry.request %>
-      <p>
-        <div class="interpretations">
-          <%= @entry.interpretation_1 %>
-          <div class="signature">-<%= @entry.request.responder.name %></div>
-        </div>
-      </p>
+      <%= card.meaning %><p></p>
+      <div class="interpretations"><%= display_interpretation_if_request_exists(@entry, index) %></div><p></p>
+      <hr>
     <% end %>
-
-    <hr>
-      
-    <p>
-      <div class="centered">
-        <span class="question-title"><%= @entry.category.question_2 %></span><br>
-        You pulled <span class="card-name-small"><%= @entry.cards[1].name %><%= " (#{@entry.cards[1].number})" if @entry.cards[1].designation == "Major" %></span></br>
-      </div>
-    </p>
-    <%= @entry.cards[1].meaning %><br>
-    <% if @entry.request %>
-      <p>
-        <div class="interpretations">
-          <%= @entry.interpretation_2 %>
-          <div class="signature">-<%= @entry.request.responder.name %></div>
-        </div>
-      </p>
-    <% end %>
-
-    <hr>
-
-    <p>
-      <div class="centered">
-        <span class="question-title"><%= @entry.category.question_3 %></span><br>
-        You pulled <span class="card-name-small"><%= @entry.cards[2].name %><%= " (#{@entry.cards[2].number})" if @entry.cards[2].designation == "Major" %></span><br>
-      </div>
-    </p>
-    <%= @entry.cards[2].meaning %><br>
-    <% if @entry.request %>
-      <p>
-        <div class="interpretations">
-          <%= @entry.interpretation_3 %>
-          <div class="signature">-<%= @entry.request.responder.name %></div>
-        </div>
-      </p>
-    <% end %>
-
-    <hr>
   </div>
 
   <p></p>

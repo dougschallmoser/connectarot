@@ -48,5 +48,9 @@ class Entry < ApplicationRecord
   def self.total_cards
     self.all.size * 3
   end
+
+  def display_date_created
+    self.created_at.strftime("%B %e, %Y at %l:%M%p")
+  end
     
 end
