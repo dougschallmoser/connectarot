@@ -1,5 +1,4 @@
 module RequestsHelper
-
   def requestor_name(request)
     if request.requestor == current_user 
       "You"
@@ -39,5 +38,4 @@ module RequestsHelper
       content_tag(:span, responder_name(request), class: 'purple-color')
     end
   end
-
 end

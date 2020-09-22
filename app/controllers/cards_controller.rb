@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-
   before_action :require_login
 
   def index
@@ -9,5 +8,4 @@ class CardsController < ApplicationController
   def show
     @card = Card.find_by(id: params[:id])
   end
-
 end

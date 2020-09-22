@@ -1,5 +1,4 @@
 class EntriesController < ApplicationController
-
   before_action :set_entry, only: [:show, :update, :destroy]
   before_action :set_user
   before_action :require_login
@@ -86,5 +85,4 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(:request_id, :category_id, :interpretation_1, :interpretation_2, :interpretation_3, { card_ids: [] }, category_attributes: [:question_1, :question_2, :question_3])
   end
-
 end

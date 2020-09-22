@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root 'welcome#index'
 
   get '/login', to: 'sessions#new'
@@ -16,5 +15,4 @@ Rails.application.routes.draw do
   resources :requests
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-
 end

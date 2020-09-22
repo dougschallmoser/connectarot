@@ -1,5 +1,4 @@
 class ThoughtsController < ApplicationController
-
   before_action :require_login, only: [:create, :destroy]
 
   def create
@@ -33,5 +32,4 @@ class ThoughtsController < ApplicationController
   def set_user(entry)
     @user = entry.user
   end
-
 end

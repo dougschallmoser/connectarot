@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-
   before_action :set_request, only: [:show, :update, :destroy]
   before_action :require_login
 
@@ -56,5 +55,4 @@ class RequestsController < ApplicationController
         redirect_to requests_path
     end
   end
-  
 end

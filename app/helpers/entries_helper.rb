@@ -1,5 +1,4 @@
 module EntriesHelper
-
   def display_request_link_if_exists(entry)
     if @entry.request
       content_tag(:div, (link_to("Show Original Request", request_path(@entry.request))), class: 'catgegory-name')
@@ -24,5 +23,4 @@ module EntriesHelper
       end
     end
   end
-
 end
