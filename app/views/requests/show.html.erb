@@ -25,21 +25,23 @@
     <%= f.hidden_field :request_id, value: @request.id %>
     <%= f.hidden_field :responder_id, value: @request.responder.id %>
     <%= f.hidden_field :category_id, value: 6 %>
-    <%= f.fields_for :card_ids do |c| %>
-      <%= c.label "Card #1:" %><br>
-      <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %><p></p>
-      <%= c.label "Card #2:" %><br>
-      <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %><p></p>
-      <%= c.label "Card #3:" %><br>
-      <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}, required: true) %>
-    <% end %>
-    <p>&nbsp;</p>
-    <%= f.label :interpretation_1, "Interpretation for Card #1:" %><br>
-    <%= f.text_area :interpretation_1 %><p></p>
-    <%= f.label :interpretation_2, "Interpretation for Card #2:" %><br>
-    <%= f.text_area :interpretation_2 %><p></p>
-    <%= f.label :interpretation_3, "Interpretation for Card #3:" %><br>
-    <%= f.text_area :interpretation_3 %><p></p>
+    <div class="<%= display_field_with_errors_if_any @entry %>">
+      <%= f.fields_for :card_ids do |c| %>
+        <%= c.label "Card #1:" %><br>
+        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}) %><p></p>
+        <%= c.label "Card #2:" %><br>
+        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}) %><p></p>
+        <%= c.label "Card #3:" %><br>
+        <%= c.collection_select(nil, @cards, :id, :name, {include_blank: true}) %>
+      <% end %>
+      <p>&nbsp;</p>
+      <%= f.label :interpretation_1, "Interpretation for Card #1:" %><br>
+      <%= f.text_area :interpretation_1 %><p></p>
+      <%= f.label :interpretation_2, "Interpretation for Card #2:" %><br>
+      <%= f.text_area :interpretation_2 %><p></p>
+      <%= f.label :interpretation_3, "Interpretation for Card #3:" %><br>
+      <%= f.text_area :interpretation_3 %><p></p>
+    </div>
     <%= f.submit "Submit Reading" %>
   <% end %>
 <% end %>
