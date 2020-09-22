@@ -8,7 +8,6 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @request = Request.find_by(id: params[:id])
     check_authorization(@request)
     @entry = Entry.new
     @cards = Card.all
@@ -40,6 +39,11 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    @user = @request.responder
+    require_authorization
+    @request.destroy
+    flash[:message] = "Request successfully deleted"
+    redirect_to requests_path
   end
 
   private
