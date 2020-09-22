@@ -1,15 +1,9 @@
 <% title "connecTarot - #{@card.name}" %>
+<h2><%= @card.name %><%= display_card_number_if_major @card %></h2>
 
-<h2><%= @card.name %><%= " (#{@card.number})" if @card.designation == "Major" %></h2>
-
-<span id="card-values"><%= @card.designation %> Arcana</span>
-
-<p>
-  <%= image_tag @card.image, width: "250px" %>
-</p>
+<span id="card-values"><%= @card.designation %> Arcana</span><p></p>
+<%= image_tag @card.image, width: "250px" %><p></p>
 
 <div class="card-body">
-    <p>
-      <%= @card.meaning %>
-    </p>
+  <%= @card.meaning %>
 </div>
