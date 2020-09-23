@@ -31,4 +31,8 @@ module EntriesHelper
   def display_field_with_errors_if_any(entry)
     'field_with_errors' if entry.errors.any?
   end
+
+  def display_field_with_errors(entry, key)
+    'field_with_errors' if entry.errors[key.to_sym].any?
+  end
 end
