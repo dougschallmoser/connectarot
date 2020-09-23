@@ -10,5 +10,13 @@
   <%= f.submit "Login" %>
 <% end %>
 
-<br>or login with <%= link_to "Github", "/auth/github" %>
-<br>or login with <%= link_to "Facebook", "/auth/facebook" %>
+<p></p>
+<table class="omniauth-buttons">
+  <tr>
+    <td colspan="2">Or, login with one of these providers:<p></td>
+  </tr>
+  <tr>
+    <td><%= button_to "Login with Github", "/auth/github" %></td>
+    <td><%= button_to "Login with Facebook", "/auth/facebook" %></td>
+  </tr>
+</table>

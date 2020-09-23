@@ -16,5 +16,13 @@
   <%= f.submit "Create Account" %>
 <% end %>
 
-<br>or sign up with <%= link_to "Github", "/auth/github" %>
-<br>or sign up with <%= link_to "Facebook", "/auth/facebook" %>
+<p></p>
+<table class="omniauth-buttons">
+  <tr>
+    <td colspan="2">Or, sign up with one of these providers:<p></td>
+  </tr>
+  <tr>
+    <td><%= button_to "Sign Up with Github", "/auth/github" %></td>
+    <td><%= button_to "Sign Up with Facebook", "/auth/facebook" %></td>
+  </tr>
+</table>
