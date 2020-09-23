@@ -30,7 +30,7 @@
                 <div class="highlight"><%= link_to_unless_current "My Requests", my_requests_path %></div>
                 <div class="highlight"><%= link_to_unless_current "New Request", new_request_path %></div><hr>
                 <div class="highlight"><%= link_to_unless_current "Account", edit_user_path(current_user) %></div>
-                <div class="highlight"><%= link_to "Logout", logout_path, method: "delete" %>
+                <div class="highlight"><%= link_to "Logout", logout_path, method: "post", onclick: "return confirm('Are you sure you want to logout?')" %>
               </div>
             </div>
           <% else %>
