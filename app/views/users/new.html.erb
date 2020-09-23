@@ -10,7 +10,9 @@
   <%= f.label :email, "Email: " %>
   <%= f.text_field :email, size: "25" %><p></p>
   <%= f.label :password, "Password: " %>
-  <%= f.password_field :password, size: "20" %><p></p><br>
+  <%= f.password_field :password, size: "20" %><p></p>
+  <%= f.label :password_confirmation, "Confirm Password: " %>
+  <%= f.password_field :password_confirmation, size: "20" %><p></p><br>
   <%= f.submit "Create Account" %>
 <% end %>
 
