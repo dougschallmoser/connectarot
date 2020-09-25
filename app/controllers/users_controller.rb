@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
-  before_action :require_login, only: [:edit, :update, :destroy]
-  before_action :require_authorization, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
+  before_action :require_authorization, only: [:show, :edit, :update, :destroy]
 
   def index
     redirect_to signup_path
+  end
+
+  def show
   end
 
   def new
@@ -56,9 +59,10 @@ class UsersController < ApplicationController
         user.save
       end
       flash[:message] = "Changes saved"
+      redirect_to user_path(user)
     else
         flash[:message] = "Invalid credentials. Please try again."
+        render :edit
     end
-    redirect_to edit_user_path(user)
   end
 end
