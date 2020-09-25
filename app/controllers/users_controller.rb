@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
   before_action :require_authorization, only: [:edit, :update, :destroy]
 
+  def index
+    redirect_to signup_path
+  end
+
   def new
     @user = User.new
   end
