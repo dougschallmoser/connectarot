@@ -15,4 +15,8 @@ class User < ApplicationRecord
       u.password = SecureRandom.hex
     end
   end
+
+  def display_date_created
+    self.created_at.strftime("%B %e, %Y")
+  end
 end

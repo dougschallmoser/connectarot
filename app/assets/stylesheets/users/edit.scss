@@ -12,9 +12,6 @@ img#profile-pic {
 
 .edit-account {
   padding: 20px;
-  border: 1px dashed #aa00ff;
-  background-color: #ffe3fa;
-  border-radius: 15px;
 
   td {
     text-align: justify;
@@ -24,9 +21,13 @@ img#profile-pic {
 .account-info {
   background-color: #ebe0ff;
   border-radius: 15px;
-  border: 1px dashed #ee00ff;
+  border: 1px dashed #aa00ff;
   width: 25%;
-  padding: 10px;
+  padding: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
 
   table {
     margin: auto;

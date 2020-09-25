@@ -3,13 +3,14 @@
 <%= render partial: "application/flash_message" %><br>
 
 <div class="account-info">
-  <%= display_user_photo @user %>
+  <%= display_user_photo @user %><p></p>
   <span class="purple-color">Name:</span> <%= @user.name %><p></p>
-  <span class="purple-color">Email:</span> <%= @user.email %><p>&nbsp</p>
+  <span class="purple-color">Email:</span> <%= @user.email %><p></p>
+  <span class="purple-color">Member since:</span> <%= @user.display_date_created %><p>&nbsp</p>
   <table>
     <tr>
       <td><%= button_to "Edit Account", edit_user_path(current_user),  method: :get %></td></td>
       <td><%= button_to "Delete Account", user_path(current_user),  method: :delete, onclick: "return confirm('Are you sure you want to delete your account?')" %></td>
     </tr>
   </table>
-</div>
+</div><p>&nbsp</p>
