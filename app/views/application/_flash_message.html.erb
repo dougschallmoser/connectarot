@@ -3,7 +3,7 @@
     <span class="error-font"><%= flash[:message] %></span>
   <% elsif flash[:message].is_a? Array %>
     <% flash[:message].each do |msg| %>
-      <span class="error-font"><%= msg %></span>
+      <span class="error-font"><%= msg %></span><br>
     <% end %>
   <% end %>
 <% end %>

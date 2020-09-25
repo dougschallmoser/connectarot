@@ -1,18 +1,23 @@
 .field_with_errors input {
-    border: 4px solid #ee00ff;
+  border: 2px dashed #ee00ff;
+  background-color: #fbccff;
 }
 
 .field_with_errors textarea {
-  border: 4px solid #ee00ff;
+  border: 2px dashed #ee00ff;
+  background-color: #fbccff;
 }
 
 .field_with_errors select {
-  border: 4px solid #ee00ff;
+  border: 2px dashed #ee00ff;
+  background-color: #fbccff;
 }
 
 .error-font {
     color: #aa00ff;
-    border: 2px dashed #ee00ff;
+    border: 1px dashed #ee00ff;
     border-radius: 15px;
-    padding: 6px;
+    background-color: #fbccff;
+    padding: 2px 6px;
+    font-size: 12px;
 }
