@@ -18,8 +18,7 @@ class EntriesController < ApplicationController
     @wand_cards = @monthly_entries.suit_cards("Wands").size
     @cards = Card.all
     @categories = Category.all.limit(7)
-    @duplicate_cards_hash = @user.cards.select_duplicates # displays user cards (all months)
-    # @duplicate_cards_hash = @user.cards.this_month.select_duplicates
+    @duplicate_cards_hash = @user.cards.select_duplicates
   end
 
   def show
