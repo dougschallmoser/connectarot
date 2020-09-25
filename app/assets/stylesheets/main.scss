@@ -1,126 +1,126 @@
 body {
-    background-color: #7e5c88;
-    font-family: 'Roboto Slab', serif;
-    margin: 0px;
-    padding: 0px;
+  background-color: #7e5c88;
+  font-family: 'Roboto Slab', serif;
+  margin: 0px;
+  padding: 0px;
 }
 
 header {
-    position: fixed;
-    margin: auto;
-    height: 25px;
-    width: 100%;
-  }
+  position: fixed;
+  margin: auto;
+  height: 25px;
+  width: 100%;
+}
 
 .container {
-    display: flex;
-    width: 100vw;
-    position: relative;
-    text-align: center;
-    flex-direction: column;
+  display: flex;
+  width: 100vw;
+  position: relative;
+  text-align: center;
+  flex-direction: column;
 }
 
 main {
-    background-color: #fbf0ff;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-flow: column wrap;
-    margin: auto;
-    font-size: 14px;
-    margin-top: 55px;
-    height: 100%;
-    width: 80%;
-    padding: 0px 35px 20px 35px;
-    font-family: 'Roboto Slab', serif;
+  background-color: #fbf0ff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  margin: auto;
+  font-size: 14px;
+  margin-top: 55px;
+  height: 100%;
+  width: 80%;
+  padding: 0px 35px 20px 35px;
+  font-family: 'Roboto Slab', serif;
 
-    a {
-        color: #aa00ff;
-        text-decoration: none;
+  a {
+    color: #aa00ff;
+    text-decoration: none;
 
-        &:hover {
-            color: #d787ff;
-        }
+    &:hover {
+      color: #d787ff;
     }
+  }
 }
 
 .logo-font {
-    font-family: 'Berkshire Swash', cursive;
-    background: -webkit-linear-gradient(#aa00ff, #ee00ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 36px;
-    font-weight: 900;
-    text-shadow: 2px 2px rgba(0,0,0,0.07);
-    padding: 0px 4px;
+  font-family: 'Berkshire Swash', cursive;
+  background: -webkit-linear-gradient(#aa00ff, #ee00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 36px;
+  font-weight: 900;
+  text-shadow: 2px 2px rgba(0,0,0,0.07);
+  padding: 0px 4px;
 }
 
 footer {
-    text-align: center;
-    font-size: 12px;
-    font-family: 'Roboto Slab', serif;
-    color: #fbf0ff;
-    margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Roboto Slab', serif;
+  color: #fbf0ff;
+  margin-top: 20px;
 
-    a {
-        color: #d787ff;
-        text-decoration: none;
+  a {
+    color: #d787ff;
+    text-decoration: none;
 
-        &:hover {
-            color: #fbf0ff;
-        }
+    &:hover {
+      color: #fbf0ff;
     }
+  }
 }
 
 h2 {
-    font-family: 'Roboto Slab', serif;
-    color: #ee00ff;
-    font-size: 24px;
+  font-family: 'Roboto Slab', serif;
+  color: #ee00ff;
+  font-size: 24px;
 }
 
 .underline {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .pink-color {
-    color: #ee00ff;
+  color: #ee00ff;
 
-    & a {
-        color: #ee00ff;
-    }
+  & a {
+    color: #ee00ff;
+  }
 }
 
 .small-text {
-    font-size: 10px;
-    text-align: right;
-    font-style: italic;
+  font-size: 10px;
+  text-align: right;
+  font-style: italic;
 }
 
 .signature {
-    color: #ee00ff;
-    text-align: right;
+  color: #ee00ff;
+  text-align: right;
 }
 
 .purple-color {
-    color: #aa00ff;
-    font-style: normal;
+  color: #aa00ff;
+  font-style: normal;
 }
 
 .welcome-message {
-    background-color: #ebe0ff;
-    text-align: center;
-    width: 60%;
-    font-size: 30px;
-    color: #aa00ff;
-    font-family: 'Amatic SC', cursive;
-    line-height: 40px;
-    border-radius: 15px;
-    border: 2px dashed #ee00ff;
+  background-color: #ebe0ff;
+  text-align: center;
+  width: 60%;
+  font-size: 30px;
+  color: #aa00ff;
+  font-family: 'Amatic SC', cursive;
+  line-height: 40px;
+  border-radius: 15px;
+  border: 2px dashed #ee00ff;
 }
 
 .omniauth-buttons {

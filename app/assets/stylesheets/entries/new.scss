@@ -1,36 +1,36 @@
 .pull-card {
-    width: 8em;
-    height: 2em;
-    font-size: 24px;
-    font-family: 'Lexend Giga', sans-serif;
-    background-color: #ee00ff;
-    color: #fbf0ff;
-    border-radius: 15px;
-    border: 3px dashed black;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 8em;
+  height: 2em;
+  font-size: 24px;
+  font-family: 'Lexend Giga', sans-serif;
+  background-color: #ee00ff;
+  color: #fbf0ff;
+  border-radius: 15px;
+  border: 3px dashed black;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
 
-    &:hover {
-        background-color: #ee00ff;
-    }
+  &:hover {
+    background-color: #ee00ff;
+  }
 }
 
 label[for="entry_category_attributes_question_1"] {
-    text-align: left;
-    display: block;
-    font-size: 12px;
+  text-align: left;
+  display: block;
+  font-size: 12px;
 }
 
 label[for="entry_category_attributes_question_2"] {
-    text-align: left;
-    display: block;
-    font-size: 12px;
+  text-align: left;
+  display: block;
+  font-size: 12px;
 }
 
 label[for="entry_category_attributes_question_3"] {
-    text-align: left;
-    display: block;
-    font-size: 12px;
+  text-align: left;
+  display: block;
+  font-size: 12px;
 }
