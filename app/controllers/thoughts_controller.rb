@@ -20,6 +20,7 @@ class ThoughtsController < ApplicationController
     set_user(entry)
     require_authorization
     thought.destroy
+    flash[:message] = "Thought deleted."
     redirect_to entry_path(entry.id)
   end
 
