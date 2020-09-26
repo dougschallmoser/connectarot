@@ -14,29 +14,29 @@
       <header>
         <nav>
           <div class="navigation">
-          <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
-          <% if logged_in? %>
-            <span class="nav-text"><%= link_to "Requests", requests_path %></span>
-            <span class="nav-text"><%= link_to "Cards", cards_path %></span>
-            <div class="dropdown">
-              <span class="nav-text"><%= link_to "My Tarot", user_entries_path(current_user) %></span> 
-              <div class="dropdown-content">
-                <div class="who-you-are">
-                  <span class="logged-in">You are logged in as<br></span>
-                  <span class="user-email"><%= current_user.email %></span><hr>
+            <span class="nav-logo"><%= link_to "connecTarot", root_path %></span>
+            <% if logged_in? %>
+              <span class="nav-text"><%= link_to "Requests", requests_path %></span>
+              <span class="nav-text"><%= link_to "Cards", cards_path %></span>
+              <div class="dropdown">
+                <span class="nav-text"><%= link_to "My Tarot", user_entries_path(current_user) %></span> 
+                <div class="dropdown-content">
+                  <div class="who-you-are">
+                    <span class="logged-in">You are logged in as<br></span>
+                    <span class="user-email"><%= current_user.email %></span><hr>
+                  </div>
+                  <div class="highlight"><%= link_to_unless_current "My Readings", user_entries_path(current_user) %></div>
+                  <div class="highlight"><%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %></div>
+                  <div class="highlight"><%= link_to_unless_current "My Requests", my_requests_path %></div>
+                  <div class="highlight"><%= link_to_unless_current "New Request", new_request_path %></div><hr>
+                  <div class="highlight"><%= link_to_unless_current "Account", user_path(current_user) %></div>
+                  <div class="highlight"><%= link_to "Logout", logout_path, method: "post", onclick: "return confirm('Are you sure you want to logout?')" %>
                 </div>
-                <div class="highlight"><%= link_to_unless_current "My Readings", user_entries_path(current_user) %></div>
-                <div class="highlight"><%= link_to_unless_current "New Reading", new_user_entry_path(current_user.id) %></div>
-                <div class="highlight"><%= link_to_unless_current "My Requests", my_requests_path %></div>
-                <div class="highlight"><%= link_to_unless_current "New Request", new_request_path %></div><hr>
-                <div class="highlight"><%= link_to_unless_current "Account", user_path(current_user) %></div>
-                <div class="highlight"><%= link_to "Logout", logout_path, method: "post", onclick: "return confirm('Are you sure you want to logout?')" %>
               </div>
-            </div>
-          <% else %>
-            <span class="nav-text"><%= link_to "Sign Up", signup_path %></span> 
-            <span class="nav-text"><%= link_to "Login", login_path %></span>
-          <% end %>
+            <% else %>
+              <span class="nav-text"><%= link_to "Sign Up", signup_path %></span> 
+              <span class="nav-text"><%= link_to "Login", login_path %></span>
+            <% end %>
           </div>
         </nav>
       </header>

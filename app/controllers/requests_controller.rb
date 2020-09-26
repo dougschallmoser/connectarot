@@ -20,26 +20,25 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save
-        flash[:message] = "Request successfully created"
-        redirect_to requests_path
+      flash[:message] = "Request successfully created"
+      redirect_to requests_path
     else
-        render :new
+      render :new
     end
   end
 
   def update
     if @request.update(responder_id: current_user.id)
-        @entry = Entry.new
-        @cards = Card.all
-        render :show 
+      flash[:message] = "You have accepted this request"
+      redirect_to request_path(@request)
     else
-        flash[:message] = @request.errors.full_messages.to_sentence
-        redirect_to requests_path
+      flash[:message] = @request.errors.full_messages.to_sentence
+      redirect_to requests_path
     end
   end
 
   def destroy
-    @user = @request.responder
+    @user = @request.requestor
     require_authorization
     @request.destroy
     flash[:message] = "Request successfully deleted"
@@ -58,8 +57,8 @@ class RequestsController < ApplicationController
 
   def authorize_requestor_and_responder
     unless @request.requestor == current_user || @request.responder == current_user 
-        flash[:message] = "You do not have permission to view that request"
-        redirect_to requests_path
+      flash[:message] = "You do not have permission to view that request"
+      redirect_to requests_path
     end
   end
 end
