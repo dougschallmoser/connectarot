@@ -32,7 +32,7 @@
   <% @entry.cards.each_with_index do |card, index| %>
     <div class="centered">
       <span class="question-title"><%= display_question @entry, index %></span><br>
-      You pulled <span class="card-name-small"><%= card.name %><%= " (#{card.number})" if card.designation == "Major" %></span><p></p>
+      You pulled <span class="card-name-small"><%= card.name %><%= display_card_number_if_major card %></span><p></p>
     </div>
     <div class="justified"><%= card.meaning %></div><p></p>
     <%= display_interpretation_if_request_exists @entry, index %><hr>
@@ -59,7 +59,7 @@
   <% end %>
 
   <p></p>
-  <%= form_for [@entry, @entry.thoughts.build] do |f| %>
+  <%= form_for [@entry, @thought] do |f| %>
     <div class="thoughts-keyword"><%= f.label :content, "Add a thought: " %></div><p></p>
     <%= f.text_area :content %><p></p>
     <%= f.submit "Create" %>
