@@ -2,7 +2,8 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :update, :destroy]
   before_action :set_user
   before_action :require_login
-  before_action :require_authorization
+  before_action :require_authorization, except: [:create]
+  before_action :require_custom_authorization, only: [:create]
 
   def index
     @all_user_entries = @user.entries.order(created_at: :desc)
@@ -48,6 +49,13 @@ class EntriesController < ApplicationController
   end
 
   private
+
+  def require_custom_authorization
+    unless @user == current_user || (User.find_by(id: params[:entry][:responder_id]) if params[:entry]) == current_user
+      flash[:message] = "You do not have permission to view that page."
+      redirect_to user_entries_path(current_user)
+    end
+  end
 
   def custom_entry_redirect(entry)
     if @entry.valid?
