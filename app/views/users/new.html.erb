@@ -16,13 +16,4 @@
   <%= f.submit "Create Account" %>
 <% end %>
 
-<p></p>
-<table class="omniauth-buttons">
-  <tr>
-    <td colspan="2">Or, sign up with one of these providers:<p></td>
-  </tr>
-  <tr>
-    <td><%= button_to "Sign Up with Github", "/auth/github" %></td>
-    <td><%= button_to "Sign Up with Facebook", "/auth/facebook" %></td>
-  </tr>
-</table>
+<p></p><%= render partial: "sessions/omniauth_links", locals: {verb: "Sign Up", text: "sign up"} %>

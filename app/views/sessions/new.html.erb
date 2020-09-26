@@ -10,13 +10,4 @@
   <%= f.submit "Login" %>
 <% end %>
 
-<p></p>
-<table class="omniauth-buttons">
-  <tr>
-    <td colspan="2">Or, login with one of these providers:<p></td>
-  </tr>
-  <tr>
-    <td><%= button_to "Login with Github", "/auth/github" %></td>
-    <td><%= button_to "Login with Facebook", "/auth/facebook" %></td>
-  </tr>
-</table>
+<p></p><%= render partial: "omniauth_links", locals: {verb: "Login", text: "login"} %>
