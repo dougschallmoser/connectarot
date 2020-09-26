@@ -13,7 +13,10 @@ class Entry < ApplicationRecord
   scope :major_cards, -> { joins(:cards).where("cards.designation = ?", "Major") }
   scope :minor_cards, -> { joins(:cards).where("cards.designation = ?", "Minor") }
   scope :court_cards, -> { joins(:cards).where("cards.court = ?", true) }
-  scope :suit_cards, -> (suit) { joins(:cards).where("cards.suit = ?", suit) }
+  scope :cup_cards, -> { joins(:cards).where("cards.suit = ?", "Cups") }
+  scope :pentacle_cards, -> { joins(:cards).where("cards.suit = ?", "Pentacles") }
+  scope :sword_cards, -> { joins(:cards).where("cards.suit = ?", "Swords") }
+  scope :wand_cards, -> { joins(:cards).where("cards.suit = ?", "Wands") }
     
   def add_randomized_card
     until !self.cards.include?(random_card = Card.randomize) do
