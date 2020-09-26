@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy]
   before_action :require_login
+  before_action :authorize_requestor_and_responder, only: [:show]
 
   def index
     @requests = Request.all_open_requests.by_recent
@@ -8,7 +9,6 @@ class RequestsController < ApplicationController
   end
 
   def show
-    check_authorization
     @entry = Entry.new
     @cards = Card.all
   end
@@ -56,7 +56,7 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:title, :description, :requestor_id)
   end
 
-  def check_authorization
+  def authorize_requestor_and_responder
     unless @request.requestor == current_user || @request.responder == current_user 
         flash[:message] = "You do not have permission to view that request"
         redirect_to requests_path
