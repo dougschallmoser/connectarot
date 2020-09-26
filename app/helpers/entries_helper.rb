@@ -19,7 +19,7 @@ module EntriesHelper
     if entry.request
       content_tag(:div, class: "interpretations") do 
         concat display_entry_interpretation(entry, index)
-        concat content_tag(:div, entry.request.responder.name, class: "signature")
+        concat content_tag(:div, "-#{entry.request.responder.name}", class: "signature")
       end
     end
   end
