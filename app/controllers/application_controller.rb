@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_authorization
-    unless @user == current_user || (User.find_by(id: params[:entry][:responder_id]) if params[:entry]) == current_user
+    unless @user == current_user
       flash[:message] = "You do not have permission to view that page."
       redirect_to user_entries_path(current_user)
     end
