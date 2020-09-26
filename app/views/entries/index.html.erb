@@ -22,13 +22,13 @@
         <tr>
           <td><%= @monthly_entries.size %></td>
           <td><%= @total_cards %></td>
-          <td><%= @major_cards %> <%= to_percent @major_cards, @total_cards %></td>
-          <td><%= @minor_cards %> <%= to_percent @minor_cards, @total_cards %></td>
-          <td><%= @court_cards %> <%= to_percent @court_cards, @total_cards %></td>
-          <td><%= @cup_cards %> <%= to_percent @cup_cards, @total_cards %></td>
-          <td><%= @pentacle_cards %> <%= to_percent @pentacle_cards, @total_cards %></td>
-          <td><%= @sword_cards %> <%= to_percent @sword_cards, @total_cards %></td>
-          <td><%= @wand_cards %> <%= to_percent @wand_cards, @total_cards %></td>
+          <td><%= @monthly_entries.major_cards.size %> <%= to_percent @monthly_entries.major_cards.size, @total_cards %></td>
+          <td><%= @monthly_entries.minor_cards.size %> <%= to_percent @monthly_entries.minor_cards.size, @total_cards %></td>
+          <td><%= @monthly_entries.court_cards.size %> <%= to_percent @monthly_entries.court_cards.size, @total_cards %></td>
+          <td><%= @monthly_entries.cup_cards.size %> <%= to_percent @monthly_entries.cup_cards.size, @total_cards %></td>
+          <td><%= @monthly_entries.pentacle_cards.size %> <%= to_percent @monthly_entries.pentacle_cards.size, @total_cards %></td>
+          <td><%= @monthly_entries.sword_cards.size %> <%= to_percent @monthly_entries.sword_cards.size, @total_cards %></td>
+          <td><%= @monthly_entries.wand_cards.size %> <%= to_percent @monthly_entries.wand_cards.size, @total_cards %></td>
         </tr>
       </table>
         
