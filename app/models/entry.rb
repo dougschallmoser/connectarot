@@ -9,6 +9,7 @@ class Entry < ApplicationRecord
   validates_presence_of :card_ids, presence: true, if: -> { request_id.present? }, :message => "- All three cards must be selected"
   validates_presence_of :category, :message => "A spread must be selected from the menu or created with three custom questions"
   validates_length_of :cards, maximum: 3
+  validate :card_id_uniqueness
   scope :this_month, -> { where(created_at: Time.now.beginning_of_month..Time.now.end_of_month) }
   scope :major_cards, -> { joins(:cards).where("cards.designation = ?", "Major") }
   scope :minor_cards, -> { joins(:cards).where("cards.designation = ?", "Minor") }
@@ -17,6 +18,10 @@ class Entry < ApplicationRecord
   scope :pentacle_cards, -> { joins(:cards).where("cards.suit = ?", "Pentacles") }
   scope :sword_cards, -> { joins(:cards).where("cards.suit = ?", "Swords") }
   scope :wand_cards, -> { joins(:cards).where("cards.suit = ?", "Wands") }
+
+  def card_id_uniqueness
+    errors.add(:card, "cannot be selected twice from the same deck") unless card_ids == card_ids.uniq
+  end
     
   def add_randomized_card
     until !self.cards.include?(random_card = Card.randomize) do
