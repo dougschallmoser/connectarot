@@ -80,6 +80,10 @@ class EntriesController < ApplicationController
 
   def set_entry
     @entry = Entry.find_by(id: params[:id])
+    if @entry.nil?
+      flash[:message] = "The requested page does not exist"
+      redirect_to user_entries_path(current_user)
+    end
   end
 
   def set_user
