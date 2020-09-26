@@ -11,6 +11,7 @@
 .field_with_errors select {
   border: 2px dashed #ee00ff;
   background-color: #fbccff;
+  color: black;
 }
 
 .error-font {
@@ -20,4 +21,5 @@
     background-color: #fbccff;
     padding: 2px 6px;
     font-size: 12px;
+    width: 30%;
 }
