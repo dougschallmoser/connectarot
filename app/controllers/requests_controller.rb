@@ -49,6 +49,10 @@ class RequestsController < ApplicationController
 
   def set_request 
     @request = Request.find_by(id: params[:id])
+    if @request.nil?
+      flash[:message] = "The requested page does not exist"
+      redirect_to requests_path
+    end
   end
 
   def request_params
