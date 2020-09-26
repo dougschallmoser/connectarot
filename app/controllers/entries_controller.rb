@@ -17,6 +17,7 @@ class EntriesController < ApplicationController
 
   def show
     @thoughts = @entry.thoughts.order(created_at: :desc)
+    @thought = @entry.thoughts.build
   end
 
   def new
