@@ -29,10 +29,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user && @user.id == session[:user_id]
-      authenticate_and_update_info(@user)
+    if @user.authenticate(params[:user][:password])
+      @user.update(user_params)
+      change_password(@user)
+      flash[:message] = "Changes saved"
+      redirect_to user_path(@user)
     else
-      redirect_to user_entries_path(@user)
+      flash[:message] = "Invalid credentials. Please try again."
+      render :edit
     end
   end
 
@@ -51,18 +55,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def authenticate_and_update_info(user)
-    if user.authenticate(params[:user][:password])
-      user.update(user_params)
-      if params[:user][:new_password].present?
-        user.password = params[:user][:new_password]
-        user.save
-      end
-      flash[:message] = "Changes saved"
-      redirect_to user_path(user)
-    else
-        flash[:message] = "Invalid credentials. Please try again."
-        render :edit
+  def change_password(user)
+    if params[:user][:new_password].present?
+      user.password = params[:user][:new_password]
+      user.save
     end
   end
 end
