@@ -29,19 +29,11 @@ class Entry < ApplicationRecord
   end
 
   def self.filter_by_spread(category_name)
-    if category_name.present?
-      self.joins(:category).where(categories: {name: category_name} )
-    else
-      self.all
-    end
+    category_name.present? ? self.joins(:category).where(categories: {name: category_name} ) : self.all
   end
 
   def self.filter_by_card(card_id)
-    if card_id.present?
-      self.joins(:cards).where("cards.id = ?", card_id)
-    else
-      self.all
-    end
+    card_id.present? ? self.joins(:cards).where("cards.id = ?", card_id) : self.all
   end
 
   def self.total_cards
