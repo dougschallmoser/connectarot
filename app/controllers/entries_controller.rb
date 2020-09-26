@@ -35,11 +35,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.find_by(id: params[:entry_id]) if params[:entry_id].present?
     @entry ||= @user.entries.create(entry_params)
-    if params[:entry] && params[:entry][:card_ids]
-      custom_entry_redirect(@entry)
-    else
-      regular_entry_redirect(@entry)
-    end
+    params[:entry] && params[:entry][:card_ids] ? custom_entry_redirect(@entry) : regular_entry_redirect(@entry)
   end
 
   def destroy
