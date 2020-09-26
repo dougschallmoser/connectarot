@@ -7,5 +7,9 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find_by(id: params[:id])
+    if @card.nil?
+      flash[:message] = "The requested page does not exist"
+      redirect_to cards_path
+    end
   end
 end
