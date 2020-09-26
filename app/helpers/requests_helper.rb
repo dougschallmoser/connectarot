@@ -1,19 +1,11 @@
 module RequestsHelper
   def requestor_name(request)
-    if request.requestor == current_user 
-      "You"
-    else 
-      request.requestor.name 
-    end 
+    (request.requestor == current_user) ? "You" : request.requestor.name 
   end
 
   def responder_name(request)
     if request.responder.present?
-      if request.responder == current_user 
-        "You"
-      else 
-        request.responder.name 
-      end 
+      (request.responder == current_user) ? "You" : request.responder.name 
     end
   end
 
