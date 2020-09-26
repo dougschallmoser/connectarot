@@ -20,9 +20,7 @@ class Request < ApplicationRecord
   end
 
   def different_responder 
-    if self.responder == self.requestor
-      self.errors.add(:you, "cannot accept your own request")
-    end
+    self.errors.add(:you, "cannot accept your own request") if self.responder == self.requestor
   end
 
   def display_date_created
