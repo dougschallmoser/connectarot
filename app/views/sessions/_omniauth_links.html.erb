@@ -1,0 +1,9 @@
+<table class="omniauth-buttons">
+  <tr>
+    <td colspan="2"><%= "Or, #{text} with one of these providers:" %><p></td>
+  </tr>
+  <tr>
+    <td><%= button_to "#{verb} with Github", "/auth/github" %></td>
+    <td><%= button_to "#{verb} with Facebook", "/auth/facebook" %></td>
+  </tr>
+</table>
