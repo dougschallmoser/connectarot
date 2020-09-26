@@ -6,10 +6,10 @@ class ThoughtsController < ApplicationController
     set_user(entry)
     require_authorization
     thought = entry.thoughts.build(thought_params)
-    if !thought.save
-      flash[:message] = thought.errors.full_messages.to_sentence
-    else
+    if thought.save
       flash[:message] = "Thought saved"
+    else
+      flash[:message] = thought.errors.full_messages.to_sentence
     end
     redirect_to entry_path(entry.id)
   end
