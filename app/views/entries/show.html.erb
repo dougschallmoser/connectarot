@@ -20,25 +20,25 @@
     <span class="category-name"><%= @entry.category.name.upcase %></span>
     <%= display_request_link_if_exists @entry %>
     <p><span id="entry-date"><%= @entry.display_date_created %></span></p>
-    <% @entry.cards.each do |card| %>
-      <%= image_tag card.image, width: "150px", height: "261px" %>
-    <% end %><br>
-    <% @entry.cards.each do |card| %>
-      <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
-    <% end %>
   </div>
-
-  <p></p><%= display_request_description_if_exists @entry %>
+  <%= display_request_description_if_exists @entry %>
     
-  <br><hr>
-  <% @entry.cards.each_with_index do |card, index| %>
-    <div class="centered">
-      <span class="question-title"><%= display_question @entry, index %></span><br>
-      You pulled <span class="card-name-small"><%= card.name %><%= display_card_number_if_major card %></span><p></p>
-    </div>
-    <div class="justified"><%= card.meaning %></div><p></p>
-    <%= display_interpretation_if_request_exists @entry, index %><hr>
-  <% end %>
+  <br>
+  <table class="cards-container">
+    <tr>
+      <% @entry.cards.each_with_index do |card, index| %>
+        <td>
+          <div class="centered">
+            <%= image_tag card.image, width: "150px", height: "261px" %><br>
+            <span class="question-title"><%= display_question @entry, index %></span><br>
+            You pulled <span class="card-name-small"><%= link_to card.name.upcase, card_path(card) %><%= display_card_number_if_major card %></span><p></p>
+          </div>
+          <div class="justified"><%= card.meaning %></div><p></p>
+          <%= display_interpretation_if_request_exists @entry, index %>
+        </td>
+      <% end %>
+    </tr>
+  </table><hr>
 
   <% if @thoughts.any? %>
     <p></p>
