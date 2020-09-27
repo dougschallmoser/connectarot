@@ -16,12 +16,15 @@ class ThoughtsController < ApplicationController
 
   def destroy
     thought = Thought.find_by(id: params[:id])
-    entry = thought.entry
-    set_user(entry)
-    require_authorization
-    thought.destroy
-    flash[:message] = "Thought deleted."
-    redirect_to entry_path(entry.id)
+    if thought 
+      set_user(thought.entry)
+      require_authorization
+      thought.destroy
+      flash[:message] = "Thought deleted."
+    else
+      flash[:message] = "Thought not found"
+    end
+    redirect_to entry_path(thought.entry.id)
   end
 
   private
