@@ -29,9 +29,9 @@
       <% @entry.cards.each_with_index do |card, index| %>
         <td>
           <div class="centered">
-            <%= image_tag card.image, width: "150px", height: "261px" %><br>
-            <span class="question-title"><%= display_question @entry, index %></span><br>
             You pulled <span class="card-name-small"><%= link_to card.name.upcase, card_path(card) %><%= display_card_number_if_major card %></span><p></p>
+            <%= image_tag card.image, id: "image-shadow" %><p></p>
+            <span class="question-title"><%= display_question @entry, index %></span><br>
           </div>
           <div class="justified"><%= card.meaning %></div><p></p>
           <%= display_interpretation_if_request_exists @entry, index %>
