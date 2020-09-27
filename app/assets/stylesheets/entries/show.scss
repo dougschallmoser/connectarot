@@ -79,7 +79,6 @@ hr {
   border: 1px dashed #aa00ff;
   text-align: justify;
   padding: 10px;
-  width: 75%;
 }
 
 .request-description {
@@ -88,4 +87,14 @@ hr {
   background-color: #fccfff;
   border: 1px dashed #aa00ff;
   padding: 10px;
+}
+
+.cards-container {
+  width: 100%;
+  table-layout: fixed;
+
+  td {
+    vertical-align: top;
+    padding: 15px;
+  }
 }
