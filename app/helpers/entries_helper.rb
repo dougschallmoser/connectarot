@@ -35,4 +35,13 @@ module EntriesHelper
   def display_field_with_errors(entry, key)
     'field_with_errors' if entry.errors[key.to_sym].any?
   end
+
+  def display_request_description(entry)
+    if entry.request
+      content_tag(:div, class: "request-description") do 
+        concat content_tag(:div, "Request Description", class: "purple-centered") + tag(:br)
+        concat entry.request.description 
+      end
+    end
+  end
 end
