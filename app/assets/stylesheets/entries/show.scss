@@ -72,7 +72,7 @@ hr {
 }
 
 .interpretations {
-  background-color: #ebe0ff;
+  background-color: #fccfff;
   font-family: 'Marck Script', cursive;
   font-size: 18px;
   margin: auto;
@@ -92,9 +92,16 @@ hr {
 .cards-container {
   width: 100%;
   table-layout: fixed;
+  background-color: #ebe0ff;
 
   td {
     vertical-align: top;
     padding: 15px;
+    border-radius: 15px;
+    border: 1px dashed #aa00ff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -o-box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
 }
