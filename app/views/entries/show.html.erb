@@ -27,6 +27,8 @@
       <span class="card-name"><%= link_to card.name.upcase, card_path(card) %></span><%= ',' unless card == @entry.cards.last %>
     <% end %>
   </div>
+
+  <p></p><%= display_request_description @entry %>
     
   <br><hr>
   <% @entry.cards.each_with_index do |card, index| %>
