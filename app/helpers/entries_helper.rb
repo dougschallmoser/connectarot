@@ -25,7 +25,7 @@ module EntriesHelper
   end
 
   def to_percent(num, den)
-    "(#{(num.to_f / den.to_f * 100).ceil}%)"
+    "(#{(num.to_f / den.to_f * 100).ceil}%)" unless num == 0
   end
 
   def display_field_with_errors_if_any(entry)
