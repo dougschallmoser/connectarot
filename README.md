@@ -1,3 +1,5 @@
+![connecTarot](https://user-images.githubusercontent.com/65590878/96668650-83687e80-1310-11eb-9d4c-fa2300d0ce52.png)
+
 # connecTarot
 
 connecTarot is designed to connect like-minded people together in the world of tarot. Users are able
