@@ -3,7 +3,9 @@
 # connecTarot
 
 connecTarot is designed to connect like-minded people together in the world of tarot. Users are able
-to track their own tarot readings, receive readings, and conduct readings for others. This application was built using Ruby on Rails.
+to track, receive readings, and conduct tarot card readings for others. This application was built using Ruby on Rails.
+
+[Demo Video](https://youtu.be/bd-E0IjS6to)
 
 
 ## Installation
