@@ -17,8 +17,10 @@ To run this application in your local environment, please follow these steps:
 2. Run 'bundle install'
 3. Run 'rails db:migrate'
 4. Run 'rails db:seed'
-3. Run 'rails s'
-4. In your browser, goto http://localhost:3000/
+5. Run 'rails s'
+6. In your browser, goto http://localhost:3000/
+
+Note: In order to login with Github/Facebook, an App Key and App Secret are required. It will not work without it.
 ```
 
 

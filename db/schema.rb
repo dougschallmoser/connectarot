@@ -16,22 +16,22 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.string "name"
-    t.string "designation"
+    t.text "name"
+    t.text "designation"
     t.boolean "court"
     t.integer "number"
-    t.string "suit"
-    t.string "meaning"
+    t.text "suit"
+    t.text "meaning"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
+    t.text "image"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", default: "Custom Spread"
-    t.string "question_1"
-    t.string "question_2"
-    t.string "question_3"
+    t.text "name", default: "Custom Spread"
+    t.text "question_1"
+    t.text "question_2"
+    t.text "question_3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
     t.integer "user_id"
     t.integer "category_id"
     t.integer "request_id"
-    t.string "interpretation_1"
-    t.string "interpretation_2"
-    t.string "interpretation_3"
+    t.text "interpretation_1"
+    t.text "interpretation_2"
+    t.text "interpretation_3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
+    t.text "title"
+    t.text "description"
     t.integer "requestor_id"
     t.integer "responder_id"
     t.datetime "created_at", precision: 6, null: false
@@ -67,14 +67,14 @@ ActiveRecord::Schema.define(version: 2020_09_16_201800) do
     t.integer "entry_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "content"
+    t.text "content"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.string "image"
+    t.text "name"
+    t.text "email"
+    t.text "password_digest"
+    t.text "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
