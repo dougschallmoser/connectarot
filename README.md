@@ -17,10 +17,19 @@ To run this application in your local environment, please follow these steps:
 2. Run 'bundle install'
 3. Run 'rails db:migrate'
 4. Run 'rails db:seed'
-5. Run 'rails s'
-6. In your browser, goto http://localhost:3000/
+5. If you would like to login through Github or Facebook, you will need keys/secrets
+   from the developer sites. If you do not want to login this way, skip ahead to step 8.
+6. Create a ".env" file
+7. Inside the ".env" file, copy/paste the following four lines and insert your
+   own keys/secrets in order to login with Omniauth third party authentication:
 
-Note: In order to login with Github/Facebook, an App Key and App Secret are required. It will not work without it.
+   GITHUB_KEY=insert_key_here
+   GITHUB_SECRET=insert_secret_here
+   FACEBOOK_KEY=insert_key_here
+   FACEBOOK_SECRET=insert_secret_here
+
+8. Run 'rails s'
+9. In your browser, goto http://localhost:3000/
 ```
 
 
