@@ -13,14 +13,14 @@
  *= require_tree .
  *= require_self
  */
-@import 'main';
-@import 'navigation';
-@import 'form_fields';
-@import 'errors';
-@import '/users/edit';
-@import '/entries/new';
-@import '/entries/show';
-@import '/entries/index';
-@import '/cards/show';
-@import '/cards/index';
-@import '/requests/index';
+@import 'main.scss';
+@import 'navigation.scss';
+@import 'form_fields.scss';
+@import 'errors.scss';
+@import '/users/edit.scss';
+@import '/entries/new.scss';
+@import '/entries/show.scss';
+@import '/entries/index.scss';
+@import '/cards/show.scss';
+@import '/cards/index.scss';
+@import '/requests/index.scss';
