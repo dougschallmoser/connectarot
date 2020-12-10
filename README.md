@@ -30,6 +30,10 @@ To run this application in your local environment, please follow these steps:
    FACEBOOK_KEY=insert_key_here
    FACEBOOK_SECRET=insert_secret_here
 
+   In your Github/Facebook developer sites, you must also make your authorization callback url point to localhost:3000 as shown below:
+   https://localhost:3000/auth/github/callback
+   https://localhost:3000/auth/facebook/callback
+
 8. Run 'rails s'
 9. In your browser, goto http://localhost:3000/
 ```
